@@ -1,0 +1,51 @@
+{
+  "app": {
+    "name": "Calculadora Financiera",
+    "title": "Calculadora Financiera · ¿Puedo tomar este préstamo?"
+  },
+  "layout": {
+    "language": {
+      "label": "Idioma",
+      "names": {
+        "es": "Español",
+        "en": "English"
+      }
+    },
+    "theme": {
+      "switch_to_dark": "Cambiar a tema oscuro",
+      "switch_to_light": "Cambiar a tema claro"
+    },
+    "footer": {
+      "privacy": "Tus datos se guardan únicamente en este navegador. No hay servidor ni base de datos externa.",
+      "disclaimer": "Los resultados son orientativos y no constituyen asesoría financiera. Las condiciones finales de un préstamo las define cada institución."
+    }
+  },
+  "home": {
+    "eyebrow": "Honduras · Lempiras y dólares",
+    "title": "¿Puedo tomar este préstamo?",
+    "description": "Compara tu estado financiero real con la oferta que te hace el banco y obtén una respuesta clara antes de firmar.",
+    "steps": {
+      "label": "Cómo funciona",
+      "counter": "{{current}} de {{total}}",
+      "profile": {
+        "title": "Tu estado financiero",
+        "description": "Tus ingresos netos, tus gastos de cada mes y las deudas que ya estás pagando."
+      },
+      "offer": {
+        "title": "La oferta del banco",
+        "description": "Monto, tasa anual, comisión por desembolso, plazo y, si aplica, seguro y otros cargos."
+      },
+      "result": {
+        "title": "El resultado",
+        "description": "Tu cuota mensual, lo que realmente cuesta el préstamo y si puedes tomarlo sin sobreendeudarte."
+      }
+    }
+  },
+  "shared": {
+    "not_found": {
+      "title": "Página no encontrada",
+      "message": "La página que buscas no existe o cambió de dirección.",
+      "back_button": "Volver al inicio"
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "app": {
+    "name": "Financial Calculator",
+    "title": "Financial Calculator · Can I take this loan?"
+  },
+  "layout": {
+    "language": {
+      "label": "Language",
+      "names": {
+        "es": "Español",
+        "en": "English"
+      }
+    },
+    "theme": {
+      "switch_to_dark": "Switch to dark theme",
+      "switch_to_light": "Switch to light theme"
+    },
+    "footer": {
+      "privacy": "Your data is stored only in this browser. There is no server and no external database.",
+      "disclaimer": "Results are for guidance only and are not financial advice. The final terms of a loan are set by each institution."
+    }
+  },
+  "home": {
+    "eyebrow": "Honduras · Lempiras and dollars",
+    "title": "Can I take this loan?",
+    "description": "Compare your real financial situation with the offer your bank is making and get a clear answer before you sign.",
+    "steps": {
+      "label": "How it works",
+      "counter": "{{current}} of {{total}}",
+      "profile": {
+        "title": "Your finances",
+        "description": "Your net income, your monthly expenses and the debts you are already paying."
+      },
+      "offer": {
+        "title": "The bank's offer",
+        "description": "Amount, annual rate, disbursement fee, term and, if applicable, insurance and other charges."
+      },
+      "result": {
+        "title": "The result",
+        "description": "Your monthly payment, what the loan really costs and whether you can take it without overextending yourself."
+      }
+    }
+  },
+  "shared": {
+    "not_found": {
+      "title": "Page not found",
+      "message": "The page you are looking for does not exist or has moved.",
+      "back_button": "Back to home"
+    }
+  }
+}
