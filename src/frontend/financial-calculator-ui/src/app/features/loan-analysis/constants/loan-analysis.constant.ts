@@ -1,0 +1,3 @@
+export const INTERNAL_RATE_MAX_MONTHLY = 1;
+export const INTERNAL_RATE_TOLERANCE = 1e-10;
+export const INTERNAL_RATE_MAX_ITERATIONS = 200;
