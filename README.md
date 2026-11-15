@@ -2,7 +2,7 @@
 
 Aplicación web que le indica a una persona si puede o no tomar un préstamo, a partir de su estado financiero real y de la oferta que le hace el banco. Está pensada para el mercado financiero de Honduras y trabaja en lempiras (HNL) y dólares (USD).
 
-> **Estado:** en planeación. Todavía no hay código de la aplicación en el repositorio.
+> **Estado:** en desarrollo. Están listas las fundaciones (proyecto Angular, tema claro/oscuro, idiomas y shell) y el núcleo (persistencia en IndexedDB y funciones de cálculo con pruebas). El asistente y la pantalla de resultado todavía no.
 
 ## Qué hace
 
@@ -54,7 +54,7 @@ La arquitectura es modular por features y sigue las mismas reglas de código y d
 
 ## Desarrollo local
 
-Disponible cuando se cree el proyecto Angular:
+Requiere Node.js 20 o superior.
 
 ```bash
 cd src/frontend/financial-calculator-ui
@@ -62,7 +62,15 @@ npm install
 npm run start
 ```
 
-La app quedará en `http://localhost:4200/`.
+La app queda en `http://localhost:4200/`.
+
+Las pruebas unitarias cubren las funciones de cálculo y la capa de persistencia:
+
+```bash
+npm run test -- --watch=false --browsers=ChromeHeadless
+```
+
+Karma usa Chrome. Si solo tienes Edge, define antes la variable de entorno `CHROME_BIN` con la ruta de `msedge.exe`.
 
 ## Despliegue
 
