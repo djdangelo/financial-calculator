@@ -1,1 +1,22 @@
 PLAN.md
+
+# Angular / Node
+node_modules/
+dist/
+.angular/
+coverage/
+out-tsc/
+npm-debug.log*
+yarn-error.log*
+
+# Editores
+**/.vscode/*
+!/.vscode/settings.json
+.idea/
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Claude Code
+.claude/settings.local.json

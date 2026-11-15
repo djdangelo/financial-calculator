@@ -1,0 +1,19 @@
+{
+    "conventionalCommits.scopes": [
+        "repo",
+        "readme",
+        "build",
+        "dependencies",
+        "deploy",
+        "core",
+        "layout",
+        "shared",
+        "ui",
+        "i18n",
+        "home",
+        "financial-profile",
+        "loan-offers",
+        "loan-analysis",
+        "tests"
+    ]
+}
