@@ -1,0 +1,6 @@
+<section *transloco="let t; read: 'shared.not_found'" class="flex flex-col items-center gap-4 py-16 text-center">
+  <p class="text-7xl font-extrabold tabular-nums text-surface-300 dark:text-surface-700">404</p>
+  <h1 class="text-2xl font-bold text-surface-900 dark:text-surface-0 sm:text-3xl">{{ t('title') }}</h1>
+  <p class="max-w-md text-surface-600 dark:text-surface-400">{{ t('message') }}</p>
+  <p-button routerLink="/" icon="pi pi-home" [label]="t('back_button')" />
+</section>

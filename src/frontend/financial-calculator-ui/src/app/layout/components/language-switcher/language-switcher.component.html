@@ -1,0 +1,11 @@
+<div *transloco="let t; read: 'layout.language'" role="group" [attr.aria-label]="t('label')"
+  class="flex items-center gap-0.5 rounded-lg border border-surface-200 bg-surface-0 p-0.5 dark:border-surface-800 dark:bg-surface-900">
+  @for (language of languages; track language) {
+  @let isActive = language === languageService.current();
+  <button type="button" [class]="isActive ? buttonClass.active : buttonClass.inactive"
+    [attr.aria-pressed]="isActive" [attr.aria-label]="t('names.' + language)" [attr.title]="t('names.' + language)"
+    (click)="languageService.setLanguage(language)">
+    {{ language }}
+  </button>
+  }
+</div>

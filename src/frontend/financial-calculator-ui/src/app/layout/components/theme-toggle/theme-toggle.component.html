@@ -1,0 +1,4 @@
+<ng-container *transloco="let t; read: 'layout.theme'">
+  <p-button [icon]="icon()" [rounded]="true" [text]="true" severity="secondary" [ariaLabel]="t(labelKey())"
+    (onClick)="toggle()" />
+</ng-container>
