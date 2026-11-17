@@ -12,3 +12,5 @@ export const SUGGESTED_EXCHANGE_RATES: ExchangeRates = {
   unitsPerBase: { USD: 1, HNL: 27.0173 },
   date: '2026-09-11'
 };
+
+export const EXCHANGE_RATE_SOURCE_URL = 'https://www.bch.hn/estadisticas-y-publicaciones-economicas/tipo-de-cambio-nominal';

@@ -10,3 +10,4 @@ export const CURRENCIES: Record<CurrencyCode, Currency> = {
 export const CURRENCY_CODES: readonly CurrencyCode[] = ['HNL', 'USD'];
 export const DEFAULT_CURRENCY: CurrencyCode = 'HNL';
 export const BASE_CURRENCY: CurrencyCode = 'USD';
+export const NUMBER_LOCALE = 'es-HN';
