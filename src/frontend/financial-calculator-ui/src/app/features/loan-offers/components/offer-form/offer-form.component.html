@@ -1,0 +1,84 @@
+<div *transloco="let t; read: 'loan_offers.form'" class="flex flex-col gap-4">
+  @let currency = offer().currency;
+
+  <article
+    class="flex flex-col gap-5 rounded-2xl border border-surface-200 bg-surface-0 p-4 transition-colors duration-300 dark:border-surface-800 dark:bg-surface-900 sm:p-5">
+    <header class="flex items-center gap-3">
+      <span
+        class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary-50 text-primary-700 dark:bg-primary-950 dark:text-primary-300">
+        <i class="pi pi-building-columns" aria-hidden="true"></i>
+      </span>
+      <h2 class="text-base font-bold text-surface-900 dark:text-surface-0">{{ t('loan_title') }}</h2>
+    </header>
+
+    <div class="grid gap-4 sm:grid-cols-2">
+      <app-form-field [label]="t('bank_name')" inputId="offer-bank-name" [optional]="true">
+        <input pInputText type="text" id="offer-bank-name" [formControl]="form.controls.bankName"
+          [placeholder]="t('bank_name_placeholder')" [attr.maxlength]="bankNameMaxLength" [fluid]="true" />
+      </app-form-field>
+
+      <app-form-field [label]="t('currency')" labelId="offer-currency">
+        <app-currency-toggle [value]="currency" labelledBy="offer-currency"
+          (valueChange)="form.controls.currency.setValue($event)" />
+      </app-form-field>
+
+      <app-money-input [control]="form.controls.amount" [currency]="currency" inputId="offer-amount"
+        [label]="t('amount')" [hint]="t('amount_hint')" [showErrors]="showErrors()" />
+
+      <app-form-field [label]="t('annual_rate')" inputId="offer-rate" [hint]="t('annual_rate_hint')"
+        [error]="rateError() ? t('errors.annual_rate') : ''">
+        <p-inputNumber [formControl]="form.controls.annualRatePercent" inputId="offer-rate" mode="decimal"
+          [suffix]="percentSuffix" [locale]="locale" [min]="0" [max]="maxRate" [maxFractionDigits]="rateDecimals"
+          [fluid]="true" [class.ng-invalid]="rateError()" [class.ng-dirty]="rateError()" />
+      </app-form-field>
+
+      <app-form-field [label]="t('term')" inputId="offer-term" [hint]="t('term_hint')"
+        [error]="termError() ? t('errors.term', { min: minTerm, max: maxTerm }) : ''">
+        <p-inputNumber [formControl]="form.controls.termMonths" inputId="offer-term" [locale]="locale"
+          [min]="minTerm" [max]="maxTerm" [useGrouping]="false" [fluid]="true" [class.ng-invalid]="termError()"
+          [class.ng-dirty]="termError()" />
+      </app-form-field>
+    </div>
+  </article>
+
+  <article
+    class="flex flex-col gap-5 rounded-2xl border border-surface-200 bg-surface-0 p-4 transition-colors duration-300 dark:border-surface-800 dark:bg-surface-900 sm:p-5">
+    <header class="flex items-center gap-3">
+      <span
+        class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary-50 text-primary-700 dark:bg-primary-950 dark:text-primary-300">
+        <i class="pi pi-receipt" aria-hidden="true"></i>
+      </span>
+      <div class="flex flex-col">
+        <h2 class="text-base font-bold text-surface-900 dark:text-surface-0">{{ t('costs_title') }}</h2>
+        <p class="text-sm text-surface-500 dark:text-surface-400">{{ t('costs_description') }}</p>
+      </div>
+    </header>
+
+    <div class="grid gap-4 sm:grid-cols-2">
+      <app-form-field [label]="t('disbursement_fee')" inputId="offer-fee" [hint]="t('disbursement_fee_hint')"
+        [error]="disbursementError() ? t('errors.disbursement') : ''">
+        <p-inputNumber [formControl]="form.controls.disbursementFeePercent" inputId="offer-fee" mode="decimal"
+          [suffix]="percentSuffix" [locale]="locale" [min]="0" [max]="maxFee" [maxFractionDigits]="rateDecimals"
+          [fluid]="true" />
+      </app-form-field>
+
+      @if (hasFee()) {
+      <app-form-field [label]="t('fee_mode')" labelId="offer-fee-mode"
+        [hint]="t('fee_mode_hints.' + offer().feeMode)">
+        <p-selectButton [options]="feeModes" [allowEmpty]="false"
+          [formControl]="form.controls.feeMode" ariaLabelledBy="offer-fee-mode">
+          <ng-template let-option pTemplate="item">
+            <span class="text-sm font-semibold">{{ t('fee_modes.' + option) }}</span>
+          </ng-template>
+        </p-selectButton>
+      </app-form-field>
+      }
+
+      <app-money-input [control]="form.controls.monthlyInsurance" [currency]="currency" inputId="offer-insurance"
+        [label]="t('monthly_insurance')" [hint]="t('monthly_insurance_hint')" />
+
+      <app-money-input [control]="form.controls.otherInitialCharges" [currency]="currency" inputId="offer-charges"
+        [label]="t('other_charges')" [hint]="t('other_charges_hint')" />
+    </div>
+  </article>
+</div>

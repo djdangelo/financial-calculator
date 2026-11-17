@@ -1,0 +1,9 @@
+<app-wizard-step-frame *transloco="let t; read: 'loan_offers.step'" step="offer"
+  [completed]="facade.completedSteps()" [complete]="facade.isOfferComplete()" [title]="t('title')"
+  [description]="t('description')" [incompleteMessage]="t('incomplete')" [(attempted)]="attempted">
+  @if (facade.offer(); as offer) {
+  <app-offer-form [offer]="offer" [showErrors]="attempted()" (changed)="facade.saveOffer($event)" />
+  }
+
+  <app-offer-preview wizardAside class="block lg:sticky lg:top-24" />
+</app-wizard-step-frame>
