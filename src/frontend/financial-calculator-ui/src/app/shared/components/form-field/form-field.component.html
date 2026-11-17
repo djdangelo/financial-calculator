@@ -1,0 +1,16 @@
+<div *transloco="let t; read: 'shared.fields'" class="flex flex-col gap-1.5">
+  <label [attr.for]="inputId()" [attr.id]="labelId()" class="text-sm font-semibold text-surface-800 dark:text-surface-100">
+    {{ label() }}
+    @if (optional()) {
+    <span class="font-normal text-surface-500 dark:text-surface-400">({{ t('optional') }})</span>
+    }
+  </label>
+
+  <ng-content />
+
+  @if (error()) {
+  <small class="text-sm text-red-600 dark:text-red-400" role="alert">{{ error() }}</small>
+  } @else if (hint()) {
+  <small class="text-sm text-surface-500 dark:text-surface-400">{{ hint() }}</small>
+  }
+</div>

@@ -1,0 +1,29 @@
+<nav *transloco="let t; read: 'shared.wizard'" [attr.aria-label]="t('label')">
+  <ol class="flex items-center">
+    @for (step of views(); track step.key; let last = $last) {
+    @let isCurrent = step.status === 'current';
+    <li class="flex items-center" [class.flex-1]="!last">
+      <a [routerLink]="step.reachable && !isCurrent ? step.route : null" [attr.aria-label]="t('steps.' + step.key)"
+        [attr.aria-current]="isCurrent ? 'step' : null"
+        class="flex items-center gap-2 rounded-full outline-none focus-visible:ring-2 focus-visible:ring-primary">
+        <span [class]="markerClass[step.status]">
+          @if (step.status === 'complete') {
+          <i class="pi pi-check text-xs" aria-hidden="true"></i>
+          } @else {
+          {{ step.number }}
+          }
+        </span>
+        <span [class]="labelClass[step.status]">{{ t('steps.' + step.key) }}</span>
+      </a>
+
+      @if (!last) {
+      <span class="mx-2 h-px flex-1 bg-surface-200 dark:bg-surface-800 md:mx-3" aria-hidden="true"></span>
+      }
+    </li>
+    }
+  </ol>
+
+  <p class="mt-3 text-sm font-semibold text-surface-600 dark:text-surface-300 md:hidden">
+    {{ t('progress', { current: currentNumber(), total: views().length }) }} · {{ t('steps.' + current()) }}
+  </p>
+</nav>

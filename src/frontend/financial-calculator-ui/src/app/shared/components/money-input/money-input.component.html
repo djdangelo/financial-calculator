@@ -1,0 +1,6 @@
+<app-form-field *transloco="let t; read: 'shared.fields'" [label]="label()" [inputId]="inputId()" [hint]="hint()"
+  [error]="isInvalid ? t('errors.amount') : ''">
+  <p-inputNumber [formControl]="control()" [inputId]="inputId()" mode="decimal" [prefix]="prefix()" [locale]="locale"
+    [min]="0" [minFractionDigits]="decimals()" [maxFractionDigits]="decimals()" [fluid]="true"
+    [class.ng-dirty]="isMarkedDirty" />
+</app-form-field>
