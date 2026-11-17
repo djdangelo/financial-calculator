@@ -29,6 +29,14 @@ export function findNextRoute(steps: readonly WizardStep[], current: WizardStepK
   return steps[findStepIndex(steps, current) + 1]?.route ?? null;
 }
 
+export function findPendingStepBefore(
+  steps: readonly WizardStep[],
+  target: WizardStepKey,
+  completed: readonly WizardStepKey[]
+): WizardStep | null {
+  return steps.slice(0, findStepIndex(steps, target)).find(step => !completed.includes(step.key)) ?? null;
+}
+
 function findStepIndex(steps: readonly WizardStep[], key: WizardStepKey): number {
   return steps.findIndex(step => step.key === key);
 }

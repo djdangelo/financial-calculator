@@ -1,5 +1,11 @@
 import { WizardStep } from '@shared/interfaces/wizard-step.interface';
-import { buildWizardStepViews, findNextRoute, findPreviousRoute, findStepRoute } from './wizard.util';
+import {
+  buildWizardStepViews,
+  findNextRoute,
+  findPendingStepBefore,
+  findPreviousRoute,
+  findStepRoute
+} from './wizard.util';
 
 describe('wizard utils', () => {
   const steps: WizardStep[] = [
@@ -35,5 +41,12 @@ describe('wizard utils', () => {
     expect(findNextRoute(steps, 'expenses')).toBe('/debts');
     expect(findNextRoute(steps, 'debts')).toBeNull();
     expect(findNextRoute(steps, 'offer')).toBeNull();
+  });
+
+  it('finds the first pending step before the target', () => {
+    expect(findPendingStepBefore(steps, 'income', [])).toBeNull();
+    expect(findPendingStepBefore(steps, 'expenses', [])?.key).toBe('income');
+    expect(findPendingStepBefore(steps, 'offer', ['income'])?.key).toBe('expenses');
+    expect(findPendingStepBefore(steps, 'offer', ['income', 'expenses', 'debts'])).toBeNull();
   });
 });
