@@ -18,12 +18,35 @@
     "footer": {
       "privacy": "Your data is stored only in this browser. There is no server and no external database.",
       "disclaimer": "Results are for guidance only and are not financial advice. The final terms of a loan are set by each institution."
+    },
+    "privacy_notice": {
+      "title": "Your data stays in your browser",
+      "intro": "Before you start, here is what happens with the information you enter:",
+      "points": {
+        "local": "Everything is stored only in this browser, on this device.",
+        "no_server": "There is no server, account or external database: nobody else can see your information.",
+        "control": "You can delete everything at any time with the “Delete my data” button at the bottom of the page.",
+        "device": "If you clear your browser data or switch devices, the information does not come with you."
+      },
+      "accept": "Got it"
+    },
+    "clear_data": {
+      "button": "Delete my data",
+      "header": "Delete all your data?",
+      "message": "Your income, expenses, debts and saved offers will be removed from this browser. This cannot be undone.",
+      "accept": "Yes, delete everything",
+      "reject": "Cancel",
+      "success_title": "Data deleted",
+      "success": "None of your information is stored in this browser anymore.",
+      "error_title": "Could not delete",
+      "error": "We could not delete your data. Please try again."
     }
   },
   "home": {
     "eyebrow": "Honduras · Lempiras and dollars",
     "title": "Can I take this loan?",
     "description": "Compare your real financial situation with the offer your bank is making and get a clear answer before you sign.",
+    "start": "Get started",
     "steps": {
       "label": "How it works",
       "counter": "{{current}} of {{total}}",
@@ -41,11 +64,159 @@
       }
     }
   },
+  "financial_profile": {
+    "steps": {
+      "income": {
+        "title": "How much do you earn each month?",
+        "description": "Add all your steady income. You can combine salary, business and other income, each in its own currency.",
+        "incomplete": "Add at least one income and enter the amount of each one to continue."
+      },
+      "expenses": {
+        "title": "How much do you spend each month?",
+        "description": "Include what you pay every month to live. Leave out your debt payments: those go in the next step.",
+        "incomplete": "Add at least one expense and enter the amount of each one to continue."
+      },
+      "debts": {
+        "title": "Which debts are you paying?",
+        "description": "Cards, loans and credit you already have. If you have no debts, leave this step empty.",
+        "incomplete": "Enter the payment and the balance of each debt to continue."
+      }
+    },
+    "entry": {
+      "remove": "Remove {{name}}"
+    },
+    "fields": {
+      "description": "Description",
+      "currency": "Currency"
+    },
+    "income": {
+      "add_title": "Add an income",
+      "types": {
+        "salary": "Salary",
+        "business": "Own business",
+        "other": "Other income"
+      },
+      "amount": {
+        "salary": "Net monthly salary",
+        "business": "Average monthly sales",
+        "other": "Monthly amount"
+      },
+      "amount_hint": {
+        "salary": "What you receive after deductions (IHSS, RAP, income tax).",
+        "business": "What you sell in a normal month.",
+        "other": "Steady income only: rent, pensions or regular remittances."
+      },
+      "costs": "Monthly business costs",
+      "costs_hint": "Inventory, rent for the premises, employees and other costs.",
+      "placeholder": {
+        "salary": "E.g. company name",
+        "business": "E.g. corner store, workshop",
+        "other": "E.g. apartment rental"
+      }
+    },
+    "expenses": {
+      "add_title": "Add an expense",
+      "categories": {
+        "housing": "Housing",
+        "food": "Food",
+        "utilities": "Utilities",
+        "transport": "Transport",
+        "education": "Education",
+        "health": "Health",
+        "other": "Other expense"
+      },
+      "amount": "Monthly amount",
+      "hint": {
+        "housing": "Rent, maintenance and security.",
+        "food": "Groceries, market and eating out.",
+        "utilities": "Water, electricity, internet, phone and cable.",
+        "transport": "Fuel, bus, taxi and vehicle maintenance.",
+        "education": "Tuition, supplies and courses.",
+        "health": "Medicine, appointments and health insurance.",
+        "other": "Any other expense you have every month."
+      },
+      "placeholder": {
+        "housing": "E.g. house rent",
+        "food": "E.g. groceries",
+        "utilities": "E.g. electricity and internet",
+        "transport": "E.g. fuel",
+        "education": "E.g. children's school",
+        "health": "E.g. health insurance",
+        "other": "E.g. gym"
+      }
+    },
+    "debts": {
+      "add_title": "Add a debt",
+      "types": {
+        "credit-card": "Credit card",
+        "personal-loan": "Personal loan",
+        "vehicle": "Vehicle loan",
+        "mortgage": "Home loan",
+        "store-credit": "Store credit",
+        "other": "Other debt"
+      },
+      "monthly_payment": "Monthly payment",
+      "monthly_payment_hint": "What you pay each month for this debt.",
+      "balance": "Outstanding balance",
+      "balance_hint": "What you still owe today.",
+      "annual_rate": "Annual rate",
+      "annual_rate_hint": "It is in your contract or account statement.",
+      "remaining_months": "Months remaining",
+      "remaining_months_hint": "How many payments you have left.",
+      "placeholder": {
+        "credit-card": "E.g. bank card",
+        "personal-loan": "E.g. credit union loan",
+        "vehicle": "E.g. car",
+        "mortgage": "E.g. house",
+        "store-credit": "E.g. appliances",
+        "other": "E.g. loan from a relative"
+      }
+    },
+    "summary": {
+      "title": "Your monthly summary",
+      "net_income": "Net income",
+      "expenses": "Expenses",
+      "debt_payments": "Debt payments",
+      "available": "Left each month",
+      "debt_balance": "Total balance of your debts",
+      "autosave": "Your changes are saved automatically in this browser.",
+      "exchange_rate": {
+        "label": "Exchange rate",
+        "hint": "Lempiras per dollar. We use it to add amounts in different currencies.",
+        "suggested": "Suggested: {{rate}} as of {{date}}.",
+        "use_suggested": "Use the suggested rate",
+        "source": "Check at the BCH"
+      }
+    }
+  },
   "shared": {
     "not_found": {
       "title": "Page not found",
       "message": "The page you are looking for does not exist or has moved.",
       "back_button": "Back to home"
+    },
+    "wizard": {
+      "label": "Wizard steps",
+      "progress": "Step {{current}} of {{total}}",
+      "steps": {
+        "income": "Income",
+        "expenses": "Expenses",
+        "debts": "Debts",
+        "offer": "Offer",
+        "result": "Result"
+      },
+      "back": "Back",
+      "next": "Continue"
+    },
+    "fields": {
+      "optional": "optional",
+      "errors": {
+        "amount": "Enter an amount greater than zero."
+      }
+    },
+    "errors": {
+      "save_failed_title": "Could not save",
+      "save_failed": "We could not save your changes in this browser. Check that storage is not blocked or full."
     }
   }
 }

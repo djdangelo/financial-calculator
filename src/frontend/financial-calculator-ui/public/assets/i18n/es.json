@@ -18,12 +18,35 @@
     "footer": {
       "privacy": "Tus datos se guardan únicamente en este navegador. No hay servidor ni base de datos externa.",
       "disclaimer": "Los resultados son orientativos y no constituyen asesoría financiera. Las condiciones finales de un préstamo las define cada institución."
+    },
+    "privacy_notice": {
+      "title": "Tus datos se quedan en tu navegador",
+      "intro": "Antes de empezar, esto es lo que pasa con la información que escribas aquí:",
+      "points": {
+        "local": "Todo se guarda únicamente en este navegador, en este dispositivo.",
+        "no_server": "No hay servidor, cuenta ni base de datos externa: nadie más puede ver tu información.",
+        "control": "Puedes borrar todo cuando quieras con el botón «Borrar mis datos», al pie de la página.",
+        "device": "Si limpias los datos del navegador o cambias de dispositivo, la información no te acompaña."
+      },
+      "accept": "Entendido"
+    },
+    "clear_data": {
+      "button": "Borrar mis datos",
+      "header": "¿Borrar todos tus datos?",
+      "message": "Se eliminarán tus ingresos, gastos, deudas y ofertas guardadas en este navegador. Esta acción no se puede deshacer.",
+      "accept": "Sí, borrar todo",
+      "reject": "Cancelar",
+      "success_title": "Datos borrados",
+      "success": "Ya no queda información tuya guardada en este navegador.",
+      "error_title": "No se pudieron borrar",
+      "error": "No pudimos borrar tus datos. Inténtalo de nuevo."
     }
   },
   "home": {
     "eyebrow": "Honduras · Lempiras y dólares",
     "title": "¿Puedo tomar este préstamo?",
     "description": "Compara tu estado financiero real con la oferta que te hace el banco y obtén una respuesta clara antes de firmar.",
+    "start": "Empezar",
     "steps": {
       "label": "Cómo funciona",
       "counter": "{{current}} de {{total}}",
@@ -41,11 +64,159 @@
       }
     }
   },
+  "financial_profile": {
+    "steps": {
+      "income": {
+        "title": "¿Cuánto ganas al mes?",
+        "description": "Agrega todos tus ingresos fijos. Puedes combinar salario, negocio y otros ingresos, cada uno en su moneda.",
+        "incomplete": "Agrega al menos un ingreso y escribe el monto de cada uno para continuar."
+      },
+      "expenses": {
+        "title": "¿Cuánto gastas al mes?",
+        "description": "Incluye lo que pagas todos los meses para vivir. No pongas aquí las cuotas de tus deudas: esas van en el siguiente paso.",
+        "incomplete": "Agrega al menos un gasto y escribe el monto de cada uno para continuar."
+      },
+      "debts": {
+        "title": "¿Qué deudas estás pagando?",
+        "description": "Tarjetas, préstamos y créditos que ya tienes. Si no tienes deudas, deja este paso vacío.",
+        "incomplete": "Escribe la cuota y el saldo de cada deuda para continuar."
+      }
+    },
+    "entry": {
+      "remove": "Quitar {{name}}"
+    },
+    "fields": {
+      "description": "Descripción",
+      "currency": "Moneda"
+    },
+    "income": {
+      "add_title": "Agregar un ingreso",
+      "types": {
+        "salary": "Salario",
+        "business": "Negocio propio",
+        "other": "Otro ingreso"
+      },
+      "amount": {
+        "salary": "Salario neto mensual",
+        "business": "Ventas promedio al mes",
+        "other": "Monto mensual"
+      },
+      "amount_hint": {
+        "salary": "Lo que recibes después de deducciones (IHSS, RAP, ISR).",
+        "business": "Lo que vendes en un mes normal.",
+        "other": "Solo ingresos fijos: alquileres, pensiones o remesas constantes."
+      },
+      "costs": "Costos del negocio al mes",
+      "costs_hint": "Mercadería, alquiler del local, empleados y demás costos.",
+      "placeholder": {
+        "salary": "Ej. nombre de la empresa",
+        "business": "Ej. pulpería, taller",
+        "other": "Ej. alquiler de un apartamento"
+      }
+    },
+    "expenses": {
+      "add_title": "Agregar un gasto",
+      "categories": {
+        "housing": "Vivienda",
+        "food": "Alimentación",
+        "utilities": "Servicios",
+        "transport": "Transporte",
+        "education": "Educación",
+        "health": "Salud",
+        "other": "Otro gasto"
+      },
+      "amount": "Monto mensual",
+      "hint": {
+        "housing": "Alquiler, mantenimiento y vigilancia.",
+        "food": "Supermercado, mercado y comidas fuera de casa.",
+        "utilities": "Agua, energía, internet, teléfono y cable.",
+        "transport": "Combustible, bus, taxi y mantenimiento del vehículo.",
+        "education": "Colegiaturas, útiles y cursos.",
+        "health": "Medicinas, consultas y seguro médico.",
+        "other": "Cualquier otro gasto que tengas todos los meses."
+      },
+      "placeholder": {
+        "housing": "Ej. alquiler de la casa",
+        "food": "Ej. supermercado",
+        "utilities": "Ej. energía e internet",
+        "transport": "Ej. combustible",
+        "education": "Ej. colegio de los niños",
+        "health": "Ej. seguro médico",
+        "other": "Ej. gimnasio"
+      }
+    },
+    "debts": {
+      "add_title": "Agregar una deuda",
+      "types": {
+        "credit-card": "Tarjeta de crédito",
+        "personal-loan": "Préstamo personal",
+        "vehicle": "Préstamo de vehículo",
+        "mortgage": "Préstamo de vivienda",
+        "store-credit": "Crédito de tienda",
+        "other": "Otra deuda"
+      },
+      "monthly_payment": "Cuota mensual",
+      "monthly_payment_hint": "Lo que pagas cada mes por esta deuda.",
+      "balance": "Saldo pendiente",
+      "balance_hint": "Lo que todavía debes hoy.",
+      "annual_rate": "Tasa anual",
+      "annual_rate_hint": "Aparece en tu contrato o estado de cuenta.",
+      "remaining_months": "Meses restantes",
+      "remaining_months_hint": "Cuántas cuotas te faltan por pagar.",
+      "placeholder": {
+        "credit-card": "Ej. tarjeta del banco",
+        "personal-loan": "Ej. préstamo de la cooperativa",
+        "vehicle": "Ej. carro",
+        "mortgage": "Ej. casa",
+        "store-credit": "Ej. electrodomésticos",
+        "other": "Ej. préstamo de un familiar"
+      }
+    },
+    "summary": {
+      "title": "Tu resumen mensual",
+      "net_income": "Ingreso neto",
+      "expenses": "Gastos",
+      "debt_payments": "Cuotas de deudas",
+      "available": "Te queda al mes",
+      "debt_balance": "Saldo total de tus deudas",
+      "autosave": "Tus cambios se guardan automáticamente en este navegador.",
+      "exchange_rate": {
+        "label": "Tipo de cambio",
+        "hint": "Lempiras por cada dólar. Lo usamos para sumar montos de distinta moneda.",
+        "suggested": "Sugerido: {{rate}} al {{date}}.",
+        "use_suggested": "Usar el sugerido",
+        "source": "Consultar en el BCH"
+      }
+    }
+  },
   "shared": {
     "not_found": {
       "title": "Página no encontrada",
       "message": "La página que buscas no existe o cambió de dirección.",
       "back_button": "Volver al inicio"
+    },
+    "wizard": {
+      "label": "Pasos del asistente",
+      "progress": "Paso {{current}} de {{total}}",
+      "steps": {
+        "income": "Ingresos",
+        "expenses": "Gastos",
+        "debts": "Deudas",
+        "offer": "Oferta",
+        "result": "Resultado"
+      },
+      "back": "Atrás",
+      "next": "Continuar"
+    },
+    "fields": {
+      "optional": "opcional",
+      "errors": {
+        "amount": "Escribe un monto mayor que cero."
+      }
+    },
+    "errors": {
+      "save_failed_title": "No se pudo guardar",
+      "save_failed": "No pudimos guardar tus cambios en este navegador. Revisa que el almacenamiento no esté bloqueado o lleno."
     }
   }
 }
