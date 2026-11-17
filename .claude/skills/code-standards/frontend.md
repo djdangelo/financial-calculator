@@ -112,11 +112,16 @@ Revisa esta lista antes de crear algo parecido.
 | Campo con etiqueta, ayuda y error | `shared/components/form-field` |
 | Entrada de dinero con símbolo de moneda | `shared/components/money-input` |
 | Selector HNL/USD | `shared/components/currency-toggle` |
-| Pasos del asistente y botones Atrás/Continuar | `shared/components/wizard-stepper`, `wizard-navigation`, `shared/utils/wizard.util.ts`, `shared/constants/wizard.constant.ts` |
+| Pantalla de un paso del asistente (stepper, título, aviso de incompleto, Atrás/Continuar y panel lateral `wizardAside`) | `shared/components/wizard-step-frame` |
+| Pasos del asistente sueltos | `shared/components/wizard-stepper`, `wizard-navigation`, `shared/utils/wizard.util.ts`, `shared/constants/wizard.constant.ts` |
+| Guard que impide saltarse pasos | `wizardStepGuard` (`@shared/guards/wizard-step.guard`) |
 | Mostrar dinero en el template | `MoneyPipe` (`shared/pipes/money.pipe.ts`) |
+| Mostrar un porcentaje en el template | `PercentValuePipe` (`shared/pipes/percent-value.pipe.ts`) |
 | Convertir o sumar montos en distintas monedas | `convertAmount`, `sumInCurrency` (`@core/functions/currency.function`) |
 | Formatear dinero o tipo de cambio en TypeScript | `formatMoney`, `formatExchangeRate` (`@core/functions/currency.function`) |
-| Redondear dinero, porcentajes, tasa mensual, sumas | `roundMoney`, `percentToRatio`, `ratioToPercent`, `monthlyRateFromAnnualPercent`, `sumAmounts` (`@core/functions/finance.function`) |
+| Redondear dinero, porcentajes, tasa mensual, sumas, formato de porcentaje | `roundMoney`, `percentToRatio`, `ratioToPercent`, `monthlyRateFromAnnualPercent`, `sumAmounts`, `formatPercent` (`@core/functions/finance.function`) |
+| Límites de tasa, plazo, comisión y decimales | `@core/constants/finance.constant` |
+| Análisis completo de una oferta (cuota, costo, indicadores, veredicto) | `analyzeLoan` (`@features/loan-analysis/functions/loan-analysis.function`) |
 | Crear, reemplazar, quitar u ordenar registros en un arreglo | `createRecordId`, `upsertRecord`, `removeRecord`, `sortByCreation` (`@core/functions/record.function`) |
 | Fechas ISO y su formato por idioma | `toIsoDate`, `formatIsoDate` (`@core/functions/date.function`) |
 | Tipo de cambio, moneda del resumen y límites 80/40 del usuario | `AppSettingsFacade` (`@core/facades/app-settings.facade`) |
