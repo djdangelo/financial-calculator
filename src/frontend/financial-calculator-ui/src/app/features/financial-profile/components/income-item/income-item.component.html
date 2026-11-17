@@ -1,0 +1,25 @@
+<ng-container *transloco="let t; read: 'financial_profile'">
+  @let type = income().type;
+  @let id = fieldId();
+
+  <app-profile-entry-card [icon]="icon()" [title]="t('income.types.' + type)" (removed)="removed.emit()">
+    <app-form-field [label]="t('fields.description')" [inputId]="id + '-description'" [optional]="true">
+      <input pInputText type="text" [id]="id + '-description'" [formControl]="form.controls.description"
+        [placeholder]="t('income.placeholder.' + type)" [attr.maxlength]="descriptionMaxLength" [fluid]="true" />
+    </app-form-field>
+
+    <app-form-field [label]="t('fields.currency')" [labelId]="id + '-currency'">
+      <app-currency-toggle [value]="income().currency" [labelledBy]="id + '-currency'"
+        (valueChange)="form.controls.currency.setValue($event)" />
+    </app-form-field>
+
+    <app-money-input [control]="form.controls.monthlyAmount" [currency]="income().currency"
+      [inputId]="id + '-amount'" [label]="t('income.amount.' + type)" [hint]="t('income.amount_hint.' + type)"
+      [showErrors]="showErrors()" />
+
+    @if (isBusiness()) {
+    <app-money-input [control]="form.controls.monthlyCosts" [currency]="income().currency" [inputId]="id + '-costs'"
+      [label]="t('income.costs')" [hint]="t('income.costs_hint')" [showErrors]="showErrors()" />
+    }
+  </app-profile-entry-card>
+</ng-container>

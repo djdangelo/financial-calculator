@@ -1,0 +1,10 @@
+<app-profile-step *transloco="let t; read: 'financial_profile.expenses'" #step step="expenses"
+  [complete]="facade.isExpensesComplete()">
+  @for (expense of facade.expenses(); track expense.id) {
+  <app-expense-item [expense]="expense" [showErrors]="step.attempted()" (changed)="facade.saveExpense($event)"
+    (removed)="facade.removeExpense(expense.id)" />
+  }
+
+  <app-add-entry-options [title]="t('add_title')" labelKey="financial_profile.expenses.categories"
+    [options]="options" (selected)="facade.addExpense($event)" />
+</app-profile-step>

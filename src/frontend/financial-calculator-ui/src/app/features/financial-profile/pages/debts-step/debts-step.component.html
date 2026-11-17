@@ -1,0 +1,10 @@
+<app-profile-step *transloco="let t; read: 'financial_profile.debts'" #step step="debts"
+  [complete]="facade.isDebtsComplete()">
+  @for (debt of facade.debts(); track debt.id) {
+  <app-debt-item [debt]="debt" [showErrors]="step.attempted()" (changed)="facade.saveDebt($event)"
+    (removed)="facade.removeDebt(debt.id)" />
+  }
+
+  <app-add-entry-options [title]="t('add_title')" labelKey="financial_profile.debts.types" [options]="options"
+    (selected)="facade.addDebt($event)" />
+</app-profile-step>

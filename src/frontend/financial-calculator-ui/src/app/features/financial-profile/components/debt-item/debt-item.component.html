@@ -1,0 +1,35 @@
+<ng-container *transloco="let t; read: 'financial_profile'">
+  @let type = debt().type;
+  @let id = fieldId();
+
+  <app-profile-entry-card [icon]="icon()" [title]="t('debts.types.' + type)" (removed)="removed.emit()">
+    <app-form-field [label]="t('fields.description')" [inputId]="id + '-description'" [optional]="true">
+      <input pInputText type="text" [id]="id + '-description'" [formControl]="form.controls.description"
+        [placeholder]="t('debts.placeholder.' + type)" [attr.maxlength]="descriptionMaxLength" [fluid]="true" />
+    </app-form-field>
+
+    <app-form-field [label]="t('fields.currency')" [labelId]="id + '-currency'">
+      <app-currency-toggle [value]="debt().currency" [labelledBy]="id + '-currency'"
+        (valueChange)="form.controls.currency.setValue($event)" />
+    </app-form-field>
+
+    <app-money-input [control]="form.controls.monthlyPayment" [currency]="debt().currency"
+      [inputId]="id + '-payment'" [label]="t('debts.monthly_payment')" [hint]="t('debts.monthly_payment_hint')"
+      [showErrors]="showErrors()" />
+
+    <app-money-input [control]="form.controls.balance" [currency]="debt().currency" [inputId]="id + '-balance'"
+      [label]="t('debts.balance')" [hint]="t('debts.balance_hint')" [showErrors]="showErrors()" />
+
+    <app-form-field [label]="t('debts.annual_rate')" [inputId]="id + '-rate'" [optional]="true"
+      [hint]="t('debts.annual_rate_hint')">
+      <p-inputNumber [formControl]="form.controls.annualRatePercent" [inputId]="id + '-rate'" mode="decimal"
+        suffix=" %" [locale]="locale" [min]="0" [max]="maxRate" [maxFractionDigits]="rateDecimals" [fluid]="true" />
+    </app-form-field>
+
+    <app-form-field [label]="t('debts.remaining_months')" [inputId]="id + '-months'" [optional]="true"
+      [hint]="t('debts.remaining_months_hint')">
+      <p-inputNumber [formControl]="form.controls.remainingMonths" [inputId]="id + '-months'" [locale]="locale"
+        [min]="minMonths" [max]="maxMonths" [useGrouping]="false" [fluid]="true" />
+    </app-form-field>
+  </app-profile-entry-card>
+</ng-container>

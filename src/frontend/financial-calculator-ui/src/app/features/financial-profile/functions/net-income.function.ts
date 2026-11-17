@@ -1,6 +1,5 @@
 import { CurrencyCode } from '@core/@types/currency-code.type';
-import { convertAmount } from '@core/functions/currency.function';
-import { roundMoney, sumAmounts } from '@core/functions/finance.function';
+import { sumInCurrency } from '@core/functions/currency.function';
 import { ExchangeRates } from '@core/interfaces/exchange-rates.interface';
 import { Income } from '../models';
 
@@ -13,8 +12,9 @@ export function calculateNetMonthlyIncome(
   currency: CurrencyCode,
   rates: ExchangeRates
 ): number {
-  const contributions = incomes.map(income =>
-    convertAmount(calculateIncomeContribution(income), income.currency, currency, rates)
-  );
-  return roundMoney(sumAmounts(contributions));
+  const contributions = incomes.map(income => ({
+    amount: calculateIncomeContribution(income),
+    currency: income.currency
+  }));
+  return sumInCurrency(contributions, currency, rates);
 }

@@ -1,0 +1,10 @@
+<app-profile-step *transloco="let t; read: 'financial_profile.income'" #step step="income"
+  [complete]="facade.isIncomeComplete()">
+  @for (income of facade.incomes(); track income.id) {
+  <app-income-item [income]="income" [showErrors]="step.attempted()" (changed)="facade.saveIncome($event)"
+    (removed)="facade.removeIncome(income.id)" />
+  }
+
+  <app-add-entry-options [title]="t('add_title')" labelKey="financial_profile.income.types" [options]="options"
+    (selected)="facade.addIncome($event)" />
+</app-profile-step>

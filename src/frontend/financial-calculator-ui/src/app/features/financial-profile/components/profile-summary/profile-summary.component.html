@@ -1,0 +1,79 @@
+<aside *transloco="let t; read: 'financial_profile.summary'"
+  class="flex flex-col gap-4 rounded-2xl border border-surface-200 bg-surface-0 p-5 transition-colors duration-300 dark:border-surface-800 dark:bg-surface-900">
+  @let currency = settings.summaryCurrency();
+
+  <div class="flex items-center justify-between gap-3">
+    <h2 id="profile-summary-title" class="text-base font-bold text-surface-900 dark:text-surface-0">
+      {{ t('title') }}
+    </h2>
+    <app-currency-toggle [value]="currency" labelledBy="profile-summary-title"
+      (valueChange)="settings.setSummaryCurrency($event)" />
+  </div>
+
+  <dl class="flex flex-col gap-2.5 text-sm">
+    <div class="flex items-baseline justify-between gap-3">
+      <dt class="text-surface-600 dark:text-surface-300">{{ t('net_income') }}</dt>
+      <dd class="font-semibold tabular-nums text-surface-900 dark:text-surface-0">
+        {{ profile.netIncome() | money: currency }}
+      </dd>
+    </div>
+    <div class="flex items-baseline justify-between gap-3">
+      <dt class="text-surface-600 dark:text-surface-300">{{ t('expenses') }}</dt>
+      <dd class="font-semibold tabular-nums text-surface-900 dark:text-surface-0">
+        {{ profile.monthlyExpenses() | money: currency }}
+      </dd>
+    </div>
+    <div class="flex items-baseline justify-between gap-3">
+      <dt class="text-surface-600 dark:text-surface-300">{{ t('debt_payments') }}</dt>
+      <dd class="font-semibold tabular-nums text-surface-900 dark:text-surface-0">
+        {{ profile.monthlyDebtPayments() | money: currency }}
+      </dd>
+    </div>
+    <div class="flex items-baseline justify-between gap-3 border-t border-surface-200 pt-3 dark:border-surface-800">
+      <dt class="font-bold text-surface-900 dark:text-surface-0">{{ t('available') }}</dt>
+      <dd [class]="availableClass()">{{ profile.availableIncome() | money: currency }}</dd>
+    </div>
+    @if (hasDebts()) {
+    <div class="flex items-baseline justify-between gap-3 text-xs">
+      <dt class="text-surface-500 dark:text-surface-400">{{ t('debt_balance') }}</dt>
+      <dd class="font-semibold tabular-nums text-surface-600 dark:text-surface-300">
+        {{ profile.debtBalance() | money: currency }}
+      </dd>
+    </div>
+    }
+  </dl>
+
+  @if (profile.needsExchangeRate()) {
+  <div class="flex flex-col gap-2 rounded-xl bg-surface-50 p-3 dark:bg-surface-950">
+    <app-form-field [label]="t('exchange_rate.label')" inputId="profile-exchange-rate"
+      [hint]="t('exchange_rate.hint')">
+      <p-inputNumber inputId="profile-exchange-rate" mode="decimal" [prefix]="ratePrefix" [locale]="locale"
+        [min]="minRate" [minFractionDigits]="minRateDecimals" [maxFractionDigits]="maxRateDecimals" [fluid]="true"
+        [ngModel]="rate()" (ngModelChange)="setRate($event)" />
+    </app-form-field>
+
+    <p class="text-xs text-surface-500 dark:text-surface-400">
+      {{ t('exchange_rate.suggested', { rate: suggestedRate, date: suggestedDate() }) }}
+    </p>
+
+    <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs font-semibold">
+      @if (!settings.usesSuggestedRates()) {
+      <button type="button" (click)="settings.useSuggestedRates()"
+        class="text-primary-700 underline-offset-2 hover:underline dark:text-primary-300">
+        {{ t('exchange_rate.use_suggested') }}
+      </button>
+      }
+      <a [href]="sourceUrl" target="_blank" rel="noopener noreferrer"
+        class="flex items-center gap-1 text-primary-700 underline-offset-2 hover:underline dark:text-primary-300">
+        {{ t('exchange_rate.source') }}
+        <i class="pi pi-external-link text-[0.65rem]" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+  }
+
+  <p class="flex items-start gap-2 text-xs text-surface-500 dark:text-surface-400">
+    <i class="pi pi-check-circle mt-0.5 text-primary-600 dark:text-primary-400" aria-hidden="true"></i>
+    <span>{{ t('autosave') }}</span>
+  </p>
+</aside>
