@@ -2,7 +2,7 @@
 
 Aplicación web que le indica a una persona si puede o no tomar un préstamo, a partir de su estado financiero real y de la oferta que le hace el banco. Está pensada para el mercado financiero de Honduras y trabaja en lempiras (HNL) y dólares (USD).
 
-> **Estado:** en desarrollo. Están listas las fundaciones (proyecto Angular, tema claro/oscuro, idiomas y shell), el núcleo (persistencia en IndexedDB y funciones de cálculo con pruebas) y el perfil financiero: los pasos de ingresos, gastos y deudas con guardado automático, el resumen mensual con tipo de cambio editable, el aviso de privacidad y el botón para borrar los datos. Faltan la oferta del banco y la pantalla de resultado.
+> **Estado:** en desarrollo. Ya responde la pregunta principal: el asistente pide ingresos, gastos, deudas y la oferta del banco, y muestra el veredicto con los indicadores 80/40 editables, el costo anual efectivo y la tabla de amortización. Faltan la unificación de deudas, la comparación de ofertas, los gráficos y la exportación.
 
 ## Qué hace
 
