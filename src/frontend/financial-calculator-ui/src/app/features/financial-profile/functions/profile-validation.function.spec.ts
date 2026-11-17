@@ -1,6 +1,5 @@
 import { Debt, Expense, Income } from '../models';
 import {
-  findPendingStepBefore,
   isDebtValid,
   isDebtsStepComplete,
   isExpensesStepComplete,
@@ -53,12 +52,5 @@ describe('profile validation functions', () => {
   it('lets a person without debts continue', () => {
     expect(isDebtsStepComplete([])).toBeTrue();
     expect(isDebtsStepComplete([debt, { ...debt, id: 'empty', balance: 0 }])).toBeFalse();
-  });
-
-  it('finds the first pending step before the target', () => {
-    expect(findPendingStepBefore('income', [])).toBeNull();
-    expect(findPendingStepBefore('expenses', [])).toBe('income');
-    expect(findPendingStepBefore('debts', ['income'])).toBe('expenses');
-    expect(findPendingStepBefore('debts', ['income', 'expenses'])).toBeNull();
   });
 });

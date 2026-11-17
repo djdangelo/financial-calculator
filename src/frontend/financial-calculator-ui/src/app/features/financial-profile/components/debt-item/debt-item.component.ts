@@ -6,17 +6,17 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { InputTextModule } from 'primeng/inputtext';
 import { CurrencyCode } from '@core/@types/currency-code.type';
 import { DEFAULT_CURRENCY, NUMBER_LOCALE } from '@core/constants/currency.constant';
+import {
+  MAX_ANNUAL_RATE_PERCENT,
+  MAX_TERM_MONTHS,
+  MIN_TERM_MONTHS,
+  RATE_DECIMALS
+} from '@core/constants/finance.constant';
 import { CurrencyToggleComponent } from '@shared/components/currency-toggle/currency-toggle.component';
 import { FormFieldComponent } from '@shared/components/form-field/form-field.component';
 import { MoneyInputComponent } from '@shared/components/money-input/money-input.component';
 import { DESCRIPTION_MAX_LENGTH, REQUIRED_MONEY_VALIDATORS } from '@shared/constants/form.constant';
-import {
-  DEBT_ICON,
-  MAX_ANNUAL_RATE_PERCENT,
-  MAX_REMAINING_MONTHS,
-  MIN_REMAINING_MONTHS,
-  RATE_DECIMALS
-} from '../../constants/financial-profile.constant';
+import { DEBT_ICON } from '../../constants/financial-profile.constant';
 import { Debt } from '../../models';
 import { ProfileEntryCardComponent } from '../profile-entry-card/profile-entry-card.component';
 
@@ -60,8 +60,8 @@ export class DebtItemComponent implements OnInit {
   readonly locale = NUMBER_LOCALE;
   readonly maxRate = MAX_ANNUAL_RATE_PERCENT;
   readonly rateDecimals = RATE_DECIMALS;
-  readonly minMonths = MIN_REMAINING_MONTHS;
-  readonly maxMonths = MAX_REMAINING_MONTHS;
+  readonly minMonths = MIN_TERM_MONTHS;
+  readonly maxMonths = MAX_TERM_MONTHS;
 
   ngOnInit(): void {
     const { description, currency, monthlyPayment, balance, annualRatePercent, remainingMonths } = this.debt();

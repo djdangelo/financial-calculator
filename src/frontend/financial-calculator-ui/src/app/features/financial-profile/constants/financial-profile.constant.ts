@@ -1,10 +1,7 @@
 import { DebtType } from '../@types/debt-type.type';
 import { ExpenseCategory } from '../@types/expense-category.type';
 import { IncomeType } from '../@types/income-type.type';
-import { ProfileStepKey } from '../@types/profile-step-key.type';
 import { EntryOption } from '../interfaces/entry-option.interface';
-
-export const PROFILE_STEP_KEYS: readonly ProfileStepKey[] = ['income', 'expenses', 'debts'];
 
 export const INCOME_ICON: Record<IncomeType, string> = {
   salary: 'pi pi-briefcase',
@@ -55,11 +52,6 @@ export const DEBT_OPTIONS: readonly EntryOption<DebtType>[] = [
   { value: 'store-credit', icon: DEBT_ICON['store-credit'] },
   { value: 'other', icon: DEBT_ICON.other }
 ];
-
-export const MAX_ANNUAL_RATE_PERCENT = 999;
-export const RATE_DECIMALS = 2;
-export const MIN_REMAINING_MONTHS = 1;
-export const MAX_REMAINING_MONTHS = 600;
 
 export const AVAILABLE_INCOME_CLASS = {
   positive: 'text-lg font-extrabold tabular-nums text-surface-900 dark:text-surface-0',

@@ -1,6 +1,4 @@
-import { MIN_MONEY_AMOUNT } from '@core/constants/finance.constant';
-import { ProfileStepKey } from '../@types/profile-step-key.type';
-import { MIN_REMAINING_MONTHS, PROFILE_STEP_KEYS } from '../constants/financial-profile.constant';
+import { MIN_MONEY_AMOUNT, MIN_TERM_MONTHS } from '@core/constants/finance.constant';
 import { Debt, Expense, Income } from '../models';
 
 export function isIncomeValid(income: Income): boolean {
@@ -14,7 +12,7 @@ export function isExpenseValid(expense: Expense): boolean {
 export function isDebtValid(debt: Debt): boolean {
   const hasValidRate = debt.annualRatePercent === null || debt.annualRatePercent >= 0;
   const hasValidTerm = debt.remainingMonths === null
-    || (Number.isInteger(debt.remainingMonths) && debt.remainingMonths >= MIN_REMAINING_MONTHS);
+    || (Number.isInteger(debt.remainingMonths) && debt.remainingMonths >= MIN_TERM_MONTHS);
   return debt.monthlyPayment >= MIN_MONEY_AMOUNT && debt.balance >= MIN_MONEY_AMOUNT && hasValidRate && hasValidTerm;
 }
 
@@ -28,12 +26,4 @@ export function isExpensesStepComplete(expenses: readonly Expense[]): boolean {
 
 export function isDebtsStepComplete(debts: readonly Debt[]): boolean {
   return debts.every(isDebtValid);
-}
-
-export function findPendingStepBefore(
-  target: ProfileStepKey,
-  completed: readonly ProfileStepKey[]
-): ProfileStepKey | null {
-  const previousSteps = PROFILE_STEP_KEYS.slice(0, PROFILE_STEP_KEYS.indexOf(target));
-  return previousSteps.find(step => !completed.includes(step)) ?? null;
 }
