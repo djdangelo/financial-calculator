@@ -1,0 +1,19 @@
+<ng-container *transloco="let t; read: 'layout.privacy_notice'">
+  <p-dialog [visible]="visible()" [header]="t('title')" [modal]="true" [closable]="false" [closeOnEscape]="false"
+    [draggable]="false" [resizable]="false" [style]="dialogStyle" [breakpoints]="dialogBreakpoints">
+    <p class="text-surface-600 dark:text-surface-300">{{ t('intro') }}</p>
+
+    <ul class="mt-4 flex flex-col gap-3">
+      @for (point of points; track point) {
+      <li class="flex items-start gap-3 text-sm text-surface-700 dark:text-surface-200">
+        <i class="pi pi-check-circle mt-0.5 text-primary-600 dark:text-primary-400" aria-hidden="true"></i>
+        <span>{{ t('points.' + point) }}</span>
+      </li>
+      }
+    </ul>
+
+    <ng-template pTemplate="footer">
+      <p-button [label]="t('accept')" icon="pi pi-check" (onClick)="accept()" />
+    </ng-template>
+  </p-dialog>
+</ng-container>

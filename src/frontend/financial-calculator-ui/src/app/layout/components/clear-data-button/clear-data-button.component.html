@@ -1,0 +1,6 @@
+<ng-container *transloco="let t; read: 'layout.clear_data'">
+  <p-button [label]="t('button')" icon="pi pi-trash" severity="danger" size="small" [text]="true"
+    (onClick)="confirm()" />
+
+  <p-confirmDialog [style]="dialogStyle" [breakpoints]="dialogBreakpoints" />
+</ng-container>
