@@ -1,4 +1,5 @@
 import {
+  formatPercent,
   monthlyRateFromAnnualPercent,
   percentToRatio,
   ratioToPercent,
@@ -26,5 +27,11 @@ describe('finance functions', () => {
   it('sums amounts', () => {
     expect(sumAmounts([100, 250.5, 49.5])).toBe(400);
     expect(sumAmounts([])).toBe(0);
+  });
+
+  it('formats a percent with up to one decimal', () => {
+    expect(formatPercent(40)).toBe('40 %');
+    expect(formatPercent(33.333)).toBe('33.3 %');
+    expect(formatPercent(1250)).toBe('1,250 %');
   });
 });

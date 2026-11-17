@@ -1,9 +1,15 @@
 import { Injectable, computed, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { BurdenLimitKey } from '@core/@types/burden-limit-key.type';
 import { CurrencyCode } from '@core/@types/currency-code.type';
 import { DEFAULT_APP_SETTINGS } from '@core/constants/app-settings.constant';
 import { MIN_EXCHANGE_RATE } from '@core/constants/finance.constant';
-import { SUGGESTED_EXCHANGE_RATES } from '@core/constants/market.constant';
+import {
+  DEFAULT_BURDEN_LIMITS,
+  MAX_BURDEN_LIMIT_PERCENT,
+  MIN_BURDEN_LIMIT_PERCENT,
+  SUGGESTED_EXCHANGE_RATES
+} from '@core/constants/market.constant';
 import { areSameExchangeRates } from '@core/functions/currency.function';
 import { toIsoDate } from '@core/functions/date.function';
 import { AppSettings } from '@core/models';
@@ -21,6 +27,12 @@ export class AppSettingsFacade {
   readonly summaryCurrency = computed(() => this.settings().summaryCurrency);
   readonly exchangeRates = computed(() => this.settings().exchangeRates);
   readonly usesSuggestedRates = computed(() => areSameExchangeRates(this.exchangeRates(), SUGGESTED_EXCHANGE_RATES));
+  readonly burdenLimits = computed(() => this.settings().burdenLimits);
+  readonly usesDefaultBurdenLimits = computed(() => {
+    const limits = this.burdenLimits();
+    return limits.totalBurdenPercent === DEFAULT_BURDEN_LIMITS.totalBurdenPercent
+      && limits.debtBurdenPercent === DEFAULT_BURDEN_LIMITS.debtBurdenPercent;
+  });
 
   constructor() {
     inject(UserDataService).cleared$
@@ -54,6 +66,17 @@ export class AppSettingsFacade {
 
   useSuggestedRates(): void {
     this.update({ exchangeRates: SUGGESTED_EXCHANGE_RATES });
+  }
+
+  setBurdenLimit(key: BurdenLimitKey, percent: number | null): void {
+    if (percent === null || percent < MIN_BURDEN_LIMIT_PERCENT || percent > MAX_BURDEN_LIMIT_PERCENT) {
+      return;
+    }
+    this.update({ burdenLimits: { ...this.burdenLimits(), [key]: percent } });
+  }
+
+  useDefaultBurdenLimits(): void {
+    this.update({ burdenLimits: DEFAULT_BURDEN_LIMITS });
   }
 
   private update(changes: Partial<AppSettings>): void {

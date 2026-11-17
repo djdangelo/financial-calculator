@@ -1,4 +1,5 @@
-import { MONEY_DECIMALS, MONTHS_PER_YEAR, PERCENT_BASE } from '@core/constants/finance.constant';
+import { NUMBER_LOCALE } from '@core/constants/currency.constant';
+import { MONEY_DECIMALS, MONTHS_PER_YEAR, PERCENT_BASE, PERCENT_DECIMALS, PERCENT_SUFFIX } from '@core/constants/finance.constant';
 
 export function roundMoney(amount: number): number {
   const factor = 10 ** MONEY_DECIMALS;
@@ -19,4 +20,9 @@ export function monthlyRateFromAnnualPercent(annualRatePercent: number): number 
 
 export function sumAmounts(amounts: readonly number[]): number {
   return amounts.reduce((total, amount) => total + amount, 0);
+}
+
+export function formatPercent(percent: number): string {
+  const digits = new Intl.NumberFormat(NUMBER_LOCALE, { maximumFractionDigits: PERCENT_DECIMALS }).format(percent);
+  return `${digits}${PERCENT_SUFFIX}`;
 }
