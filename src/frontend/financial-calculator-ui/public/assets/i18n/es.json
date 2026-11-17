@@ -218,5 +218,132 @@
       "save_failed_title": "No se pudo guardar",
       "save_failed": "No pudimos guardar tus cambios en este navegador. Revisa que el almacenamiento no esté bloqueado o lleno."
     }
+  },
+  "loan_offers": {
+    "step": {
+      "title": "¿Qué te ofrece el banco?",
+      "description": "Escribe los datos tal como aparecen en la oferta o en la cotización del banco. Solo necesitas el monto, la tasa y el plazo; el resto es opcional.",
+      "incomplete": "Escribe el monto, la tasa anual y el plazo en meses para ver el resultado."
+    },
+    "form": {
+      "loan_title": "Datos del préstamo",
+      "bank_name": "Banco o institución",
+      "bank_name_placeholder": "Ej. Banco Atlántida, cooperativa",
+      "currency": "Moneda del préstamo",
+      "amount": "Monto que pides",
+      "amount_hint": "El monto aprobado, antes de descontar comisiones.",
+      "annual_rate": "Tasa de interés anual",
+      "annual_rate_hint": "La tasa nominal que te cotizan, por ejemplo 18 % o 24 %.",
+      "term": "Plazo en meses",
+      "term_hint": "Por ejemplo, 36 meses son 3 años.",
+      "costs_title": "Costos adicionales",
+      "costs_description": "Opcionales. Inclúyelos si el banco te los cobra: cambian lo que realmente pagas.",
+      "disbursement_fee": "Comisión por desembolso",
+      "disbursement_fee_hint": "Porcentaje sobre el monto. Suele estar entre 1 % y 3 %.",
+      "fee_mode": "Cómo se cobra la comisión",
+      "fee_modes": {
+        "deducted": "Descontada",
+        "financed": "Financiada"
+      },
+      "fee_mode_hints": {
+        "deducted": "Te la restan del dinero que recibes.",
+        "financed": "Se suma al préstamo y la pagas en las cuotas."
+      },
+      "monthly_insurance": "Seguro mensual",
+      "monthly_insurance_hint": "Seguro de deuda o de vida que se suma a cada cuota.",
+      "other_charges": "Otros cargos iniciales",
+      "other_charges_hint": "Gastos de cierre, avalúo o trámites que te descuentan al inicio.",
+      "errors": {
+        "annual_rate": "Escribe una tasa mayor que cero.",
+        "term": "Escribe un plazo entero entre {{min}} y {{max}} meses.",
+        "disbursement": "Con esta comisión y estos cargos no recibirías dinero."
+      }
+    },
+    "preview": {
+      "title": "Vista previa",
+      "monthly_payment": "Tu cuota mensual",
+      "net_disbursement": "Recibes",
+      "total_paid": "Pagas en total",
+      "effective_cost": "Costo anual efectivo",
+      "empty": "Escribe el monto, la tasa y el plazo para ver tu cuota.",
+      "autosave": "Tus cambios se guardan automáticamente en este navegador."
+    }
+  },
+  "loan_analysis": {
+    "step": {
+      "title": "Tu resultado",
+      "description": "Comparamos la cuota del préstamo con tu ingreso, tus gastos y tus deudas actuales."
+    },
+    "verdict": {
+      "label": "Veredicto",
+      "can-take": {
+        "title": "Puedes tomar este préstamo",
+        "message": "Tus gastos y cuotas quedan dentro del {{total}} % de tu ingreso, y tus deudas no pasan del {{debt}} %."
+      },
+      "caution": {
+        "title": "Puedes tomarlo, con precaución",
+        "message": "Tu presupuesto alcanza, pero tus cuotas de deuda pasarían del {{debt}} % de tu ingreso. Te quedaría poco margen para imprevistos."
+      },
+      "not-recommended": {
+        "title": "No te recomendamos este préstamo",
+        "message": "Tus gastos y cuotas pasarían del {{total}} % de tu ingreso. Prueba con un monto menor, un plazo más largo o una tasa más baja."
+      }
+    },
+    "indicators": {
+      "title": "Tu nivel de endeudamiento",
+      "total": "Gastos y cuotas sobre tu ingreso",
+      "total_description": "Incluye tus gastos, las cuotas que ya pagas y la cuota nueva.",
+      "debt": "Solo cuotas de deuda sobre tu ingreso",
+      "debt_description": "Incluye las cuotas que ya pagas y la cuota nueva.",
+      "within_limit": "Dentro del límite de {{limit}}.",
+      "over_limit": "Pasa el límite de {{limit}}.",
+      "no_income": "Sin ingreso neto"
+    },
+    "limits": {
+      "title": "Ajustar los límites",
+      "description": "Son criterios de referencia, no normas legales: la CNBS no fija un tope y cada banco aplica su propia política.",
+      "total": "Límite de gastos y cuotas",
+      "debt": "Límite de cuotas de deuda",
+      "use_default": "Volver a 80 % y 40 %"
+    },
+    "budget": {
+      "title": "Tu mes con el préstamo",
+      "net_income": "Ingreso neto",
+      "expenses": "Gastos",
+      "current_debts": "Cuotas que ya pagas",
+      "new_payment": "Cuota nueva",
+      "available": "Te quedaría al mes",
+      "exchange_note": "Convertimos todo a {{currency}} con un tipo de cambio de {{rate}} por dólar."
+    },
+    "cost": {
+      "title": "Lo que cuesta el préstamo",
+      "description": "Incluye intereses, seguro, comisión y otros cargos.",
+      "monthly_payment": "Cuota mensual",
+      "payment_breakdown": "{{payment}} de cuota más {{insurance}} de seguro",
+      "net_disbursement": "Dinero que recibes",
+      "fee": {
+        "deducted": "Ya sin la comisión de {{fee}}",
+        "financed": "La comisión de {{fee}} se suma al préstamo"
+      },
+      "total_paid": "Pagas en total",
+      "total_cost": "{{cost}} más de lo que recibes",
+      "effective_cost": "Costo anual efectivo",
+      "effective_cost_hint": "La tasa anual nominal es {{rate}}; esta incluye todos los costos.",
+      "financed_principal": "Capital financiado",
+      "total_interest": "Intereses totales",
+      "total_insurance": "Seguro total"
+    },
+    "amortization": {
+      "title": "Tabla de amortización",
+      "description": "Cuánto pagas cada mes y cuánto debes después de cada cuota.",
+      "columns": {
+        "period": "Mes",
+        "payment": "Cuota",
+        "interest": "Interés",
+        "principal": "Capital",
+        "insurance": "Seguro",
+        "balance": "Saldo"
+      }
+    }
   }
 }

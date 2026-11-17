@@ -218,5 +218,132 @@
       "save_failed_title": "Could not save",
       "save_failed": "We could not save your changes in this browser. Check that storage is not blocked or full."
     }
+  },
+  "loan_offers": {
+    "step": {
+      "title": "What is the bank offering you?",
+      "description": "Enter the details as they appear in the bank's offer or quote. You only need the amount, the rate and the term; the rest is optional.",
+      "incomplete": "Enter the amount, the annual rate and the term in months to see the result."
+    },
+    "form": {
+      "loan_title": "Loan details",
+      "bank_name": "Bank or institution",
+      "bank_name_placeholder": "E.g. Banco Atlántida, credit union",
+      "currency": "Loan currency",
+      "amount": "Amount you request",
+      "amount_hint": "The approved amount, before any fees are taken out.",
+      "annual_rate": "Annual interest rate",
+      "annual_rate_hint": "The nominal rate you were quoted, for example 18 % or 24 %.",
+      "term": "Term in months",
+      "term_hint": "For example, 36 months is 3 years.",
+      "costs_title": "Additional costs",
+      "costs_description": "Optional. Include them if the bank charges them: they change what you really pay.",
+      "disbursement_fee": "Disbursement fee",
+      "disbursement_fee_hint": "Percent of the amount. It is usually between 1 % and 3 %.",
+      "fee_mode": "How the fee is charged",
+      "fee_modes": {
+        "deducted": "Deducted",
+        "financed": "Financed"
+      },
+      "fee_mode_hints": {
+        "deducted": "It is taken out of the money you receive.",
+        "financed": "It is added to the loan and you pay it in the installments."
+      },
+      "monthly_insurance": "Monthly insurance",
+      "monthly_insurance_hint": "Credit or life insurance added to each payment.",
+      "other_charges": "Other upfront charges",
+      "other_charges_hint": "Closing, appraisal or paperwork costs taken out at the start.",
+      "errors": {
+        "annual_rate": "Enter a rate greater than zero.",
+        "term": "Enter a whole term between {{min}} and {{max}} months.",
+        "disbursement": "With this fee and these charges you would receive no money."
+      }
+    },
+    "preview": {
+      "title": "Preview",
+      "monthly_payment": "Your monthly payment",
+      "net_disbursement": "You receive",
+      "total_paid": "You pay in total",
+      "effective_cost": "Effective annual cost",
+      "empty": "Enter the amount, the rate and the term to see your payment.",
+      "autosave": "Your changes are saved automatically in this browser."
+    }
+  },
+  "loan_analysis": {
+    "step": {
+      "title": "Your result",
+      "description": "We compare the loan payment with your income, your expenses and your current debts."
+    },
+    "verdict": {
+      "label": "Verdict",
+      "can-take": {
+        "title": "You can take this loan",
+        "message": "Your expenses and payments stay within {{total}} % of your income, and your debts do not go over {{debt}} %."
+      },
+      "caution": {
+        "title": "You can take it, with caution",
+        "message": "Your budget works, but your debt payments would go over {{debt}} % of your income. You would have little room for the unexpected."
+      },
+      "not-recommended": {
+        "title": "We do not recommend this loan",
+        "message": "Your expenses and payments would go over {{total}} % of your income. Try a smaller amount, a longer term or a lower rate."
+      }
+    },
+    "indicators": {
+      "title": "Your debt level",
+      "total": "Expenses and payments over your income",
+      "total_description": "Includes your expenses, the payments you already make and the new payment.",
+      "debt": "Debt payments only over your income",
+      "debt_description": "Includes the payments you already make and the new payment.",
+      "within_limit": "Within the {{limit}} limit.",
+      "over_limit": "Over the {{limit}} limit.",
+      "no_income": "No net income"
+    },
+    "limits": {
+      "title": "Adjust the limits",
+      "description": "These are reference criteria, not legal rules: the CNBS sets no cap and each bank applies its own policy.",
+      "total": "Expenses and payments limit",
+      "debt": "Debt payments limit",
+      "use_default": "Back to 80 % and 40 %"
+    },
+    "budget": {
+      "title": "Your month with the loan",
+      "net_income": "Net income",
+      "expenses": "Expenses",
+      "current_debts": "Payments you already make",
+      "new_payment": "New payment",
+      "available": "Left each month",
+      "exchange_note": "We convert everything to {{currency}} at an exchange rate of {{rate}} per dollar."
+    },
+    "cost": {
+      "title": "What the loan costs",
+      "description": "Includes interest, insurance, the fee and other charges.",
+      "monthly_payment": "Monthly payment",
+      "payment_breakdown": "{{payment}} installment plus {{insurance}} insurance",
+      "net_disbursement": "Money you receive",
+      "fee": {
+        "deducted": "After the {{fee}} fee",
+        "financed": "The {{fee}} fee is added to the loan"
+      },
+      "total_paid": "You pay in total",
+      "total_cost": "{{cost}} more than you receive",
+      "effective_cost": "Effective annual cost",
+      "effective_cost_hint": "The nominal annual rate is {{rate}}; this one includes every cost.",
+      "financed_principal": "Financed principal",
+      "total_interest": "Total interest",
+      "total_insurance": "Total insurance"
+    },
+    "amortization": {
+      "title": "Amortization schedule",
+      "description": "How much you pay each month and how much you owe after each payment.",
+      "columns": {
+        "period": "Month",
+        "payment": "Payment",
+        "interest": "Interest",
+        "principal": "Principal",
+        "insurance": "Insurance",
+        "balance": "Balance"
+      }
+    }
   }
 }
