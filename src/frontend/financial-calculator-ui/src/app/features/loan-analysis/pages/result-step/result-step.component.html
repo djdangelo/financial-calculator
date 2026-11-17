@@ -1,0 +1,144 @@
+<app-wizard-step-frame *transloco="let t; read: 'loan_analysis'" step="result" layout="full"
+  [completed]="facade.completedSteps()" [title]="t('step.title')" [description]="t('step.description')">
+  @if (facade.analysis(); as analysis) {
+  @let currency = analysis.currency;
+  @let cost = analysis.cost;
+  @let budget = analysis.budget;
+
+  <app-verdict-card [verdict]="analysis.verdict" [limits]="analysis.limits" />
+
+  <div class="grid gap-4 lg:grid-cols-2">
+    <section
+      class="flex flex-col gap-5 rounded-2xl border border-surface-200 bg-surface-0 p-4 transition-colors duration-300 dark:border-surface-800 dark:bg-surface-900 sm:p-5">
+      <h2 class="text-base font-bold text-surface-900 dark:text-surface-0">{{ t('indicators.title') }}</h2>
+
+      <app-burden-indicator [label]="t('indicators.total')" [description]="t('indicators.total_description')"
+        [percent]="analysis.indicators.totalBurdenPercent" [limit]="analysis.limits.totalBurdenPercent" />
+
+      <app-burden-indicator [label]="t('indicators.debt')" [description]="t('indicators.debt_description')"
+        [percent]="analysis.indicators.debtBurdenPercent" [limit]="analysis.limits.debtBurdenPercent" />
+
+      <app-burden-limits />
+    </section>
+
+    <section
+      class="flex flex-col gap-4 rounded-2xl border border-surface-200 bg-surface-0 p-4 transition-colors duration-300 dark:border-surface-800 dark:bg-surface-900 sm:p-5">
+      <h2 class="text-base font-bold text-surface-900 dark:text-surface-0">{{ t('budget.title') }}</h2>
+
+      <dl class="flex flex-col gap-2.5 text-sm">
+        <div class="flex items-baseline justify-between gap-3">
+          <dt class="text-surface-600 dark:text-surface-300">{{ t('budget.net_income') }}</dt>
+          <dd class="font-semibold tabular-nums text-surface-900 dark:text-surface-0">
+            {{ budget.netIncome | money: currency }}
+          </dd>
+        </div>
+        <div class="flex items-baseline justify-between gap-3">
+          <dt class="text-surface-600 dark:text-surface-300">{{ t('budget.expenses') }}</dt>
+          <dd class="font-semibold tabular-nums text-surface-900 dark:text-surface-0">
+            − {{ budget.expenses | money: currency }}
+          </dd>
+        </div>
+        <div class="flex items-baseline justify-between gap-3">
+          <dt class="text-surface-600 dark:text-surface-300">{{ t('budget.current_debts') }}</dt>
+          <dd class="font-semibold tabular-nums text-surface-900 dark:text-surface-0">
+            − {{ budget.currentDebtPayments | money: currency }}
+          </dd>
+        </div>
+        <div class="flex items-baseline justify-between gap-3">
+          <dt class="text-surface-600 dark:text-surface-300">{{ t('budget.new_payment') }}</dt>
+          <dd class="font-semibold tabular-nums text-surface-900 dark:text-surface-0">
+            − {{ budget.newLoanPayment | money: currency }}
+          </dd>
+        </div>
+        <div class="flex items-baseline justify-between gap-3 border-t border-surface-200 pt-3 dark:border-surface-800">
+          <dt class="font-bold text-surface-900 dark:text-surface-0">{{ t('budget.available') }}</dt>
+          <dd [class]="availableClass()">{{ analysis.availableAfterLoan | money: currency }}</dd>
+        </div>
+      </dl>
+
+      @if (facade.usesExchangeRate()) {
+      <p class="flex items-start gap-2 rounded-xl bg-surface-50 p-3 text-xs text-surface-600 dark:bg-surface-950 dark:text-surface-300">
+        <i class="pi pi-sync mt-0.5" aria-hidden="true"></i>
+        <span>{{ t('budget.exchange_note', { currency: currency, rate: exchangeRate() }) }}</span>
+      </p>
+      }
+    </section>
+  </div>
+
+  <section
+    class="flex flex-col gap-4 rounded-2xl border border-surface-200 bg-surface-0 p-4 transition-colors duration-300 dark:border-surface-800 dark:bg-surface-900 sm:p-5">
+    <header class="flex flex-col gap-1">
+      <h2 class="text-base font-bold text-surface-900 dark:text-surface-0">{{ t('cost.title') }}</h2>
+      <p class="text-sm text-surface-500 dark:text-surface-400">{{ t('cost.description') }}</p>
+    </header>
+
+    <dl class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="flex flex-col gap-1 rounded-xl bg-surface-50 p-3 dark:bg-surface-950">
+        <dt class="text-xs text-surface-600 dark:text-surface-300">{{ t('cost.monthly_payment') }}</dt>
+        <dd class="text-lg font-extrabold tabular-nums text-surface-900 dark:text-surface-0">
+          {{ cost.monthlyPayment | money: currency }}
+        </dd>
+        @if (cost.monthlyInsurance > 0) {
+        <dd class="text-xs text-surface-500 dark:text-surface-400">
+          {{ t('cost.payment_breakdown', { payment: (cost.levelPayment | money: currency), insurance: (cost.monthlyInsurance | money: currency) }) }}
+        </dd>
+        }
+      </div>
+      <div class="flex flex-col gap-1 rounded-xl bg-surface-50 p-3 dark:bg-surface-950">
+        <dt class="text-xs text-surface-600 dark:text-surface-300">{{ t('cost.net_disbursement') }}</dt>
+        <dd class="text-lg font-extrabold tabular-nums text-surface-900 dark:text-surface-0">
+          {{ cost.netDisbursement | money: currency }}
+        </dd>
+        @if (cost.disbursementFee > 0) {
+        <dd class="text-xs text-surface-500 dark:text-surface-400">
+          {{ t('cost.fee.' + feeMode(), { fee: (cost.disbursementFee | money: currency) }) }}
+        </dd>
+        }
+      </div>
+      <div class="flex flex-col gap-1 rounded-xl bg-surface-50 p-3 dark:bg-surface-950">
+        <dt class="text-xs text-surface-600 dark:text-surface-300">{{ t('cost.total_paid') }}</dt>
+        <dd class="text-lg font-extrabold tabular-nums text-surface-900 dark:text-surface-0">
+          {{ cost.totalPaid | money: currency }}
+        </dd>
+        <dd class="text-xs text-surface-500 dark:text-surface-400">
+          {{ t('cost.total_cost', { cost: (cost.totalCost | money: currency) }) }}
+        </dd>
+      </div>
+      <div class="flex flex-col gap-1 rounded-xl bg-surface-50 p-3 dark:bg-surface-950">
+        <dt class="text-xs text-surface-600 dark:text-surface-300">{{ t('cost.effective_cost') }}</dt>
+        <dd class="text-lg font-extrabold tabular-nums text-surface-900 dark:text-surface-0">
+          {{ cost.effectiveAnnualCostPercent | percentValue }}
+        </dd>
+        <dd class="text-xs text-surface-500 dark:text-surface-400">
+          {{ t('cost.effective_cost_hint', { rate: (nominalRate() | percentValue) }) }}
+        </dd>
+      </div>
+    </dl>
+
+    <dl class="grid gap-x-6 gap-y-2 text-sm sm:grid-cols-2">
+      <div class="flex items-baseline justify-between gap-3">
+        <dt class="text-surface-600 dark:text-surface-300">{{ t('cost.financed_principal') }}</dt>
+        <dd class="font-semibold tabular-nums text-surface-900 dark:text-surface-0">
+          {{ cost.financedPrincipal | money: currency }}
+        </dd>
+      </div>
+      <div class="flex items-baseline justify-between gap-3">
+        <dt class="text-surface-600 dark:text-surface-300">{{ t('cost.total_interest') }}</dt>
+        <dd class="font-semibold tabular-nums text-surface-900 dark:text-surface-0">
+          {{ cost.totalInterest | money: currency }}
+        </dd>
+      </div>
+      @if (cost.totalInsurance > 0) {
+      <div class="flex items-baseline justify-between gap-3">
+        <dt class="text-surface-600 dark:text-surface-300">{{ t('cost.total_insurance') }}</dt>
+        <dd class="font-semibold tabular-nums text-surface-900 dark:text-surface-0">
+          {{ cost.totalInsurance | money: currency }}
+        </dd>
+      </div>
+      }
+    </dl>
+  </section>
+
+  <app-amortization-table [rows]="cost.schedule" [currency]="currency" />
+  }
+</app-wizard-step-frame>

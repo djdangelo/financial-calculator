@@ -32,6 +32,7 @@ export function summarizeLoanCost(offer: LoanOffer): LoanCostSummary {
     financedPrincipal: terms.principal,
     netDisbursement,
     levelPayment,
+    monthlyInsurance: offer.monthlyInsurance,
     monthlyPayment: roundMoney(levelPayment + offer.monthlyInsurance),
     totalInterest: roundMoney(sumAmounts(schedule.map(row => row.interest))),
     totalInsurance: roundMoney(sumAmounts(schedule.map(row => row.insurance))),

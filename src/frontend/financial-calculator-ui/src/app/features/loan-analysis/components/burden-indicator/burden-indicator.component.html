@@ -1,0 +1,23 @@
+<div *transloco="let t; read: 'loan_analysis.indicators'" class="flex flex-col gap-2">
+  <div class="flex items-baseline justify-between gap-3">
+    <h3 class="text-sm font-semibold text-surface-800 dark:text-surface-100">{{ label() }}</h3>
+    <p [class]="valueClass()">
+      @if (hasIncome()) {
+      {{ percent() | percentValue }}
+      } @else {
+      {{ t('no_income') }}
+      }
+    </p>
+  </div>
+
+  <div class="relative h-3 rounded-full bg-surface-100 dark:bg-surface-800" role="meter" [attr.aria-label]="label()"
+    [attr.aria-valuenow]="hasIncome() ? percent() : null" aria-valuemin="0" [attr.aria-valuemax]="maxBar">
+    <div [class]="barClass()" [style.width]="barWidth()"></div>
+    <span class="absolute -top-1 h-5 w-0.5 rounded bg-surface-900 dark:bg-surface-0" [style.left]="limitPosition()"
+      aria-hidden="true"></span>
+  </div>
+
+  <p class="text-xs text-surface-500 dark:text-surface-400">
+    {{ t(isOver() ? 'over_limit' : 'within_limit', { limit: (limit() | percentValue) }) }} {{ description() }}
+  </p>
+</div>

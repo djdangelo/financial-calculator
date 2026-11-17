@@ -8,6 +8,7 @@ import {
 describe('disbursement functions', () => {
   const offer: LoanOffer = {
     id: 'offer',
+    createdAt: 1,
     bankName: 'Banco',
     currency: 'HNL',
     amount: 100000,

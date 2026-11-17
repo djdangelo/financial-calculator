@@ -5,6 +5,7 @@ export interface LoanCostSummary {
   financedPrincipal: number;
   netDisbursement: number;
   levelPayment: number;
+  monthlyInsurance: number;
   monthlyPayment: number;
   totalInterest: number;
   totalInsurance: number;
