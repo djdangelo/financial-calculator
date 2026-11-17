@@ -102,3 +102,26 @@ Exporta services, facades y models por su `index.ts` e impórtalos desde el barr
 - **Clases dinámicas:** escribe las clases completas en un mapa de `constants/`; nunca las armes interpolando (`` `text-${color}-500` ``), Tailwind no las detecta.
 - **Iconos:** PrimeIcons (`pi pi-*`). No cargues fuentes ni librerías desde un CDN: todo se sirve desde la propia app.
 - **Reutiliza** lo que ya hay en `shared/components` antes de crear uno nuevo.
+
+## Piezas reutilizables que ya existen
+
+Revisa esta lista antes de crear algo parecido.
+
+| Necesitas | Usa |
+|---|---|
+| Campo con etiqueta, ayuda y error | `shared/components/form-field` |
+| Entrada de dinero con símbolo de moneda | `shared/components/money-input` |
+| Selector HNL/USD | `shared/components/currency-toggle` |
+| Pasos del asistente y botones Atrás/Continuar | `shared/components/wizard-stepper`, `wizard-navigation`, `shared/utils/wizard.util.ts`, `shared/constants/wizard.constant.ts` |
+| Mostrar dinero en el template | `MoneyPipe` (`shared/pipes/money.pipe.ts`) |
+| Convertir o sumar montos en distintas monedas | `convertAmount`, `sumInCurrency` (`@core/functions/currency.function`) |
+| Formatear dinero o tipo de cambio en TypeScript | `formatMoney`, `formatExchangeRate` (`@core/functions/currency.function`) |
+| Redondear dinero, porcentajes, tasa mensual, sumas | `roundMoney`, `percentToRatio`, `ratioToPercent`, `monthlyRateFromAnnualPercent`, `sumAmounts` (`@core/functions/finance.function`) |
+| Crear, reemplazar, quitar u ordenar registros en un arreglo | `createRecordId`, `upsertRecord`, `removeRecord`, `sortByCreation` (`@core/functions/record.function`) |
+| Fechas ISO y su formato por idioma | `toIsoDate`, `formatIsoDate` (`@core/functions/date.function`) |
+| Tipo de cambio, moneda del resumen y límites 80/40 del usuario | `AppSettingsFacade` (`@core/facades/app-settings.facade`) |
+| Aviso de "cambios guardados" | `SaveFeedbackService` (`@core/services/save-feedback.service`) |
+| Borrar todos los datos del usuario | `UserDataService` (`@core/services/user-data.service`) |
+| `localStorage` sin errores en modo privado | `readLocalStorage`, `writeLocalStorage` (`@core/functions/local-storage.function`) |
+
+Si agregas una pieza compartida nueva, súmala a esta tabla.
