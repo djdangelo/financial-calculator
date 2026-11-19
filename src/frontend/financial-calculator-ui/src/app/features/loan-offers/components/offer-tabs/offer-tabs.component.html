@@ -2,12 +2,12 @@
   <div class="flex flex-wrap items-center gap-2">
     @for (tab of tabs(); track tab.id) {
     <div [class]="tab.tabClass">
-      <button type="button" class="min-w-0 truncate text-left" [attr.aria-pressed]="tab.active"
+      <button type="button" class="min-w-0 truncate text-left rounded outline-none focus-visible:ring-2 focus-visible:ring-primary" [attr.aria-pressed]="tab.active"
         (click)="facade.selectOffer(tab.id)">
         {{ tab.bankName || t('untitled', { number: tab.number }) }}
       </button>
       @if (tab.active && facade.canRemoveOffer()) {
-      <button type="button" class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full hover:bg-primary-100 dark:hover:bg-primary-900"
+      <button type="button" class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full outline-none hover:bg-primary-100 focus-visible:ring-2 focus-visible:ring-primary dark:hover:bg-primary-900"
         [attr.aria-label]="t('remove', { name: tab.bankName || t('untitled', { number: tab.number }) })"
         (click)="facade.removeOffer(tab.id)">
         <i class="pi pi-times text-xs" aria-hidden="true"></i>

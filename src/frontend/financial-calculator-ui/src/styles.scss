@@ -2,6 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
+@media print {
+    @page {
+        margin: 12mm;
+    }
+
+    html {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    body {
+        @apply bg-white;
+    }
+
+    app-root section {
+        break-inside: avoid;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
 @layer base {
     body {
         @apply m-0 bg-surface-50 font-sans text-surface-700 antialiased transition-colors duration-300 dark:bg-surface-950 dark:text-surface-300;

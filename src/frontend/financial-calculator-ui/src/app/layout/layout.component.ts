@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { TranslocoDirective } from '@ngneat/transloco';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { PrivacyNoticeComponent } from './components/privacy-notice/privacy-notice.component';
@@ -7,7 +8,7 @@ import { PrivacyNoticeComponent } from './components/privacy-notice/privacy-noti
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, FooterComponent, PrivacyNoticeComponent],
+  imports: [RouterOutlet, TranslocoDirective, HeaderComponent, FooterComponent, PrivacyNoticeComponent],
   templateUrl: './layout.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })

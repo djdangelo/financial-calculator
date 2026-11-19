@@ -1,5 +1,5 @@
 <div>
-  <app-wizard-stepper [current]="step()" [completed]="completed()" />
+  <app-wizard-stepper class="print:hidden" [current]="step()" [completed]="completed()" />
 
   <div [class]="layoutClass()">
     <section class="flex min-w-0 flex-col gap-6">
@@ -18,7 +18,7 @@
       <p-message severity="error" [text]="incompleteMessage()" />
       }
 
-      <app-wizard-navigation [previousRoute]="previousRoute()" [hasNext]="hasNext()" (next)="continue()" />
+      <app-wizard-navigation class="print:hidden" [previousRoute]="previousRoute()" [hasNext]="hasNext()" (next)="continue()" />
     </section>
 
     <ng-content select="[wizardAside]" />
