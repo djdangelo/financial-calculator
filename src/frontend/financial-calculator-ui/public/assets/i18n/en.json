@@ -41,7 +41,12 @@
       "error_title": "Could not delete",
       "error": "We could not delete your data. Please try again."
     },
-    "skip_to_content": "Skip to content"
+    "skip_to_content": "Skip to content",
+    "pwa": {
+      "update_title": "A new version is available",
+      "update_detail": "Reload to use the latest version. Your data is kept.",
+      "reload": "Reload"
+    }
   },
   "home": {
     "eyebrow": "Honduras · Lempiras and dollars",
@@ -299,6 +304,18 @@
         "message": "Your expenses and payments would go over {{total}} % of your income. Try a smaller amount, a longer term or a lower rate.",
         "short": "Not recommended"
       }
+    },
+    "max_loan": {
+      "title": "The most you can borrow",
+      "description": "With this rate, this term and your limits, your payment could reach {{payment}} a month.",
+      "no_room": "With your current expenses and debts there is no room for a new payment within your limits.",
+      "exceeds": "You asked for {{amount}} more than advisable",
+      "within": "What you asked for is within this amount"
+    },
+    "exchange_risk": {
+      "title": "Exchange rate risk",
+      "message": "{{share}} of your income is in {{incomeCurrency}}, but the loan is in {{loanCurrency}}. If the exchange rate changes, your payment can go up.",
+      "stress": "Today your payment equals {{payment}}. If the {{loanCurrency}} gets {{percent}} % more expensive, you would pay {{stressed}} each month."
     },
     "indicators": {
       "title": "Your debt level",

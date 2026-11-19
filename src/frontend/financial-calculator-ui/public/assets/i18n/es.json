@@ -41,7 +41,12 @@
       "error_title": "No se pudieron borrar",
       "error": "No pudimos borrar tus datos. Inténtalo de nuevo."
     },
-    "skip_to_content": "Saltar al contenido"
+    "skip_to_content": "Saltar al contenido",
+    "pwa": {
+      "update_title": "Hay una versión nueva",
+      "update_detail": "Actualiza para usar la última versión. Tus datos se conservan.",
+      "reload": "Actualizar"
+    }
   },
   "home": {
     "eyebrow": "Honduras · Lempiras y dólares",
@@ -299,6 +304,18 @@
         "message": "Tus gastos y cuotas pasarían del {{total}} % de tu ingreso. Prueba con un monto menor, un plazo más largo o una tasa más baja.",
         "short": "No recomendable"
       }
+    },
+    "max_loan": {
+      "title": "Lo máximo que puedes pedir",
+      "description": "Con esta tasa, este plazo y tus límites, tu cuota podría llegar a {{payment}} al mes.",
+      "no_room": "Con tus gastos y deudas actuales no te queda margen para una cuota nueva dentro de tus límites.",
+      "exceeds": "Pediste {{amount}} más de lo recomendable",
+      "within": "Lo que pediste está dentro de este monto"
+    },
+    "exchange_risk": {
+      "title": "Riesgo cambiario",
+      "message": "El {{share}} de tu ingreso está en {{incomeCurrency}}, pero el préstamo es en {{loanCurrency}}. Si cambia el tipo de cambio, tu cuota puede subir.",
+      "stress": "Hoy tu cuota equivale a {{payment}}. Si el {{loanCurrency}} se encarece un {{percent}} %, pagarías {{stressed}} cada mes."
     },
     "indicators": {
       "title": "Tu nivel de endeudamiento",
