@@ -40,7 +40,8 @@
       "success": "Ya no queda información tuya guardada en este navegador.",
       "error_title": "No se pudieron borrar",
       "error": "No pudimos borrar tus datos. Inténtalo de nuevo."
-    }
+    },
+    "skip_to_content": "Saltar al contenido"
   },
   "home": {
     "eyebrow": "Honduras · Lempiras y dólares",
@@ -349,7 +350,6 @@
     "distribution": {
       "title": "Así se reparte tu ingreso",
       "description": "Cuánto de tu ingreso neto se va en gastos, cuotas y cuánto te queda con el préstamo.",
-      "label": "Reparto de tu ingreso mensual",
       "slices": {
         "expenses": "Gastos",
         "current-debts": "Cuotas que ya pagas",
@@ -434,6 +434,40 @@
         "principal": "Capital",
         "insurance": "Seguro",
         "balance": "Saldo"
+      }
+    },
+    "print": {
+      "button": "Imprimir o guardar en PDF",
+      "hint": "Puedes imprimir este resultado o guardarlo como PDF desde la ventana de impresión.",
+      "generated_on": "Resultado generado el {{date}} con Calculadora Financiera. Es una guía, no una asesoría financiera."
+    },
+    "help": {
+      "title": "¿Cómo leer tu resultado?",
+      "terms": {
+        "level-payment": {
+          "title": "Cuota nivelada",
+          "text": "Pagas la misma cuota cada mes. Al inicio la mayor parte es interés y, con el tiempo, cada vez más va a capital."
+        },
+        "effective-cost": {
+          "title": "Costo anual efectivo",
+          "text": "Incluye la tasa, la comisión, el seguro y los otros cargos. Sirve para comparar ofertas: la más baja es la más barata."
+        },
+        "total-limit": {
+          "title": "Límite de gastos y cuotas",
+          "text": "Tus gastos más todas tus cuotas no deberían pasar del {{total}} % de tu ingreso neto, para que te quede margen para imprevistos."
+        },
+        "debt-limit": {
+          "title": "Límite de cuotas de deuda",
+          "text": "Solo tus cuotas de deuda, incluida la nueva, no deberían pasar del {{debt}} % de tu ingreso neto. Es la referencia que suelen usar los bancos."
+        },
+        "consolidation": {
+          "title": "Unificación de deudas",
+          "text": "Usar el préstamo para pagar otras deudas. Conviene si la cuota baja y el préstamo las cubre, pero revisa si en total terminas pagando más."
+        },
+        "exchange-rate": {
+          "title": "Tipo de cambio",
+          "text": "Si tienes montos en lempiras y dólares, los convertimos a la moneda del préstamo con el tipo de cambio que elegiste."
+        }
       }
     }
   }

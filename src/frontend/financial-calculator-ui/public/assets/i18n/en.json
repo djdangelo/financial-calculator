@@ -40,7 +40,8 @@
       "success": "None of your information is stored in this browser anymore.",
       "error_title": "Could not delete",
       "error": "We could not delete your data. Please try again."
-    }
+    },
+    "skip_to_content": "Skip to content"
   },
   "home": {
     "eyebrow": "Honduras · Lempiras and dollars",
@@ -349,7 +350,6 @@
     "distribution": {
       "title": "How your income is split",
       "description": "How much of your net income goes to expenses and payments, and how much is left with the loan.",
-      "label": "Split of your monthly income",
       "slices": {
         "expenses": "Expenses",
         "current-debts": "Payments you already make",
@@ -434,6 +434,40 @@
         "principal": "Principal",
         "insurance": "Insurance",
         "balance": "Balance"
+      }
+    },
+    "print": {
+      "button": "Print or save as PDF",
+      "hint": "You can print this result or save it as a PDF from the print window.",
+      "generated_on": "Result generated on {{date}} with Financial Calculator. It is a guide, not financial advice."
+    },
+    "help": {
+      "title": "How to read your result",
+      "terms": {
+        "level-payment": {
+          "title": "Level payment",
+          "text": "You pay the same amount every month. At first most of it is interest and, over time, more and more goes to principal."
+        },
+        "effective-cost": {
+          "title": "Effective annual cost",
+          "text": "It includes the rate, the fee, the insurance and other charges. Use it to compare offers: the lowest one is the cheapest."
+        },
+        "total-limit": {
+          "title": "Expenses and payments limit",
+          "text": "Your expenses plus all your payments should not go over {{total}} % of your net income, so you keep a margin for the unexpected."
+        },
+        "debt-limit": {
+          "title": "Debt payments limit",
+          "text": "Your debt payments alone, including the new one, should not go over {{debt}} % of your net income. Banks often use this reference."
+        },
+        "consolidation": {
+          "title": "Debt consolidation",
+          "text": "Using the loan to pay off other debts. It pays off if the payment drops and the loan covers them, but check whether you end up paying more in total."
+        },
+        "exchange-rate": {
+          "title": "Exchange rate",
+          "text": "If you have amounts in lempiras and dollars, we convert them to the loan currency with the exchange rate you chose."
+        }
       }
     }
   }
