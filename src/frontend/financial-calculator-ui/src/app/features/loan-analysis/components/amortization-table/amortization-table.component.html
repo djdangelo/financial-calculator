@@ -1,37 +1,61 @@
 <section *transloco="let t; read: 'loan_analysis.amortization'"
-  class="flex flex-col gap-4 rounded-2xl border border-surface-200 bg-surface-0 p-4 transition-colors duration-300 dark:border-surface-800 dark:bg-surface-900 sm:p-5">
+  class="print:[break-inside:auto] flex flex-col gap-4 rounded-2xl border border-surface-200 bg-surface-0 p-4 transition-colors duration-300 dark:border-surface-800 dark:bg-surface-900 sm:p-5">
   <header class="flex flex-col gap-1">
     <h2 class="text-base font-bold text-surface-900 dark:text-surface-0">{{ t('title') }}</h2>
     <p class="text-sm text-surface-500 dark:text-surface-400">{{ t('description') }}</p>
   </header>
 
-  <p-table [value]="rows()" [paginator]="rows().length > rowsPerPage" [rows]="rowsPerPage"
+  <ng-template #headerCells>
+    <th scope="col" class="text-left">{{ t('columns.period') }}</th>
+    <th scope="col" class="text-right">{{ t('columns.payment') }}</th>
+    <th scope="col" class="text-right">{{ t('columns.interest') }}</th>
+    <th scope="col" class="text-right">{{ t('columns.principal') }}</th>
+    @if (hasInsurance()) {
+    <th scope="col" class="text-right">{{ t('columns.insurance') }}</th>
+    }
+    <th scope="col" class="text-right">{{ t('columns.balance') }}</th>
+  </ng-template>
+
+  <ng-template #rowCells let-row>
+    <td>{{ row.period }}</td>
+    <td class="text-right font-semibold">{{ row.totalPayment | money: currency() }}</td>
+    <td class="text-right">{{ row.interest | money: currency() }}</td>
+    <td class="text-right">{{ row.principal | money: currency() }}</td>
+    @if (hasInsurance()) {
+    <td class="text-right">{{ row.insurance | money: currency() }}</td>
+    }
+    <td class="text-right">{{ row.balance | money: currency() }}</td>
+  </ng-template>
+
+  <p-table class="print:hidden" [value]="rows()" [paginator]="rows().length > rowsPerPage" [rows]="rowsPerPage"
     [rowsPerPageOptions]="rowsPerPageOptions" [scrollable]="true" size="small" [tableStyle]="tableStyle"
     [attr.aria-label]="t('title')">
     <ng-template pTemplate="header">
       <tr>
-        <th scope="col">{{ t('columns.period') }}</th>
-        <th scope="col" class="text-right">{{ t('columns.payment') }}</th>
-        <th scope="col" class="text-right">{{ t('columns.interest') }}</th>
-        <th scope="col" class="text-right">{{ t('columns.principal') }}</th>
-        @if (hasInsurance()) {
-        <th scope="col" class="text-right">{{ t('columns.insurance') }}</th>
-        }
-        <th scope="col" class="text-right">{{ t('columns.balance') }}</th>
+        <ng-container [ngTemplateOutlet]="headerCells" />
       </tr>
     </ng-template>
 
     <ng-template pTemplate="body" let-row>
       <tr class="tabular-nums">
-        <td>{{ row.period }}</td>
-        <td class="text-right font-semibold">{{ row.totalPayment | money: currency() }}</td>
-        <td class="text-right">{{ row.interest | money: currency() }}</td>
-        <td class="text-right">{{ row.principal | money: currency() }}</td>
-        @if (hasInsurance()) {
-        <td class="text-right">{{ row.insurance | money: currency() }}</td>
-        }
-        <td class="text-right">{{ row.balance | money: currency() }}</td>
+        <ng-container [ngTemplateOutlet]="rowCells" [ngTemplateOutletContext]="{ $implicit: row }" />
       </tr>
     </ng-template>
   </p-table>
+
+  <table class="hidden w-full border-collapse text-xs print:table [&_td]:px-2 [&_td]:py-1 [&_th]:px-2 [&_th]:py-1"
+    aria-hidden="true">
+    <thead class="border-b border-surface-300">
+      <tr>
+        <ng-container [ngTemplateOutlet]="headerCells" />
+      </tr>
+    </thead>
+    <tbody>
+      @for (row of rows(); track row.period) {
+      <tr class="break-inside-avoid border-b border-surface-100 tabular-nums">
+        <ng-container [ngTemplateOutlet]="rowCells" [ngTemplateOutletContext]="{ $implicit: row }" />
+      </tr>
+      }
+    </tbody>
+  </table>
 </section>

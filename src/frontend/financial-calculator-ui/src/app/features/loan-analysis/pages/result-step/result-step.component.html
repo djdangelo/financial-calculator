@@ -5,6 +5,13 @@
   @let cost = analysis.cost;
   @let budget = analysis.budget;
 
+  <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+    <p class="hidden text-sm text-surface-600 print:block">{{ t('print.generated_on', { date: generatedOn() }) }}</p>
+    <p class="text-sm text-surface-500 dark:text-surface-400 print:hidden">{{ t('print.hint') }}</p>
+    <p-button class="print:hidden" [label]="t('print.button')" icon="pi pi-print" [outlined]="true" size="small"
+      (onClick)="print.print()" />
+  </div>
+
   @if (facade.canCompare() && facade.bestOffers(); as best) {
   <app-offer-comparison [comparisons]="facade.comparisons()" [best]="best" [activeOfferId]="activeOfferId()"
     (selected)="facade.selectOffer($event)" />
@@ -28,7 +35,7 @@
       <app-burden-indicator [label]="t('indicators.debt')" [description]="t('indicators.debt_description')"
         [percent]="analysis.indicators.debtBurdenPercent" [limit]="analysis.limits.debtBurdenPercent" />
 
-      <app-burden-limits />
+      <app-burden-limits class="print:hidden" />
     </section>
 
     <section
@@ -163,5 +170,7 @@
   <app-yearly-payments-chart [years]="facade.yearlyPayments()" [currency]="currency" />
 
   <app-amortization-table [rows]="cost.schedule" [currency]="currency" />
+
+  <app-result-help class="print:hidden" />
   }
 </app-wizard-step-frame>

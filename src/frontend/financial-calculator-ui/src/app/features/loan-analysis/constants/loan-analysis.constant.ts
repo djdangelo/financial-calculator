@@ -5,6 +5,7 @@ import { DebtOptionState } from '../@types/debt-option-state.type';
 import { IncomeSliceKey } from '../@types/income-slice-key.type';
 import { Verdict } from '../@types/verdict.type';
 import { ChartTheme } from '../interfaces/chart-theme.interface';
+import { HelpTerm } from '../interfaces/help-term.interface';
 
 export const INTERNAL_RATE_MAX_MONTHLY = 1;
 export const INTERNAL_RATE_TOLERANCE = 1e-10;
@@ -113,3 +114,12 @@ export const COMPARISON_COLUMN_CLASS: Record<OfferTabState, string> = {
 };
 
 export const YEARLY_CHART_HEIGHT = '18rem';
+
+export const RESULT_HELP_TERMS: readonly HelpTerm[] = [
+  { key: 'level-payment', icon: 'pi pi-calendar' },
+  { key: 'effective-cost', icon: 'pi pi-percentage' },
+  { key: 'total-limit', icon: 'pi pi-wallet' },
+  { key: 'debt-limit', icon: 'pi pi-credit-card' },
+  { key: 'consolidation', icon: 'pi pi-sitemap' },
+  { key: 'exchange-rate', icon: 'pi pi-sync' }
+];

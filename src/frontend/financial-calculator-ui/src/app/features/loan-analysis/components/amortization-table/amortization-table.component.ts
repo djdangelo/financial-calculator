@@ -1,3 +1,4 @@
+import { NgTemplateOutlet } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 import { TranslocoDirective } from '@ngneat/transloco';
 import { PrimeTemplate } from 'primeng/api';
@@ -14,7 +15,7 @@ import { AmortizationRow } from '../../interfaces/amortization-row.interface';
 @Component({
   selector: 'app-amortization-table',
   standalone: true,
-  imports: [TranslocoDirective, PrimeTemplate, TableModule, MoneyPipe],
+  imports: [NgTemplateOutlet, TranslocoDirective, PrimeTemplate, TableModule, MoneyPipe],
   templateUrl: './amortization-table.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })

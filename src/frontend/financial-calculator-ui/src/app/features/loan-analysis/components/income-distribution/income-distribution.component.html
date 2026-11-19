@@ -5,7 +5,7 @@
     <p class="text-sm text-surface-500 dark:text-surface-400">{{ t('description') }}</p>
   </header>
 
-  <div class="flex w-full gap-0.5" role="img" [attr.aria-label]="t('label')">
+  <div class="flex w-full gap-0.5" aria-hidden="true">
     @for (slice of views(); track slice.key) {
     <span [class]="slice.blockClass" [style.width.%]="slice.sharePercent"
       [attr.title]="t('slices.' + slice.key) + ': ' + (slice.amount | money: currency()) + ' (' + (slice.sharePercent | percentValue) + ')'">
