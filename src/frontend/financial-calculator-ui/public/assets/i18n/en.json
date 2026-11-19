@@ -267,6 +267,13 @@
       "effective_cost": "Effective annual cost",
       "empty": "Enter the amount, the rate and the term to see your payment.",
       "autosave": "Your changes are saved automatically in this browser."
+    },
+    "tabs": {
+      "label": "Bank offers",
+      "untitled": "Offer {{number}}",
+      "add": "Add another offer",
+      "remove": "Remove {{name}}",
+      "hint": "You can compare up to {{max}} offers. Each one is saved separately."
     }
   },
   "loan_analysis": {
@@ -278,15 +285,18 @@
       "label": "Verdict",
       "can-take": {
         "title": "You can take this loan",
-        "message": "Your expenses and payments stay within {{total}} % of your income, and your debts do not go over {{debt}} %."
+        "message": "Your expenses and payments stay within {{total}} % of your income, and your debts do not go over {{debt}} %.",
+        "short": "You can take it"
       },
       "caution": {
         "title": "You can take it, with caution",
-        "message": "Your budget works, but your debt payments would go over {{debt}} % of your income. You would have little room for the unexpected."
+        "message": "Your budget works, but your debt payments would go over {{debt}} % of your income. You would have little room for the unexpected.",
+        "short": "With caution"
       },
       "not-recommended": {
         "title": "We do not recommend this loan",
-        "message": "Your expenses and payments would go over {{total}} % of your income. Try a smaller amount, a longer term or a lower rate."
+        "message": "Your expenses and payments would go over {{total}} % of your income. Try a smaller amount, a longer term or a lower rate.",
+        "short": "Not recommended"
       }
     },
     "indicators": {
@@ -315,6 +325,38 @@
       "new_payment": "New payment",
       "available": "Left each month",
       "exchange_note": "We convert everything to {{currency}} at an exchange rate of {{rate}} per dollar."
+    },
+    "comparison": {
+      "title": "Offer comparison",
+      "description": "Your complete offers side by side. We mark the best one by payment, effective annual cost and total cost.",
+      "metric": "Item",
+      "best": "Best",
+      "rows": {
+        "monthly_payment": "Monthly payment",
+        "effective_cost": "Effective annual cost",
+        "total_cost": "Total cost",
+        "net_disbursement": "Money you receive",
+        "total_paid": "You pay in total",
+        "rate_and_term": "Rate and term",
+        "debt_burden": "Payments over your income",
+        "verdict": "Verdict"
+      },
+      "rate_and_term": "{{rate}} over {{months}} months",
+      "view": "View detail",
+      "viewing": "Viewing detail",
+      "detail_of": "Detail of {{name}}"
+    },
+    "distribution": {
+      "title": "How your income is split",
+      "description": "How much of your net income goes to expenses and payments, and how much is left with the loan.",
+      "label": "Split of your monthly income",
+      "slices": {
+        "expenses": "Expenses",
+        "current-debts": "Payments you already make",
+        "new-payment": "New payment",
+        "available": "Left over"
+      },
+      "over_income": "Your expenses and payments exceed your income: the shares are measured against your total commitments."
     },
     "consolidation": {
       "title": "Consolidate debts",
@@ -372,6 +414,15 @@
       "financed_principal": "Financed principal",
       "total_interest": "Total interest",
       "total_insurance": "Total insurance"
+    },
+    "yearly": {
+      "title": "Principal versus interest",
+      "description": "How much of what you pay each year lowers your debt and how much goes to interest and insurance.",
+      "label": "Stacked bar chart with the principal, interest and insurance paid each year",
+      "year": "Year {{year}}",
+      "principal": "Principal",
+      "interest": "Interest",
+      "insurance": "Insurance"
     },
     "amortization": {
       "title": "Amortization schedule",

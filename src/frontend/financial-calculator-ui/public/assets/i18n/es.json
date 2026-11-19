@@ -267,6 +267,13 @@
       "effective_cost": "Costo anual efectivo",
       "empty": "Escribe el monto, la tasa y el plazo para ver tu cuota.",
       "autosave": "Tus cambios se guardan automáticamente en este navegador."
+    },
+    "tabs": {
+      "label": "Ofertas del banco",
+      "untitled": "Oferta {{number}}",
+      "add": "Agregar otra oferta",
+      "remove": "Quitar {{name}}",
+      "hint": "Puedes comparar hasta {{max}} ofertas. Cada una se guarda por separado."
     }
   },
   "loan_analysis": {
@@ -278,15 +285,18 @@
       "label": "Veredicto",
       "can-take": {
         "title": "Puedes tomar este préstamo",
-        "message": "Tus gastos y cuotas quedan dentro del {{total}} % de tu ingreso, y tus deudas no pasan del {{debt}} %."
+        "message": "Tus gastos y cuotas quedan dentro del {{total}} % de tu ingreso, y tus deudas no pasan del {{debt}} %.",
+        "short": "Puedes tomarlo"
       },
       "caution": {
         "title": "Puedes tomarlo, con precaución",
-        "message": "Tu presupuesto alcanza, pero tus cuotas de deuda pasarían del {{debt}} % de tu ingreso. Te quedaría poco margen para imprevistos."
+        "message": "Tu presupuesto alcanza, pero tus cuotas de deuda pasarían del {{debt}} % de tu ingreso. Te quedaría poco margen para imprevistos.",
+        "short": "Con precaución"
       },
       "not-recommended": {
         "title": "No te recomendamos este préstamo",
-        "message": "Tus gastos y cuotas pasarían del {{total}} % de tu ingreso. Prueba con un monto menor, un plazo más largo o una tasa más baja."
+        "message": "Tus gastos y cuotas pasarían del {{total}} % de tu ingreso. Prueba con un monto menor, un plazo más largo o una tasa más baja.",
+        "short": "No recomendable"
       }
     },
     "indicators": {
@@ -315,6 +325,38 @@
       "new_payment": "Cuota nueva",
       "available": "Te quedaría al mes",
       "exchange_note": "Convertimos todo a {{currency}} con un tipo de cambio de {{rate}} por dólar."
+    },
+    "comparison": {
+      "title": "Comparación de ofertas",
+      "description": "Tus ofertas completas lado a lado. Marcamos la mejor en cuota, costo anual efectivo y costo total.",
+      "metric": "Dato",
+      "best": "Mejor",
+      "rows": {
+        "monthly_payment": "Cuota mensual",
+        "effective_cost": "Costo anual efectivo",
+        "total_cost": "Costo total",
+        "net_disbursement": "Dinero que recibes",
+        "total_paid": "Pagas en total",
+        "rate_and_term": "Tasa y plazo",
+        "debt_burden": "Cuotas sobre tu ingreso",
+        "verdict": "Veredicto"
+      },
+      "rate_and_term": "{{rate}} a {{months}} meses",
+      "view": "Ver detalle",
+      "viewing": "Viendo el detalle",
+      "detail_of": "Detalle de {{name}}"
+    },
+    "distribution": {
+      "title": "Así se reparte tu ingreso",
+      "description": "Cuánto de tu ingreso neto se va en gastos, cuotas y cuánto te queda con el préstamo.",
+      "label": "Reparto de tu ingreso mensual",
+      "slices": {
+        "expenses": "Gastos",
+        "current-debts": "Cuotas que ya pagas",
+        "new-payment": "Cuota nueva",
+        "available": "Te queda"
+      },
+      "over_income": "Tus gastos y cuotas superan tu ingreso: los porcentajes se calculan sobre el total de compromisos."
     },
     "consolidation": {
       "title": "Unificar deudas",
@@ -372,6 +414,15 @@
       "financed_principal": "Capital financiado",
       "total_interest": "Intereses totales",
       "total_insurance": "Seguro total"
+    },
+    "yearly": {
+      "title": "Capital contra interés",
+      "description": "Cuánto de lo que pagas cada año baja tu deuda y cuánto se va en intereses y seguro.",
+      "label": "Gráfico de barras apiladas con el capital, el interés y el seguro pagados por año",
+      "year": "Año {{year}}",
+      "principal": "Capital",
+      "interest": "Interés",
+      "insurance": "Seguro"
     },
     "amortization": {
       "title": "Tabla de amortización",
