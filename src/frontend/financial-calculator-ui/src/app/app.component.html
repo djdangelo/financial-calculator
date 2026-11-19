@@ -1,2 +1,12 @@
 <router-outlet />
 <p-toast position="top-right" />
+<p-toast [key]="pwaToastKey" [position]="pwaToastPosition">
+  <ng-template let-message pTemplate="message">
+    <div class="flex flex-1 flex-col gap-2">
+      <p class="font-bold">{{ message.summary }}</p>
+      <p class="text-sm">{{ message.detail }}</p>
+      <p-button class="self-start" [label]="'layout.pwa.reload' | transloco" icon="pi pi-refresh" size="small"
+        (onClick)="pwa.reload()" />
+    </div>
+  </ng-template>
+</p-toast>
