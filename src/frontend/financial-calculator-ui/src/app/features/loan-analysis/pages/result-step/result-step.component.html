@@ -5,6 +5,16 @@
   @let cost = analysis.cost;
   @let budget = analysis.budget;
 
+  @if (facade.canCompare() && facade.bestOffers(); as best) {
+  <app-offer-comparison [comparisons]="facade.comparisons()" [best]="best" [activeOfferId]="activeOfferId()"
+    (selected)="facade.selectOffer($event)" />
+
+  <h2 class="flex items-center gap-2 pt-2 text-lg font-extrabold text-surface-900 dark:text-surface-0">
+    <i class="pi pi-search text-primary-600 dark:text-primary-300" aria-hidden="true"></i>
+    {{ t('comparison.detail_of', { name: activeOfferName() || ('loan_offers.tabs.untitled' | transloco: { number: activePosition() }) }) }}
+  </h2>
+  }
+
   <app-verdict-card [verdict]="analysis.verdict" [limits]="analysis.limits" />
 
   <div class="grid gap-4 lg:grid-cols-2">
@@ -66,6 +76,9 @@
       }
     </section>
   </div>
+
+  <app-income-distribution [slices]="facade.incomeDistribution()" [currency]="currency"
+    [available]="analysis.availableAfterLoan" />
 
   @if (facade.debts().length > 0) {
   <app-debt-consolidation [debts]="facade.debts()" [consolidatedDebts]="facade.consolidatedDebts()"
@@ -146,6 +159,8 @@
       }
     </dl>
   </section>
+
+  <app-yearly-payments-chart [years]="facade.yearlyPayments()" [currency]="currency" />
 
   <app-amortization-table [rows]="cost.schedule" [currency]="currency" />
   }

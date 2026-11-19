@@ -1,0 +1,140 @@
+<section *transloco="let t; read: 'loan_analysis.comparison'"
+  class="flex flex-col gap-4 rounded-2xl border border-surface-200 bg-surface-0 p-4 transition-colors duration-300 dark:border-surface-800 dark:bg-surface-900 sm:p-5">
+  <header class="flex flex-col gap-1">
+    <h2 class="text-base font-bold text-surface-900 dark:text-surface-0">{{ t('title') }}</h2>
+    <p class="text-sm text-surface-500 dark:text-surface-400">{{ t('description') }}</p>
+  </header>
+
+  <ng-template #bestBadge>
+    <span
+      class="ml-1 inline-flex items-center gap-1 rounded-full bg-primary-100 px-1.5 py-0.5 text-[0.65rem] font-bold uppercase text-primary-800 dark:bg-primary-900 dark:text-primary-100">
+      <i class="pi pi-star-fill text-[0.6rem]" aria-hidden="true"></i>{{ t('best') }}
+    </span>
+  </ng-template>
+
+  <div class="-mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0">
+    <table class="w-full border-collapse text-sm">
+      <thead>
+        <tr class="border-b border-surface-200 dark:border-surface-800">
+          <th scope="col" class="min-w-36 px-3 py-2 text-left">
+            <span class="sr-only">{{ t('metric') }}</span>
+          </th>
+          @for (column of columns(); track column.offer.id) {
+          <th scope="col" [class]="column.columnClass">
+            <span class="block truncate font-bold text-surface-900 dark:text-surface-0">
+              {{ column.offer.bankName || ('loan_offers.tabs.untitled' | transloco: { number: column.position }) }}
+            </span>
+            <span class="text-xs font-normal text-surface-500 dark:text-surface-400">{{ column.offer.currency }}</span>
+          </th>
+          }
+        </tr>
+      </thead>
+      <tbody class="tabular-nums text-surface-700 dark:text-surface-200">
+        <tr class="border-b border-surface-100 dark:border-surface-800">
+          <th scope="row" class="px-3 py-2 text-left font-normal text-surface-600 dark:text-surface-300">
+            {{ t('rows.monthly_payment') }}
+          </th>
+          @for (column of columns(); track column.offer.id) {
+          <td [class]="column.columnClass">
+            <span class="font-bold text-surface-900 dark:text-surface-0">
+              {{ column.analysis.cost.monthlyPayment | money: column.analysis.currency }}
+            </span>
+            @if (best()['monthly-payment'] === column.offer.id) {
+            <ng-container [ngTemplateOutlet]="bestBadge" />
+            }
+          </td>
+          }
+        </tr>
+        <tr class="border-b border-surface-100 dark:border-surface-800">
+          <th scope="row" class="px-3 py-2 text-left font-normal text-surface-600 dark:text-surface-300">
+            {{ t('rows.effective_cost') }}
+          </th>
+          @for (column of columns(); track column.offer.id) {
+          <td [class]="column.columnClass">
+            <span class="font-bold text-surface-900 dark:text-surface-0">
+              {{ column.analysis.cost.effectiveAnnualCostPercent | percentValue }}
+            </span>
+            @if (best()['effective-cost'] === column.offer.id) {
+            <ng-container [ngTemplateOutlet]="bestBadge" />
+            }
+          </td>
+          }
+        </tr>
+        <tr class="border-b border-surface-100 dark:border-surface-800">
+          <th scope="row" class="px-3 py-2 text-left font-normal text-surface-600 dark:text-surface-300">
+            {{ t('rows.total_cost') }}
+          </th>
+          @for (column of columns(); track column.offer.id) {
+          <td [class]="column.columnClass">
+            <span class="font-bold text-surface-900 dark:text-surface-0">
+              {{ column.analysis.cost.totalCost | money: column.analysis.currency }}
+            </span>
+            @if (best()['total-cost'] === column.offer.id) {
+            <ng-container [ngTemplateOutlet]="bestBadge" />
+            }
+          </td>
+          }
+        </tr>
+        <tr class="border-b border-surface-100 dark:border-surface-800">
+          <th scope="row" class="px-3 py-2 text-left font-normal text-surface-600 dark:text-surface-300">
+            {{ t('rows.net_disbursement') }}
+          </th>
+          @for (column of columns(); track column.offer.id) {
+          <td [class]="column.columnClass">{{ column.analysis.cost.netDisbursement | money: column.analysis.currency }}</td>
+          }
+        </tr>
+        <tr class="border-b border-surface-100 dark:border-surface-800">
+          <th scope="row" class="px-3 py-2 text-left font-normal text-surface-600 dark:text-surface-300">
+            {{ t('rows.total_paid') }}
+          </th>
+          @for (column of columns(); track column.offer.id) {
+          <td [class]="column.columnClass">{{ column.analysis.cost.totalPaid | money: column.analysis.currency }}</td>
+          }
+        </tr>
+        <tr class="border-b border-surface-100 dark:border-surface-800">
+          <th scope="row" class="px-3 py-2 text-left font-normal text-surface-600 dark:text-surface-300">
+            {{ t('rows.rate_and_term') }}
+          </th>
+          @for (column of columns(); track column.offer.id) {
+          <td [class]="column.columnClass">
+            {{ t('rate_and_term', { rate: (column.offer.annualRatePercent | percentValue), months: column.offer.termMonths }) }}
+          </td>
+          }
+        </tr>
+        <tr class="border-b border-surface-100 dark:border-surface-800">
+          <th scope="row" class="px-3 py-2 text-left font-normal text-surface-600 dark:text-surface-300">
+            {{ t('rows.debt_burden') }}
+          </th>
+          @for (column of columns(); track column.offer.id) {
+          <td [class]="column.columnClass">{{ column.analysis.indicators.debtBurdenPercent | percentValue }}</td>
+          }
+        </tr>
+        <tr class="border-b border-surface-100 dark:border-surface-800">
+          <th scope="row" class="px-3 py-2 text-left font-normal text-surface-600 dark:text-surface-300">
+            {{ t('rows.verdict') }}
+          </th>
+          @for (column of columns(); track column.offer.id) {
+          <td [class]="column.columnClass">
+            <span class="inline-flex items-center gap-1.5 font-semibold text-surface-900 dark:text-surface-0">
+              <i [class]="column.verdictIcon" aria-hidden="true"></i>
+              {{ ('loan_analysis.verdict.' + column.analysis.verdict + '.short') | transloco }}
+            </span>
+          </td>
+          }
+        </tr>
+        <tr>
+          <td class="px-3 py-2"></td>
+          @for (column of columns(); track column.offer.id) {
+          <td [class]="column.columnClass">
+            @if (column.active) {
+            <span class="text-xs font-semibold text-primary-700 dark:text-primary-300">{{ t('viewing') }}</span>
+            } @else {
+            <p-button [label]="t('view')" size="small" [outlined]="true" (onClick)="selected.emit(column.offer.id)" />
+            }
+          </td>
+          }
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

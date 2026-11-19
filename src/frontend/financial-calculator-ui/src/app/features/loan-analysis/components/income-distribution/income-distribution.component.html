@@ -1,0 +1,36 @@
+<section *transloco="let t; read: 'loan_analysis.distribution'"
+  class="flex flex-col gap-4 rounded-2xl border border-surface-200 bg-surface-0 p-4 transition-colors duration-300 dark:border-surface-800 dark:bg-surface-900 sm:p-5">
+  <header class="flex flex-col gap-1">
+    <h2 class="text-base font-bold text-surface-900 dark:text-surface-0">{{ t('title') }}</h2>
+    <p class="text-sm text-surface-500 dark:text-surface-400">{{ t('description') }}</p>
+  </header>
+
+  <div class="flex w-full gap-0.5" role="img" [attr.aria-label]="t('label')">
+    @for (slice of views(); track slice.key) {
+    <span [class]="slice.blockClass" [style.width.%]="slice.sharePercent"
+      [attr.title]="t('slices.' + slice.key) + ': ' + (slice.amount | money: currency()) + ' (' + (slice.sharePercent | percentValue) + ')'">
+      @if (slice.showsLabel) {
+      <span class="truncate">{{ slice.sharePercent | percentValue }}</span>
+      }
+    </span>
+    }
+  </div>
+
+  <ul class="grid gap-x-6 gap-y-2 text-sm sm:grid-cols-2">
+    @for (slice of views(); track slice.key) {
+    <li class="flex items-center gap-2">
+      <span class="h-3 w-3 shrink-0 rounded-sm" [class]="slice.swatchClass" aria-hidden="true"></span>
+      <span class="flex-1 text-surface-600 dark:text-surface-300">{{ t('slices.' + slice.key) }}</span>
+      <span class="font-semibold tabular-nums text-surface-900 dark:text-surface-0">{{ slice.amount | money: currency() }}</span>
+      <span class="w-14 text-right text-xs tabular-nums text-surface-500 dark:text-surface-400">{{ slice.sharePercent | percentValue }}</span>
+    </li>
+    }
+  </ul>
+
+  @if (isOverIncome()) {
+  <p class="flex items-start gap-2 text-xs font-semibold text-red-600 dark:text-red-400">
+    <i class="pi pi-exclamation-circle mt-0.5" aria-hidden="true"></i>
+    <span>{{ t('over_income') }}</span>
+  </p>
+  }
+</section>

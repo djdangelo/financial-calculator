@@ -9,10 +9,18 @@ import {
 } from '@features/financial-profile/functions/profile-totals.function';
 import { LoanOffersFacade } from '@features/loan-offers/facades';
 import { isDebtConsolidated } from '@features/loan-offers/functions/consolidated-debts.function';
+import { isLoanOfferValid } from '@features/loan-offers/functions/offer-validation.function';
+import { LoanOffer } from '@features/loan-offers/models';
+import { BestOffers } from '../@types/best-offers.type';
+import { MIN_OFFERS_TO_COMPARE } from '../constants/loan-analysis.constant';
 import { analyzeDebtConsolidation } from '../functions/debt-consolidation.function';
+import { buildIncomeDistribution } from '../functions/income-distribution.function';
 import { analyzeLoan } from '../functions/loan-analysis.function';
+import { findBestOffers } from '../functions/offer-comparison.function';
+import { summarizePaymentsByYear } from '../functions/yearly-payments.function';
 import { DebtConsolidation } from '../interfaces/debt-consolidation.interface';
 import { LoanAnalysis } from '../interfaces/loan-analysis.interface';
+import { OfferComparison } from '../interfaces/offer-comparison.interface';
 
 @Injectable({ providedIn: 'root' })
 export class LoanAnalysisFacade {
@@ -22,6 +30,7 @@ export class LoanAnalysisFacade {
 
   readonly completedSteps = this.offers.completedSteps;
   readonly debts = this.profile.debts;
+  readonly activeOffer = this.offers.offer;
 
   readonly consolidatedDebts = computed(() => {
     const offer = this.offers.offer();
@@ -31,19 +40,7 @@ export class LoanAnalysisFacade {
 
   readonly analysis = computed<LoanAnalysis | null>(() => {
     const offer = this.offers.offer();
-    if (offer === null || !this.offers.isOfferComplete()) {
-      return null;
-    }
-
-    const rates = this.settings.exchangeRates();
-    const keptDebts = this.debts().filter(debt => !isDebtConsolidated(offer, debt.id));
-    return analyzeLoan({
-      offer,
-      netIncome: calculateNetMonthlyIncome(this.profile.incomes(), offer.currency, rates),
-      expenses: calculateMonthlyExpenses(this.profile.expenses(), offer.currency, rates),
-      currentDebtPayments: calculateMonthlyDebtPayments(keptDebts, offer.currency, rates),
-      limits: this.settings.burdenLimits()
-    });
+    return offer !== null && this.offers.isOfferComplete() ? this.analyzeOffer(offer) : null;
   });
 
   readonly consolidation = computed<DebtConsolidation | null>(() => {
@@ -61,13 +58,48 @@ export class LoanAnalysisFacade {
     });
   });
 
+  readonly incomeDistribution = computed(() => {
+    const analysis = this.analysis();
+    return analysis === null ? [] : buildIncomeDistribution(analysis.budget);
+  });
+  readonly yearlyPayments = computed(() => summarizePaymentsByYear(this.analysis()?.cost.schedule ?? []));
+
+  readonly comparisons = computed<OfferComparison[]>(() =>
+    this.offers.offers().flatMap((offer, index) =>
+      isLoanOfferValid(offer) ? [{ offer, analysis: this.analyzeOffer(offer), position: index + 1 }] : []
+    )
+  );
+  readonly canCompare = computed(() => this.comparisons().length >= MIN_OFFERS_TO_COMPARE);
+  readonly bestOffers = computed<BestOffers | null>(() => {
+    const analysis = this.analysis();
+    return analysis === null
+      ? null
+      : findBestOffers(this.comparisons(), analysis.currency, this.settings.exchangeRates());
+  });
+
   readonly usesExchangeRate = computed(() => {
     const offer = this.offers.offer();
     const entries = [...this.profile.incomes(), ...this.profile.expenses(), ...this.debts()];
     return offer !== null && usesAnotherCurrency(entries.map(entry => entry.currency), offer.currency);
   });
 
+  selectOffer(id: string): void {
+    this.offers.selectOffer(id);
+  }
+
   toggleConsolidatedDebt(debtId: string): void {
     this.offers.toggleConsolidatedDebt(debtId);
+  }
+
+  private analyzeOffer(offer: LoanOffer): LoanAnalysis {
+    const rates = this.settings.exchangeRates();
+    const keptDebts = this.debts().filter(debt => !isDebtConsolidated(offer, debt.id));
+    return analyzeLoan({
+      offer,
+      netIncome: calculateNetMonthlyIncome(this.profile.incomes(), offer.currency, rates),
+      expenses: calculateMonthlyExpenses(this.profile.expenses(), offer.currency, rates),
+      currentDebtPayments: calculateMonthlyDebtPayments(keptDebts, offer.currency, rates),
+      limits: this.settings.burdenLimits()
+    });
   }
 }

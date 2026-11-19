@@ -1,6 +1,10 @@
+import { ColorScheme } from '@core/@types/color-scheme.type';
+import { OfferTabState } from '@features/loan-offers/@types/offer-tab-state.type';
 import { BurdenStatus } from '../@types/burden-status.type';
 import { DebtOptionState } from '../@types/debt-option-state.type';
+import { IncomeSliceKey } from '../@types/income-slice-key.type';
 import { Verdict } from '../@types/verdict.type';
+import { ChartTheme } from '../interfaces/chart-theme.interface';
 
 export const INTERNAL_RATE_MAX_MONTHLY = 1;
 export const INTERNAL_RATE_TOLERANCE = 1e-10;
@@ -60,3 +64,52 @@ export const CONSOLIDATION_DEBT_ROW_CLASS: Record<DebtOptionState, string> = {
   selected: 'flex cursor-pointer items-center gap-3 rounded-xl border p-3 transition-colors border-primary-300 bg-primary-50 dark:border-primary-800 dark:bg-primary-950',
   idle: 'flex cursor-pointer items-center gap-3 rounded-xl border p-3 transition-colors border-surface-200 hover:bg-surface-50 dark:border-surface-800 dark:hover:bg-surface-950'
 };
+
+export const MIN_OFFERS_TO_COMPARE = 2;
+
+export const INCOME_SLICE_SWATCH_CLASS: Record<IncomeSliceKey, string> = {
+  expenses: 'bg-[#2a78d6] dark:bg-[#3987e5]',
+  'current-debts': 'bg-[#eb6834] dark:bg-[#d95926]',
+  'new-payment': 'bg-[#1baf7a] dark:bg-[#199e70]',
+  available: 'bg-[#eda100] dark:bg-[#c98500]'
+};
+
+export const INCOME_SLICE_BLOCK_CLASS: Record<IncomeSliceKey, string> = {
+  expenses: 'flex h-7 min-w-0 items-center overflow-hidden rounded px-1.5 text-xs font-semibold text-white bg-[#2a78d6] dark:bg-[#3987e5]',
+  'current-debts': 'flex h-7 min-w-0 items-center overflow-hidden rounded px-1.5 text-xs font-semibold text-white bg-[#eb6834] dark:bg-[#d95926]',
+  'new-payment': 'flex h-7 min-w-0 items-center overflow-hidden rounded px-1.5 text-xs font-semibold text-[#0b0b0b] bg-[#1baf7a] dark:bg-[#199e70]',
+  available: 'flex h-7 min-w-0 items-center overflow-hidden rounded px-1.5 text-xs font-semibold text-[#0b0b0b] bg-[#eda100] dark:bg-[#c98500]'
+};
+
+export const MIN_LABELED_SLICE_PERCENT = 9;
+
+export const CHART_THEME: Record<ColorScheme, ChartTheme> = {
+  light: {
+    principal: '#2a78d6',
+    interest: '#eb6834',
+    insurance: '#1baf7a',
+    surface: '#ffffff',
+    text: '#475569',
+    grid: '#e2e8f0'
+  },
+  dark: {
+    principal: '#3987e5',
+    interest: '#d95926',
+    insurance: '#199e70',
+    surface: '#0f172a',
+    text: '#cbd5e1',
+    grid: '#1e293b'
+  }
+};
+
+export const CHART_BAR_MAX_THICKNESS = 24;
+export const CHART_BAR_RADIUS = 4;
+export const CHART_SEGMENT_GAP = 2;
+export const CHART_FONT_SIZE = 12;
+
+export const COMPARISON_COLUMN_CLASS: Record<OfferTabState, string> = {
+  active: 'min-w-40 px-3 py-2 text-right align-top bg-primary-50 dark:bg-primary-950',
+  idle: 'min-w-40 px-3 py-2 text-right align-top'
+};
+
+export const YEARLY_CHART_HEIGHT = '18rem';

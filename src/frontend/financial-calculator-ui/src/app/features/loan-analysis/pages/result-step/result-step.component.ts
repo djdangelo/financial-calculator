@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
-import { TranslocoDirective } from '@ngneat/transloco';
+import { TranslocoDirective, TranslocoPipe } from '@ngneat/transloco';
 import { DEFAULT_CURRENCY } from '@core/constants/currency.constant';
 import { AppSettingsFacade } from '@core/facades/app-settings.facade';
 import { formatExchangeRate } from '@core/functions/currency.function';
@@ -12,7 +12,10 @@ import { AmortizationTableComponent } from '../../components/amortization-table/
 import { BurdenIndicatorComponent } from '../../components/burden-indicator/burden-indicator.component';
 import { BurdenLimitsComponent } from '../../components/burden-limits/burden-limits.component';
 import { DebtConsolidationComponent } from '../../components/debt-consolidation/debt-consolidation.component';
+import { IncomeDistributionComponent } from '../../components/income-distribution/income-distribution.component';
+import { OfferComparisonComponent } from '../../components/offer-comparison/offer-comparison.component';
 import { VerdictCardComponent } from '../../components/verdict-card/verdict-card.component';
+import { YearlyPaymentsChartComponent } from '../../components/yearly-payments-chart/yearly-payments-chart.component';
 import { AVAILABLE_AFTER_LOAN_CLASS } from '../../constants/loan-analysis.constant';
 import { LoanAnalysisFacade } from '../../facades';
 
@@ -21,6 +24,7 @@ import { LoanAnalysisFacade } from '../../facades';
   standalone: true,
   imports: [
     TranslocoDirective,
+    TranslocoPipe,
     WizardStepFrameComponent,
     MoneyPipe,
     PercentValuePipe,
@@ -28,7 +32,10 @@ import { LoanAnalysisFacade } from '../../facades';
     BurdenIndicatorComponent,
     BurdenLimitsComponent,
     DebtConsolidationComponent,
-    VerdictCardComponent
+    IncomeDistributionComponent,
+    OfferComparisonComponent,
+    VerdictCardComponent,
+    YearlyPaymentsChartComponent
   ],
   templateUrl: './result-step.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -44,6 +51,11 @@ export class ResultStepComponent {
   );
   readonly feeMode = computed(() => this.offers.offer()?.feeMode ?? DEFAULT_FEE_MODE);
   readonly nominalRate = computed(() => this.offers.offer()?.annualRatePercent ?? 0);
+  readonly activeOfferId = computed(() => this.offers.offer()?.id ?? null);
+  readonly activeOfferName = computed(() => this.offers.offer()?.bankName.trim() ?? '');
+  readonly activePosition = computed(() =>
+    this.offers.offers().findIndex(offer => offer.id === this.activeOfferId()) + 1
+  );
   readonly exchangeRate = computed(() =>
     formatExchangeRate(this.settings.exchangeRates().unitsPerBase[DEFAULT_CURRENCY], DEFAULT_CURRENCY)
   );
