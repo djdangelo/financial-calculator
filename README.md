@@ -2,7 +2,7 @@
 
 Aplicación web que le indica a una persona si puede o no tomar un préstamo, a partir de su estado financiero real y de la oferta que le hace el banco. Está pensada para el mercado financiero de Honduras y trabaja en lempiras (HNL) y dólares (USD).
 
-> **Estado:** en desarrollo. Ya responde la pregunta principal: el asistente pide ingresos, gastos, deudas y la oferta del banco, y muestra el veredicto con los indicadores 80/40 editables, el costo anual efectivo y la tabla de amortización. También evalúa la unificación: la persona marca las deudas que pagaría con el préstamo y la app compara la cuota, el saldo cubierto y el costo total, y dice si le conviene. Permite guardar hasta cuatro ofertas y compararlas lado a lado, y muestra cómo se reparte el ingreso y cuánto de cada año va a capital y a intereses. El resultado se puede imprimir o guardar en PDF, e incluye una guía para leerlo. Faltan los extras: monto máximo de préstamo, aviso de riesgo cambiario, PWA y publicación.
+> **Estado:** todas las fases del plan están implementadas. Responde la pregunta principal: el asistente pide ingresos, gastos, deudas y la oferta del banco, y muestra el veredicto con los indicadores 80/40 editables, el costo anual efectivo y la tabla de amortización. También evalúa la unificación: la persona marca las deudas que pagaría con el préstamo y la app compara la cuota, el saldo cubierto y el costo total, y dice si le conviene. Permite guardar hasta cuatro ofertas y compararlas lado a lado, y muestra cómo se reparte el ingreso y cuánto de cada año va a capital y a intereses. El resultado se puede imprimir o guardar en PDF, e incluye una guía para leerlo. Calcula el monto máximo que la persona puede pedir con la tasa y el plazo de la oferta, avisa del riesgo cambiario cuando gana en una moneda y se endeuda en otra, y se puede instalar como app y usar sin conexión.
 
 ## Qué hace
 
@@ -11,6 +11,7 @@ Aplicación web que le indica a una persona si puede o no tomar un préstamo, a 
 3. **Calcula y responde:** cuota mensual, tabla de amortización, costo anual efectivo, nivel de endeudamiento y un veredicto sobre si puede tomar el préstamo.
 4. **Evalúa la unificación de deudas:** compara las cuotas y el costo total de las deudas actuales contra el préstamo nuevo.
 5. **Compara ofertas** de distintos bancos contra el mismo perfil financiero.
+6. **Calcula el monto máximo** que se puede pedir dentro de los límites 80/40 y **avisa del riesgo cambiario** si el préstamo y el ingreso están en monedas distintas.
 
 ## Criterios de endeudamiento
 
@@ -74,7 +75,11 @@ Karma usa Chrome. Si solo tienes Edge, define antes la variable de entorno `CHRO
 
 ## Despliegue
 
-La app se publicará en GitHub Pages de forma automática, con CI/CD en GitHub Actions.
+Cada push a `main` ejecuta el workflow `.github/workflows/deploy-pages.yml`: instala dependencias, corre las pruebas, compila con `--base-href` igual al nombre del repositorio, copia `index.html` como `404.html` para que funcionen las rutas de Angular y publica en GitHub Pages.
+
+Antes del primer despliegue hay que activar Pages en el repositorio: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+
+La app es una PWA: el service worker solo se activa en el build de producción, guarda la app y las traducciones para usarla sin conexión y avisa cuando hay una versión nueva.
 
 ## Aviso
 
