@@ -1,7 +1,8 @@
 {
   "app": {
     "name": "Financial Calculator",
-    "title": "Financial Calculator · Can I take this loan?"
+    "title": "Financial Calculator · Can I take this loan?",
+    "guide": "User guide"
   },
   "layout": {
     "language": {
@@ -17,7 +18,10 @@
     },
     "footer": {
       "privacy": "Your data is stored only in this browser. There is no server and no external database.",
-      "disclaimer": "Results are for guidance only and are not financial advice. The final terms of a loan are set by each institution."
+      "disclaimer": "Results are for guidance only and are not financial advice. The final terms of a loan are set by each institution.",
+      "nav_label": "Information",
+      "guide": "User guide",
+      "about": "About"
     },
     "privacy_notice": {
       "title": "Your data stays in your browser",
@@ -68,7 +72,8 @@
         "title": "The result",
         "description": "Your monthly payment, what the loan really costs and whether you can take it without overextending yourself."
       }
-    }
+    },
+    "guide": "How it works"
   },
   "financial_profile": {
     "steps": {
@@ -486,6 +491,185 @@
           "text": "If you have amounts in lempiras and dollars, we convert them to the loan currency with the exchange rate you chose."
         }
       }
+    }
+  },
+  "guide": {
+    "eyebrow": "User guide",
+    "title": "How to use the calculator",
+    "description": "In about five minutes you will know whether you can pay a loan without stretching yourself too thin. Here we explain each step in plain words and show you three real examples.",
+    "prepare": {
+      "title": "Before you start, have at hand",
+      "description": "You do not need an account. Just gather these details so the result matches your reality.",
+      "items": {
+        "payslip": {
+          "title": "Your payslip",
+          "text": "Or your sales and costs, if you run your own business."
+        },
+        "expenses": {
+          "title": "Your monthly expenses",
+          "text": "Rent, food, power, water, internet, transport and school fees."
+        },
+        "statements": {
+          "title": "Your account statements",
+          "text": "To see the payment and balance of each card or loan."
+        },
+        "quote": {
+          "title": "The bank quote",
+          "text": "With the amount, rate, term and the charges they apply."
+        }
+      }
+    },
+    "steps": {
+      "title": "Step by step",
+      "description": "The app guides you through five steps. You can go back at any time to fix something.",
+      "autosave": "Everything is saved automatically in this browser. You can close the page and pick up where you left off.",
+      "items": {
+        "income": {
+          "title": "Your income",
+          "text": "Enter what you receive each month after deductions. If you are on a salary, use the net amount on your payslip. If you run a business, enter your average sales and what it costs to run it: the app works out what you keep. You can add several incomes, each in lempiras or dollars.",
+          "tip": "If your sales change a lot from month to month, use an average of the last few months."
+        },
+        "expenses": {
+          "title": "Your expenses",
+          "text": "Add what you spend each month on housing, food, utilities, transport, education and health. It does not need to be exact to the cent.",
+          "tip": "An honest average gives a better result than an optimistic number."
+        },
+        "debts": {
+          "title": "Your debts",
+          "text": "Add every debt you pay today: cards, loans or store credit. The payment and balance are required. The rate and remaining months are optional, but they help you see whether consolidating debts pays off.",
+          "tip": "If you have no debts, you can move on without adding any."
+        },
+        "offer": {
+          "title": "The bank offer",
+          "text": "Copy the details from the quote: amount, annual rate and term in months. If they charge a fee, insurance or other charges, add them, because they change what you really pay.",
+          "tip": "If you have offers from several banks, add them with \"Add another offer\" to compare them (up to four)."
+        },
+        "result": {
+          "title": "Your result",
+          "text": "You will see whether you can take the loan, how much you have left each month, the most you could borrow, the real cost and the payment schedule. From here you can also check debts to consolidate, compare offers and print or save as PDF.",
+          "tip": "At the end of the result, \"How to read your result\" explains every term."
+        }
+      }
+    },
+    "examples": {
+      "title": "Three examples",
+      "description": "Made-up people with real figures from the app, so you know what to expect.",
+      "facts_label": "Their details",
+      "outcome_label": "What the app tells them",
+      "note": "The figures come from the app with the 80 % and 40 % limits. \"In total\" amounts are rounded.",
+      "items": {
+        "ana": {
+          "title": "Ana wants to buy a car",
+          "story": "Ana works in an office and needs a loan for the down payment on a car. She has no debts.",
+          "facts": {
+            "income": "Net salary: L 25,000 a month.",
+            "expenses": "Household expenses: L 9,000 a month.",
+            "debts": "Debts: none.",
+            "offer": "Offer: L 80,000 at 18 % a year, over 36 months, with a 2 % fee taken out of the money she receives."
+          },
+          "outcome": "Her payment would be L 2,892.19. Her expenses and payments come to 47.6 % of her income and her debts to 11.6 %, so the app tells her \"You can take this loan\". It also shows that with that rate and term she could borrow up to about L 276,600 without going over her limits."
+        },
+        "carlos": {
+          "title": "Carlos wants to consolidate his debts",
+          "story": "Carlos runs a small corner shop and has two debts that weigh on him every month. A bank offers him a loan to pay them both off.",
+          "facts": {
+            "income": "Sales: L 60,000 a month and business costs: L 35,000. He keeps L 25,000.",
+            "expenses": "Household expenses: L 10,000 a month.",
+            "debts": "Credit card: L 60,000 balance, L 3,500 payment and a 54 % rate. Personal loan: L 30,000 balance, L 2,000 payment and 18 months left.",
+            "offer": "Offer: L 95,000 at 26 % a year, over 60 months, with a 3 % fee taken out and L 150 of insurance a month.",
+            "how": "In the result, he checks both debts under \"Consolidate debts\"."
+          },
+          "outcome": "He receives L 92,150, enough to pay off both debts, with L 2,150 left over. His payment drops from L 5,500 to L 2,994.34 and the app tells him consolidating pays off. But it also warns him that, by stretching the term to five years, he would end up paying about L 24,000 more in total. The choice is his: more breathing room each month in exchange for a higher total cost."
+        },
+        "maria": {
+          "title": "María compares two banks",
+          "story": "María needs L 100,000 and two banks made her an offer. At first sight, Bank A looks better because its rate is lower.",
+          "facts": {
+            "need": "Amount: L 100,000 over 48 months at both banks.",
+            "offer_a": "Bank A: 19 % a year, a 4 % fee added to the loan and L 250 of insurance a month.",
+            "offer_b": "Bank B: 21 % a year, with no fee and no insurance.",
+            "how": "She adds both in the offer step with \"Add another offer\"."
+          },
+          "outcome": "In the comparison, Bank B comes out best in payment (L 3,096.57 versus L 3,359.61), effective annual cost (23.1 % versus 29.1 %) and total cost. The fee and the insurance make the lower rate the more expensive option: with Bank A she would pay about L 12,600 more."
+        }
+      }
+    },
+    "faq": {
+      "title": "Frequently asked questions",
+      "items": {
+        "privacy": {
+          "question": "Where is my data stored?",
+          "answer": "Only in this browser. The app has no server and no external database, so nobody else sees your information. If you switch browsers or devices, you will need to enter it again."
+        },
+        "delete": {
+          "question": "How do I delete my data?",
+          "answer": "With the \"Delete my data\" button at the bottom of any page. Everything is erased and you go back to the start."
+        },
+        "limits": {
+          "question": "Why 80 % and 40 %?",
+          "answer": "They are reference criteria used by banks and advisers: your expenses and payments should not go over 80 % of your income, and your debt payments alone should not go over 40 %. They are not a law and you can adjust them in the result."
+        },
+        "effective_cost": {
+          "question": "What is the effective annual cost?",
+          "answer": "It is what the loan really costs you each year, adding up the rate, the fee, the insurance and other charges. To compare offers, look at this number and not only at the rate."
+        },
+        "currency": {
+          "question": "I earn in lempiras. Can I analyze a loan in dollars?",
+          "answer": "Yes. Each amount has its own currency and the app converts everything with the exchange rate you choose. If the loan is in a different currency from your income, it warns you about the exchange rate risk."
+        },
+        "offline": {
+          "question": "Can I use it without internet?",
+          "answer": "Yes. You can install it from your browser as an app and open it offline."
+        },
+        "advice": {
+          "question": "Does the result mean the bank will approve me?",
+          "answer": "No. It is a guide to help you decide with more information. Each bank evaluates your application with its own policies."
+        }
+      }
+    },
+    "cta": {
+      "title": "Ready to try it?",
+      "text": "It takes about five minutes and you do not need an account.",
+      "button": "Start now"
+    }
+  },
+  "about": {
+    "eyebrow": "About",
+    "title": "Who is behind this app",
+    "description": "Why the Financial Calculator exists and who built it.",
+    "app": {
+      "title": "About the app",
+      "purpose": "The Financial Calculator was born to answer a simple question before signing a loan: can I pay it without drowning? It takes your reality (income, expenses and debts), compares it with the bank offer using clear criteria and shows you the real cost of each option.",
+      "privacy": "It runs entirely in your browser: no server, no accounts, no tracking.",
+      "market": "Built for Honduras, in lempiras and dollars.",
+      "offline": "It can be installed as an app and used offline.",
+      "built_with": "Built with",
+      "disclaimer": "Results are for guidance only and do not replace advice from a professional or the bank's own evaluation.",
+      "guide_link": "Read the user guide"
+    },
+    "developer": {
+      "label": "Built by",
+      "role": "Senior Full Stack Engineer",
+      "location": "San Pedro Sula, Honduras · Available for remote work",
+      "summary": "A systems engineer who designs and builds web and mobile applications that grow without losing stability. He covers the whole cycle: from the database and APIs in .NET and Node.js to Angular interfaces and Flutter mobile apps, with automated cloud deployments.",
+      "principles": "He is passionate about clean architecture, solid design patterns and software that stays easy to maintain over time. Today he focuses on scalable microservices and experiences that work well on any platform."
+    },
+    "stack": {
+      "title": "Technologies he works with",
+      "groups": {
+        "backend": "Backend",
+        "frontend": "Frontend",
+        "mobile": "Mobile",
+        "data": "Databases",
+        "cloud": "Cloud and DevOps"
+      }
+    },
+    "links": {
+      "title": "Learn more about his work",
+      "portfolio": "Portfolio",
+      "github": "GitHub",
+      "email": "Email",
+      "new_tab": "(opens in a new tab)"
     }
   }
 }
