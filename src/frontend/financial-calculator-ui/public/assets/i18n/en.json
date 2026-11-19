@@ -311,9 +311,49 @@
       "net_income": "Net income",
       "expenses": "Expenses",
       "current_debts": "Payments you already make",
+      "kept_debts": "Payments you keep paying",
       "new_payment": "New payment",
       "available": "Left each month",
       "exchange_note": "We convert everything to {{currency}} at an exchange rate of {{rate}} per dollar."
+    },
+    "consolidation": {
+      "title": "Consolidate debts",
+      "description": "Check the debts you would pay off with this loan. Their payments are left out of your debt burden.",
+      "debt_detail": "{{payment}} a month · balance {{balance}}",
+      "empty": "Check at least one debt to see if consolidating it pays off.",
+      "recommended": {
+        "title": "Consolidating these debts pays off",
+        "message": "The loan covers them, your payment drops {{savings}} a month and you stay within your limits."
+      },
+      "not_recommended": {
+        "title": "Consolidating them this way does not pay off"
+      },
+      "issues": {
+        "insufficient-amount": "The money you receive is not enough to pay them off: you are {{amount}} short.",
+        "higher-payment": "The new payment is not lower than the payments it replaces.",
+        "over-limits": "With the new payment you would go over your debt limits."
+      },
+      "payment": {
+        "title": "Monthly payment",
+        "before": "You paid {{amount}} for these debts",
+        "lower": "You pay {{amount}} less a month",
+        "higher": "You pay {{amount}} more a month"
+      },
+      "coverage": {
+        "title": "Balance to pay off",
+        "received": "You receive {{amount}} from the loan",
+        "left": "{{amount}} left over",
+        "missing": "{{amount}} short"
+      },
+      "total": {
+        "title": "Total cost",
+        "current": "If you keep going: {{amount}}",
+        "new": "With the loan: {{amount}}",
+        "more": "Even if the payment drops, you would end up paying {{amount}} more.",
+        "less": "You save {{amount}} in total.",
+        "unknown": "Add the rate or remaining months of each debt to compare the total cost.",
+        "note": "The cost of your debts is estimated from their payment, rate and remaining months. The cost with the loan subtracts the money left over, or adds what you are short to pay them off."
+      }
     },
     "cost": {
       "title": "What the loan costs",

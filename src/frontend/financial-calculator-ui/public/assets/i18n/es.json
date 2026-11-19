@@ -311,9 +311,49 @@
       "net_income": "Ingreso neto",
       "expenses": "Gastos",
       "current_debts": "Cuotas que ya pagas",
+      "kept_debts": "Cuotas que sigues pagando",
       "new_payment": "Cuota nueva",
       "available": "Te quedaría al mes",
       "exchange_note": "Convertimos todo a {{currency}} con un tipo de cambio de {{rate}} por dólar."
+    },
+    "consolidation": {
+      "title": "Unificar deudas",
+      "description": "Marca las deudas que pagarías con este préstamo. Sus cuotas salen del cálculo de tu endeudamiento.",
+      "debt_detail": "{{payment}} al mes · saldo {{balance}}",
+      "empty": "Marca al menos una deuda para ver si te conviene unificarla.",
+      "recommended": {
+        "title": "Te conviene unificar estas deudas",
+        "message": "El préstamo las cubre, tu cuota baja {{savings}} al mes y quedas dentro de tus límites."
+      },
+      "not_recommended": {
+        "title": "No te conviene unificarlas así"
+      },
+      "issues": {
+        "insufficient-amount": "El dinero que recibes no alcanza para pagarlas: te faltan {{amount}}.",
+        "higher-payment": "La cuota nueva no es menor que las cuotas que reemplaza.",
+        "over-limits": "Con la cuota nueva pasarías tus límites de endeudamiento."
+      },
+      "payment": {
+        "title": "Cuota mensual",
+        "before": "Antes pagabas {{amount}} por estas deudas",
+        "lower": "Pagas {{amount}} menos al mes",
+        "higher": "Pagas {{amount}} más al mes"
+      },
+      "coverage": {
+        "title": "Saldo a pagar",
+        "received": "Recibes {{amount}} del préstamo",
+        "left": "Te sobran {{amount}}",
+        "missing": "Te faltan {{amount}}"
+      },
+      "total": {
+        "title": "Costo total",
+        "current": "Si sigues como vas: {{amount}}",
+        "new": "Con el préstamo: {{amount}}",
+        "more": "Aunque la cuota baje, terminarías pagando {{amount}} más.",
+        "less": "Ahorras {{amount}} en total.",
+        "unknown": "Agrega la tasa o los meses restantes de cada deuda para comparar el costo total.",
+        "note": "El costo de tus deudas se estima con su cuota, tasa y meses restantes. Al costo con el préstamo le restamos el dinero que te sobra o le sumamos el que te falta para pagarlas."
+      }
     },
     "cost": {
       "title": "Lo que cuesta el préstamo",
