@@ -11,6 +11,7 @@ import { PercentValuePipe } from '@shared/pipes/percent-value.pipe';
 import { AmortizationTableComponent } from '../../components/amortization-table/amortization-table.component';
 import { BurdenIndicatorComponent } from '../../components/burden-indicator/burden-indicator.component';
 import { BurdenLimitsComponent } from '../../components/burden-limits/burden-limits.component';
+import { DebtConsolidationComponent } from '../../components/debt-consolidation/debt-consolidation.component';
 import { VerdictCardComponent } from '../../components/verdict-card/verdict-card.component';
 import { AVAILABLE_AFTER_LOAN_CLASS } from '../../constants/loan-analysis.constant';
 import { LoanAnalysisFacade } from '../../facades';
@@ -26,6 +27,7 @@ import { LoanAnalysisFacade } from '../../facades';
     AmortizationTableComponent,
     BurdenIndicatorComponent,
     BurdenLimitsComponent,
+    DebtConsolidationComponent,
     VerdictCardComponent
   ],
   templateUrl: './result-step.component.html',

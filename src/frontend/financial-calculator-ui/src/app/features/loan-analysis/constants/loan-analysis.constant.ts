@@ -1,4 +1,5 @@
 import { BurdenStatus } from '../@types/burden-status.type';
+import { DebtOptionState } from '../@types/debt-option-state.type';
 import { Verdict } from '../@types/verdict.type';
 
 export const INTERNAL_RATE_MAX_MONTHLY = 1;
@@ -41,4 +42,21 @@ export const BURDEN_VALUE_CLASS: Record<BurdenStatus, string> = {
 export const AVAILABLE_AFTER_LOAN_CLASS: Record<BurdenStatus, string> = {
   within: 'text-lg font-extrabold tabular-nums text-surface-900 dark:text-surface-0',
   over: 'text-lg font-extrabold tabular-nums text-red-600 dark:text-red-400'
+};
+
+export const CONSOLIDATION_REQUIRED_VERDICT: Verdict = 'can-take';
+
+export const CONSOLIDATION_RESULT_CLASS: Record<BurdenStatus, string> = {
+  within: 'flex items-start gap-3 rounded-xl border p-4 border-primary-200 bg-primary-50 dark:border-primary-900 dark:bg-primary-950',
+  over: 'flex items-start gap-3 rounded-xl border p-4 border-amber-200 bg-amber-50 dark:border-amber-900 dark:bg-amber-950'
+};
+
+export const CONSOLIDATION_RESULT_ICON: Record<BurdenStatus, string> = {
+  within: 'pi pi-check-circle mt-0.5 text-lg text-primary-700 dark:text-primary-300',
+  over: 'pi pi-exclamation-triangle mt-0.5 text-lg text-amber-700 dark:text-amber-300'
+};
+
+export const CONSOLIDATION_DEBT_ROW_CLASS: Record<DebtOptionState, string> = {
+  selected: 'flex cursor-pointer items-center gap-3 rounded-xl border p-3 transition-colors border-primary-300 bg-primary-50 dark:border-primary-800 dark:bg-primary-950',
+  idle: 'flex cursor-pointer items-center gap-3 rounded-xl border p-3 transition-colors border-surface-200 hover:bg-surface-50 dark:border-surface-800 dark:hover:bg-surface-950'
 };
