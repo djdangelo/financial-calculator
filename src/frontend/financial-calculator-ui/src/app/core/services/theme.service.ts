@@ -4,15 +4,20 @@ import { ThemeMode } from '@core/@types/theme-mode.type';
 import { DARK_CLASS, DARK_MEDIA_QUERY, THEME_STORAGE_KEY } from '@core/constants/theme.constant';
 import { writeLocalStorage } from '@core/functions/local-storage.function';
 import { readStoredThemeMode } from '@core/functions/theme.function';
+import { PrintService } from '@core/services/print.service';
 
 @Injectable({ providedIn: 'root' })
 export class ThemeService {
   private readonly darkQuery = window.matchMedia(DARK_MEDIA_QUERY);
   private readonly systemPrefersDark = signal(this.darkQuery.matches);
+  private readonly print = inject(PrintService);
 
   readonly mode = signal<ThemeMode>(readStoredThemeMode());
 
   readonly colorScheme = computed<ColorScheme>(() => {
+    if (this.print.isPrinting()) {
+      return 'light';
+    }
     const mode = this.mode();
     if (mode === 'system') {
       return this.systemPrefersDark() ? 'dark' : 'light';
