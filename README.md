@@ -12,6 +12,7 @@ Aplicación web que le indica a una persona si puede o no tomar un préstamo, a 
 4. **Evalúa la unificación de deudas:** compara las cuotas y el costo total de las deudas actuales contra el préstamo nuevo.
 5. **Compara ofertas** de distintos bancos contra el mismo perfil financiero.
 6. **Calcula el monto máximo** que se puede pedir dentro de los límites 80/40 y **avisa del riesgo cambiario** si el préstamo y el ingreso están en monedas distintas.
+7. **Incluye un manual de uso** con ejemplos en lenguaje sencillo y una sección **Acerca de** con información del desarrollador.
 
 ## Criterios de endeudamiento
 
@@ -46,6 +47,9 @@ financial-calculator/
                 ├── layout/      shell de la aplicación
                 ├── shared/      componentes, pipes y utilidades comunes
                 └── features/
+                    ├── home/                portada
+                    ├── guide/               manual de uso con ejemplos y preguntas frecuentes
+                    ├── about/               acerca de la app y del desarrollador
                     ├── financial-profile/   ingresos, gastos y deudas actuales
                     ├── loan-offers/         ofertas de préstamo
                     └── loan-analysis/       resultado, amortización, unificación y comparación
