@@ -21,6 +21,7 @@
     "@fontsource-variable/inter": "^5.2.5",
     "@ngneat/transloco": "^6.0.4",
     "@primeuix/themes": "2.0.3",
+    "chart.js": "^4.5.0",
     "idb": "^8.0.4",
     "primeicons": "^7.0.0",
     "primeng": "^18.0.2",
