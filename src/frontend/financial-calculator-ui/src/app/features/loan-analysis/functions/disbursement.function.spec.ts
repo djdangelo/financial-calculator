@@ -17,7 +17,8 @@ describe('disbursement functions', () => {
     disbursementFeePercent: 2,
     feeMode: 'deducted',
     monthlyInsurance: 0,
-    otherInitialCharges: 0
+    otherInitialCharges: 0,
+    consolidatedDebtIds: []
   };
 
   it('calculates the fee over the requested amount', () => {

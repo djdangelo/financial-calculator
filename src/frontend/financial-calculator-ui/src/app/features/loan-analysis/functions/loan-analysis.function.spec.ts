@@ -15,7 +15,8 @@ describe('loan analysis functions', () => {
     disbursementFeePercent: 2,
     feeMode: 'deducted',
     monthlyInsurance: 50,
-    otherInitialCharges: 0
+    otherInitialCharges: 0,
+    consolidatedDebtIds: []
   };
   const input: LoanAnalysisInput = {
     offer,

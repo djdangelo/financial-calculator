@@ -15,6 +15,11 @@ export function createLoanOffer(currency: CurrencyCode): LoanOffer {
     disbursementFeePercent: 0,
     feeMode: DEFAULT_FEE_MODE,
     monthlyInsurance: 0,
-    otherInitialCharges: 0
+    otherInitialCharges: 0,
+    consolidatedDebtIds: []
   };
+}
+
+export function restoreLoanOffer(stored: LoanOffer): LoanOffer {
+  return { ...stored, consolidatedDebtIds: stored.consolidatedDebtIds ?? [] };
 }

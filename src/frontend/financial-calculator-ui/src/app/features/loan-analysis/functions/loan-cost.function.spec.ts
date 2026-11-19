@@ -13,7 +13,8 @@ describe('summarizeLoanCost', () => {
     disbursementFeePercent: 2,
     feeMode: 'deducted',
     monthlyInsurance: 50,
-    otherInitialCharges: 0
+    otherInitialCharges: 0,
+    consolidatedDebtIds: []
   };
 
   it('summarizes an offer with the fee deducted', () => {

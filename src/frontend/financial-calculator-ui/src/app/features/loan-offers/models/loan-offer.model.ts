@@ -12,4 +12,5 @@ export interface LoanOffer extends DatedRecord {
   feeMode: FeeMode;
   monthlyInsurance: number;
   otherInitialCharges: number;
+  consolidatedDebtIds: string[];
 }

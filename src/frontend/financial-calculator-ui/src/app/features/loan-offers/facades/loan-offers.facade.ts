@@ -7,7 +7,8 @@ import { UserDataService } from '@core/services/user-data.service';
 import { FinancialProfileFacade } from '@features/financial-profile/facades';
 import { summarizeLoanCost } from '@features/loan-analysis/functions/loan-cost.function';
 import { WizardStepKey } from '@shared/@types/wizard-step-key.type';
-import { createLoanOffer } from '../functions/offer-factory.function';
+import { toggleConsolidatedDebt } from '../functions/consolidated-debts.function';
+import { createLoanOffer, restoreLoanOffer } from '../functions/offer-factory.function';
 import { isLoanOfferValid } from '../functions/offer-validation.function';
 import { LoanOffer } from '../models';
 import { LoanOffersService } from '../services';
@@ -51,10 +52,17 @@ export class LoanOffersFacade {
     this.saveFeedback.track(this.service.save(offer));
   }
 
+  toggleConsolidatedDebt(debtId: string): void {
+    const offer = this.offer();
+    if (offer !== null) {
+      this.saveOffer(toggleConsolidatedDebt(offer, debtId));
+    }
+  }
+
   private async readStoredOffer(): Promise<void> {
     const [offers] = await Promise.all([this.service.getAll(), this.profile.load()]);
     const [firstOffer] = sortByCreation(offers);
-    this.offer.set(firstOffer ?? createLoanOffer(this.settings.summaryCurrency()));
+    this.offer.set(firstOffer ? restoreLoanOffer(firstOffer) : createLoanOffer(this.settings.summaryCurrency()));
   }
 
   private reset(): void {

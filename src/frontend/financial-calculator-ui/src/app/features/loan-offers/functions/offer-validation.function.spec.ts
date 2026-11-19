@@ -13,7 +13,8 @@ describe('offer validation functions', () => {
     disbursementFeePercent: 2,
     feeMode: 'deducted',
     monthlyInsurance: 0,
-    otherInitialCharges: 0
+    otherInitialCharges: 0,
+    consolidatedDebtIds: []
   };
 
   it('accepts a complete offer', () => {
