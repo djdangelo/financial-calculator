@@ -11,6 +11,8 @@
         "ui",
         "i18n",
         "home",
+        "guide",
+        "about",
         "financial-profile",
         "loan-offers",
         "loan-analysis",
