@@ -2,7 +2,7 @@
 
 Aplicación web que le indica a una persona si puede o no tomar un préstamo, a partir de su estado financiero real y de la oferta que le hace el banco. Está pensada para el mercado financiero de Honduras y trabaja en lempiras (HNL) y dólares (USD).
 
-> **Estado:** en desarrollo. Ya responde la pregunta principal: el asistente pide ingresos, gastos, deudas y la oferta del banco, y muestra el veredicto con los indicadores 80/40 editables, el costo anual efectivo y la tabla de amortización. Faltan la unificación de deudas, la comparación de ofertas, los gráficos y la exportación.
+> **Estado:** en desarrollo. Ya responde la pregunta principal: el asistente pide ingresos, gastos, deudas y la oferta del banco, y muestra el veredicto con los indicadores 80/40 editables, el costo anual efectivo y la tabla de amortización. También evalúa la unificación: la persona marca las deudas que pagaría con el préstamo y la app compara la cuota, el saldo cubierto y el costo total, y dice si le conviene. Faltan la comparación de ofertas, los gráficos y la exportación.
 
 ## Qué hace
 
