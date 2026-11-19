@@ -3,12 +3,19 @@ import { TranslocoDirective } from '@ngneat/transloco';
 import { WizardStepFrameComponent } from '@shared/components/wizard-step-frame/wizard-step-frame.component';
 import { OfferFormComponent } from '../../components/offer-form/offer-form.component';
 import { OfferPreviewComponent } from '../../components/offer-preview/offer-preview.component';
+import { OfferTabsComponent } from '../../components/offer-tabs/offer-tabs.component';
 import { LoanOffersFacade } from '../../facades';
 
 @Component({
   selector: 'app-offer-step',
   standalone: true,
-  imports: [TranslocoDirective, WizardStepFrameComponent, OfferFormComponent, OfferPreviewComponent],
+  imports: [
+    TranslocoDirective,
+    WizardStepFrameComponent,
+    OfferFormComponent,
+    OfferPreviewComponent,
+    OfferTabsComponent
+  ],
   templateUrl: './offer-step.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })

@@ -13,4 +13,8 @@ export class LoanOffersService {
   save(offer: LoanOffer): Promise<void> {
     return this.repository.save('loan-offers', offer);
   }
+
+  remove(id: string): Promise<void> {
+    return this.repository.remove('loan-offers', id);
+  }
 }

@@ -1,4 +1,15 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, computed, inject, input, output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  DestroyRef,
+  OnInit,
+  computed,
+  effect,
+  inject,
+  input,
+  output,
+  untracked
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TranslocoDirective } from '@ngneat/transloco';
@@ -62,6 +73,8 @@ export class OfferFormComponent implements OnInit {
     otherInitialCharges: [0, Validators.min(0)]
   });
 
+  private readonly offerId = computed(() => this.offer().id);
+
   readonly hasFee = computed(() => this.offer().disbursementFeePercent > 0);
   readonly rateError = computed(() => this.showErrors() && !isAnnualRateValid(this.offer().annualRatePercent));
   readonly termError = computed(() => this.showErrors() && !isTermValid(this.offer().termMonths));
@@ -77,8 +90,20 @@ export class OfferFormComponent implements OnInit {
   readonly minTerm = MIN_TERM_MONTHS;
   readonly maxTerm = MAX_TERM_MONTHS;
 
+  constructor() {
+    effect(() => {
+      this.offerId();
+      untracked(() => this.fillForm(this.offer()));
+    });
+  }
+
   ngOnInit(): void {
-    const offer = this.offer();
+    this.form.valueChanges
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(() => this.changed.emit(this.toOffer()));
+  }
+
+  private fillForm(offer: LoanOffer): void {
     this.form.setValue(
       {
         bankName: offer.bankName,
@@ -93,9 +118,6 @@ export class OfferFormComponent implements OnInit {
       },
       { emitEvent: false }
     );
-    this.form.valueChanges
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe(() => this.changed.emit(this.toOffer()));
   }
 
   private toOffer(): LoanOffer {

@@ -1,0 +1,24 @@
+<nav *transloco="let t; read: 'loan_offers.tabs'" class="flex flex-col gap-2" [attr.aria-label]="t('label')">
+  <div class="flex flex-wrap items-center gap-2">
+    @for (tab of tabs(); track tab.id) {
+    <div [class]="tab.tabClass">
+      <button type="button" class="min-w-0 truncate text-left" [attr.aria-pressed]="tab.active"
+        (click)="facade.selectOffer(tab.id)">
+        {{ tab.bankName || t('untitled', { number: tab.number }) }}
+      </button>
+      @if (tab.active && facade.canRemoveOffer()) {
+      <button type="button" class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full hover:bg-primary-100 dark:hover:bg-primary-900"
+        [attr.aria-label]="t('remove', { name: tab.bankName || t('untitled', { number: tab.number }) })"
+        (click)="facade.removeOffer(tab.id)">
+        <i class="pi pi-times text-xs" aria-hidden="true"></i>
+      </button>
+      }
+    </div>
+    }
+
+    @if (facade.canAddOffer()) {
+    <p-button [label]="t('add')" icon="pi pi-plus" size="small" [text]="true" (onClick)="facade.addOffer()" />
+    }
+  </div>
+  <p class="text-xs text-surface-500 dark:text-surface-400">{{ t('hint', { max: maxOffers }) }}</p>
+</nav>
