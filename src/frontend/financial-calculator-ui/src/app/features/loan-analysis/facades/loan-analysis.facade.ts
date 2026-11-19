@@ -1,4 +1,5 @@
 import { Injectable, computed, inject } from '@angular/core';
+import { EXCHANGE_STRESS_PERCENT } from '@core/constants/market.constant';
 import { AppSettingsFacade } from '@core/facades/app-settings.facade';
 import { FinancialProfileFacade } from '@features/financial-profile/facades';
 import { calculateNetMonthlyIncome } from '@features/financial-profile/functions/net-income.function';
@@ -14,11 +15,13 @@ import { LoanOffer } from '@features/loan-offers/models';
 import { BestOffers } from '../@types/best-offers.type';
 import { MIN_OFFERS_TO_COMPARE } from '../constants/loan-analysis.constant';
 import { analyzeDebtConsolidation } from '../functions/debt-consolidation.function';
+import { assessExchangeRisk } from '../functions/exchange-risk.function';
 import { buildIncomeDistribution } from '../functions/income-distribution.function';
 import { analyzeLoan } from '../functions/loan-analysis.function';
 import { findBestOffers } from '../functions/offer-comparison.function';
 import { summarizePaymentsByYear } from '../functions/yearly-payments.function';
 import { DebtConsolidation } from '../interfaces/debt-consolidation.interface';
+import { ExchangeRisk } from '../interfaces/exchange-risk.interface';
 import { LoanAnalysis } from '../interfaces/loan-analysis.interface';
 import { OfferComparison } from '../interfaces/offer-comparison.interface';
 
@@ -56,6 +59,19 @@ export class LoanAnalysisFacade {
       cost: analysis.cost,
       verdict: analysis.verdict
     });
+  });
+
+  readonly exchangeRisk = computed<ExchangeRisk | null>(() => {
+    const analysis = this.analysis();
+    return analysis === null
+      ? null
+      : assessExchangeRisk({
+        incomes: this.profile.incomes(),
+        loanCurrency: analysis.currency,
+        monthlyPayment: analysis.cost.monthlyPayment,
+        rates: this.settings.exchangeRates(),
+        stressPercent: EXCHANGE_STRESS_PERCENT
+      });
   });
 
   readonly incomeDistribution = computed(() => {

@@ -16,3 +16,4 @@ export const SUGGESTED_EXCHANGE_RATES: ExchangeRates = {
 export const EXCHANGE_RATE_SOURCE_URL = 'https://www.bch.hn/estadisticas-y-publicaciones-economicas/tipo-de-cambio-nominal';
 export const MIN_BURDEN_LIMIT_PERCENT = 1;
 export const MAX_BURDEN_LIMIT_PERCENT = 100;
+export const EXCHANGE_STRESS_PERCENT = 10;

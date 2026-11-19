@@ -15,8 +15,10 @@ import { PercentValuePipe } from '@shared/pipes/percent-value.pipe';
 import { AmortizationTableComponent } from '../../components/amortization-table/amortization-table.component';
 import { BurdenIndicatorComponent } from '../../components/burden-indicator/burden-indicator.component';
 import { BurdenLimitsComponent } from '../../components/burden-limits/burden-limits.component';
+import { ExchangeRiskAlertComponent } from '../../components/exchange-risk-alert/exchange-risk-alert.component';
 import { DebtConsolidationComponent } from '../../components/debt-consolidation/debt-consolidation.component';
 import { IncomeDistributionComponent } from '../../components/income-distribution/income-distribution.component';
+import { MaxLoanCardComponent } from '../../components/max-loan-card/max-loan-card.component';
 import { OfferComparisonComponent } from '../../components/offer-comparison/offer-comparison.component';
 import { ResultHelpComponent } from '../../components/result-help/result-help.component';
 import { VerdictCardComponent } from '../../components/verdict-card/verdict-card.component';
@@ -38,7 +40,9 @@ import { LoanAnalysisFacade } from '../../facades';
     BurdenIndicatorComponent,
     BurdenLimitsComponent,
     DebtConsolidationComponent,
+    ExchangeRiskAlertComponent,
     IncomeDistributionComponent,
+    MaxLoanCardComponent,
     OfferComparisonComponent,
     ResultHelpComponent,
     VerdictCardComponent,
@@ -61,6 +65,7 @@ export class ResultStepComponent {
     AVAILABLE_AFTER_LOAN_CLASS[(this.facade.analysis()?.availableAfterLoan ?? 0) < 0 ? 'over' : 'within']
   );
   readonly feeMode = computed(() => this.offers.offer()?.feeMode ?? DEFAULT_FEE_MODE);
+  readonly requestedAmount = computed(() => this.offers.offer()?.amount ?? 0);
   readonly nominalRate = computed(() => this.offers.offer()?.annualRatePercent ?? 0);
   readonly activeOfferId = computed(() => this.offers.offer()?.id ?? null);
   readonly activeOfferName = computed(() => this.offers.offer()?.bankName.trim() ?? '');
