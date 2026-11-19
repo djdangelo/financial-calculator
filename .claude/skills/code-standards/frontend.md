@@ -127,6 +127,7 @@ Revisa esta lista antes de crear algo parecido.
 | Tipo de cambio, moneda del resumen y límites 80/40 del usuario | `AppSettingsFacade` (`@core/facades/app-settings.facade`) |
 | Aviso de "cambios guardados" | `SaveFeedbackService` (`@core/services/save-feedback.service`) |
 | Borrar todos los datos del usuario | `UserDataService` (`@core/services/user-data.service`) |
+| Imprimir o saber si se está imprimiendo (fuerza el tema claro) | `PrintService` (`@core/services/print.service`); en el template, `print:hidden` y `hidden print:block` |
 | `localStorage` sin errores en modo privado | `readLocalStorage`, `writeLocalStorage` (`@core/functions/local-storage.function`) |
 
 Si agregas una pieza compartida nueva, súmala a esta tabla.
