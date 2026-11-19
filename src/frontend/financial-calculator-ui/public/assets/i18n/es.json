@@ -1,7 +1,8 @@
 {
   "app": {
     "name": "Calculadora Financiera",
-    "title": "Calculadora Financiera · ¿Puedo tomar este préstamo?"
+    "title": "Calculadora Financiera · ¿Puedo tomar este préstamo?",
+    "guide": "Manual de uso"
   },
   "layout": {
     "language": {
@@ -17,7 +18,10 @@
     },
     "footer": {
       "privacy": "Tus datos se guardan únicamente en este navegador. No hay servidor ni base de datos externa.",
-      "disclaimer": "Los resultados son orientativos y no constituyen asesoría financiera. Las condiciones finales de un préstamo las define cada institución."
+      "disclaimer": "Los resultados son orientativos y no constituyen asesoría financiera. Las condiciones finales de un préstamo las define cada institución.",
+      "nav_label": "Información",
+      "guide": "Manual de uso",
+      "about": "Acerca de"
     },
     "privacy_notice": {
       "title": "Tus datos se quedan en tu navegador",
@@ -68,7 +72,8 @@
         "title": "El resultado",
         "description": "Tu cuota mensual, lo que realmente cuesta el préstamo y si puedes tomarlo sin sobreendeudarte."
       }
-    }
+    },
+    "guide": "Cómo se usa"
   },
   "financial_profile": {
     "steps": {
@@ -486,6 +491,185 @@
           "text": "Si tienes montos en lempiras y dólares, los convertimos a la moneda del préstamo con el tipo de cambio que elegiste."
         }
       }
+    }
+  },
+  "guide": {
+    "eyebrow": "Manual de uso",
+    "title": "Cómo usar la calculadora",
+    "description": "En unos cinco minutos sabrás si puedes pagar un préstamo sin apretarte. Aquí te explicamos cada paso con palabras sencillas y te mostramos tres ejemplos reales.",
+    "prepare": {
+      "title": "Antes de empezar, ten a mano",
+      "description": "No necesitas crear una cuenta. Solo junta estos datos para que el resultado se parezca a tu realidad.",
+      "items": {
+        "payslip": {
+          "title": "Tu recibo de pago",
+          "text": "O el registro de tus ventas y costos, si tienes negocio propio."
+        },
+        "expenses": {
+          "title": "Tus gastos del mes",
+          "text": "Alquiler, comida, luz, agua, internet, transporte y colegiaturas."
+        },
+        "statements": {
+          "title": "Tus estados de cuenta",
+          "text": "Para ver la cuota y el saldo de cada tarjeta o préstamo."
+        },
+        "quote": {
+          "title": "La cotización del banco",
+          "text": "Con el monto, la tasa, el plazo y los cargos que te cobran."
+        }
+      }
+    },
+    "steps": {
+      "title": "Paso a paso",
+      "description": "La app te guía en cinco pasos. Puedes volver atrás cuando quieras para corregir algo.",
+      "autosave": "Todo se guarda solo, en este navegador. Puedes cerrar la página y seguir después donde te quedaste.",
+      "items": {
+        "income": {
+          "title": "Tus ingresos",
+          "text": "Anota lo que recibes cada mes, ya con los descuentos. Si eres asalariado, usa el neto de tu recibo. Si tienes negocio, pon tus ventas promedio y lo que te cuesta operarlo: la app calcula lo que te queda. Puedes sumar varios ingresos, cada uno en lempiras o en dólares.",
+          "tip": "Si tus ventas cambian mucho de un mes a otro, usa un promedio de los últimos meses."
+        },
+        "expenses": {
+          "title": "Tus gastos",
+          "text": "Agrega lo que gastas al mes en vivienda, comida, servicios, transporte, educación y salud. No hace falta que sea exacto al centavo.",
+          "tip": "Un promedio honesto da un mejor resultado que un número optimista."
+        },
+        "debts": {
+          "title": "Tus deudas",
+          "text": "Registra cada deuda que pagas hoy: tarjetas, préstamos o créditos de tienda. La cuota y el saldo son obligatorios. La tasa y los meses restantes son opcionales, pero sirven para saber si te conviene unificar deudas.",
+          "tip": "Si no tienes deudas, puedes seguir sin agregar ninguna."
+        },
+        "offer": {
+          "title": "La oferta del banco",
+          "text": "Copia los datos de la cotización: monto, tasa anual y plazo en meses. Si te cobran comisión, seguro u otros cargos, agrégalos, porque cambian lo que realmente pagas.",
+          "tip": "Si tienes ofertas de varios bancos, agrégalas con «Agregar otra oferta» para compararlas (hasta cuatro)."
+        },
+        "result": {
+          "title": "Tu resultado",
+          "text": "Verás si puedes tomar el préstamo, cuánto te queda al mes, lo máximo que podrías pedir, el costo real y la tabla de pagos. Desde aquí también puedes marcar deudas para unificar, comparar ofertas e imprimir o guardar en PDF.",
+          "tip": "Al final del resultado está «¿Cómo leer tu resultado?», con cada término explicado."
+        }
+      }
+    },
+    "examples": {
+      "title": "Tres ejemplos",
+      "description": "Personas inventadas con números reales de la app, para que veas qué esperar.",
+      "facts_label": "Sus datos",
+      "outcome_label": "Lo que le dice la app",
+      "note": "Las cifras salen de la app con los límites de 80 % y 40 %. Los montos «en total» están redondeados.",
+      "items": {
+        "ana": {
+          "title": "Ana quiere comprar un carro",
+          "story": "Ana trabaja en una oficina y busca un préstamo para dar la prima de un carro. No tiene deudas.",
+          "facts": {
+            "income": "Sueldo neto: L 25,000 al mes.",
+            "expenses": "Gastos del hogar: L 9,000 al mes.",
+            "debts": "Deudas: ninguna.",
+            "offer": "Oferta: L 80,000 al 18 % anual, a 36 meses, con 2 % de comisión que se descuenta del desembolso."
+          },
+          "outcome": "Su cuota sería de L 2,892.19. Sus gastos y cuotas quedan en 47.6 % de su ingreso y sus deudas en 11.6 %, así que la app le dice «Puedes tomar este préstamo». Además, le muestra que con esa tasa y ese plazo podría pedir hasta unos L 276,600 sin pasarse de sus límites."
+        },
+        "carlos": {
+          "title": "Carlos quiere unificar sus deudas",
+          "story": "Carlos tiene una pulpería y dos deudas que le pesan cada mes. Un banco le ofrece un préstamo para pagarlas todas juntas.",
+          "facts": {
+            "income": "Ventas: L 60,000 al mes y costos del negocio: L 35,000. Le quedan L 25,000.",
+            "expenses": "Gastos del hogar: L 10,000 al mes.",
+            "debts": "Tarjeta: saldo de L 60,000, cuota de L 3,500 y tasa de 54 %. Préstamo personal: saldo de L 30,000, cuota de L 2,000 y le faltan 18 meses.",
+            "offer": "Oferta: L 95,000 al 26 % anual, a 60 meses, con 3 % de comisión descontada y L 150 de seguro al mes.",
+            "how": "En el resultado, marca sus dos deudas en «Unificar deudas»."
+          },
+          "outcome": "Recibe L 92,150, que alcanzan para pagar las dos deudas, y le sobran L 2,150. Su cuota baja de L 5,500 a L 2,994.34 y la app le dice que le conviene unificar. Pero también le advierte que, al alargar el plazo a cinco años, terminaría pagando unos L 24,000 más en total. La decisión es suya: más alivio cada mes a cambio de un costo total mayor."
+        },
+        "maria": {
+          "title": "María compara dos bancos",
+          "story": "María necesita L 100,000 y dos bancos le hicieron una oferta. A primera vista, el Banco A parece mejor porque su tasa es más baja.",
+          "facts": {
+            "need": "Monto: L 100,000 a 48 meses en los dos bancos.",
+            "offer_a": "Banco A: 19 % anual, 4 % de comisión que se suma al préstamo y L 250 de seguro al mes.",
+            "offer_b": "Banco B: 21 % anual, sin comisión ni seguro.",
+            "how": "Agrega las dos en el paso de la oferta con «Agregar otra oferta»."
+          },
+          "outcome": "En la comparación, el Banco B sale como el mejor en cuota (L 3,096.57 contra L 3,359.61), en costo anual efectivo (23.1 % contra 29.1 %) y en costo total. La comisión y el seguro hacen que la tasa más baja termine siendo la más cara: con el Banco A pagaría unos L 12,600 más."
+        }
+      }
+    },
+    "faq": {
+      "title": "Preguntas frecuentes",
+      "items": {
+        "privacy": {
+          "question": "¿Dónde quedan mis datos?",
+          "answer": "Solo en este navegador. La app no tiene servidor ni base de datos externa, así que nadie más ve tu información. Si cambias de navegador o de dispositivo, tendrás que ingresarla de nuevo."
+        },
+        "delete": {
+          "question": "¿Cómo borro mis datos?",
+          "answer": "Con el botón «Borrar mis datos», al pie de cualquier página. Se borra todo y vuelves al inicio."
+        },
+        "limits": {
+          "question": "¿Por qué 80 % y 40 %?",
+          "answer": "Son criterios de referencia que usan bancos y asesores: tus gastos y cuotas no deberían pasar del 80 % de tu ingreso, y tus cuotas de deuda solas, del 40 %. No son una ley y puedes ajustarlos en el resultado."
+        },
+        "effective_cost": {
+          "question": "¿Qué es el costo anual efectivo?",
+          "answer": "Es lo que realmente te cuesta el préstamo al año, sumando la tasa, la comisión, el seguro y los otros cargos. Para comparar ofertas, fíjate en este número y no solo en la tasa."
+        },
+        "currency": {
+          "question": "Gano en lempiras, ¿puedo analizar un préstamo en dólares?",
+          "answer": "Sí. Cada monto lleva su moneda y la app convierte todo con el tipo de cambio que elijas. Si el préstamo está en otra moneda que tu ingreso, te avisa del riesgo cambiario."
+        },
+        "offline": {
+          "question": "¿Puedo usarla sin internet?",
+          "answer": "Sí. Puedes instalarla desde el navegador como una app y abrirla sin conexión."
+        },
+        "advice": {
+          "question": "¿El resultado significa que el banco me va a aprobar?",
+          "answer": "No. Es una guía para que decidas con más información. Cada banco evalúa tu solicitud con sus propias políticas."
+        }
+      }
+    },
+    "cta": {
+      "title": "¿Listo para probar?",
+      "text": "Toma unos cinco minutos y no necesitas crear una cuenta.",
+      "button": "Empezar ahora"
+    }
+  },
+  "about": {
+    "eyebrow": "Acerca de",
+    "title": "Quién está detrás de esta app",
+    "description": "Por qué existe la Calculadora Financiera y quién la desarrolló.",
+    "app": {
+      "title": "Sobre la app",
+      "purpose": "La Calculadora Financiera nació para responder una pregunta sencilla antes de firmar un préstamo: ¿puedo pagarlo sin ahogarme? Toma tu realidad (ingresos, gastos y deudas), la compara con la oferta del banco con criterios claros y te muestra el costo real de cada opción.",
+      "privacy": "Funciona por completo en tu navegador: no hay servidor, cuentas ni rastreo.",
+      "market": "Pensada para Honduras, en lempiras y dólares.",
+      "offline": "Se puede instalar como app y usar sin conexión.",
+      "built_with": "Hecha con",
+      "disclaimer": "Los resultados son orientativos y no sustituyen la asesoría de un profesional ni la evaluación del banco.",
+      "guide_link": "Ver el manual de uso"
+    },
+    "developer": {
+      "label": "Desarrollada por",
+      "role": "Senior Full Stack Engineer",
+      "location": "San Pedro Sula, Honduras · Disponible para trabajo remoto",
+      "summary": "Ingeniero en sistemas que diseña y construye aplicaciones web y móviles que crecen sin perder estabilidad. Trabaja el ciclo completo: desde la base de datos y las APIs en .NET y Node.js hasta interfaces en Angular y apps móviles en Flutter, con despliegues automatizados en la nube.",
+      "principles": "Le apasionan la arquitectura limpia, los patrones de diseño sólidos y el software fácil de mantener con el tiempo. Hoy se enfoca en microservicios escalables y en experiencias que funcionen bien en cualquier plataforma."
+    },
+    "stack": {
+      "title": "Tecnologías con las que trabaja",
+      "groups": {
+        "backend": "Backend",
+        "frontend": "Frontend",
+        "mobile": "Móvil",
+        "data": "Bases de datos",
+        "cloud": "Nube y DevOps"
+      }
+    },
+    "links": {
+      "title": "Conoce más de su trabajo",
+      "portfolio": "Portafolio",
+      "github": "GitHub",
+      "email": "Correo",
+      "new_tab": "(se abre en una pestaña nueva)"
     }
   }
 }

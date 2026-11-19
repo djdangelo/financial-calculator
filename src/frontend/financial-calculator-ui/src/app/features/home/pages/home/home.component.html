@@ -9,9 +9,10 @@
     <p class="max-w-2xl text-lg text-surface-600 dark:text-surface-300 sm:text-xl">
       {{ t('description') }}
     </p>
-    <div class="mt-2">
+    <div class="mt-2 flex flex-wrap items-center gap-3">
       <p-button [routerLink]="startRoute" [label]="t('start')" icon="pi pi-arrow-right" iconPos="right"
         size="large" />
+      <p-button [routerLink]="guideRoute" [label]="t('guide')" icon="pi pi-book" size="large" [text]="true" />
     </div>
   </section>
 

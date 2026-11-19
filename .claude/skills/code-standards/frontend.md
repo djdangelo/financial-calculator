@@ -113,6 +113,7 @@ Revisa esta lista antes de crear algo parecido.
 | Entrada de dinero con símbolo de moneda | `shared/components/money-input` |
 | Selector HNL/USD | `shared/components/currency-toggle` |
 | Pantalla de un paso del asistente (stepper, título, aviso de incompleto, Atrás/Continuar y panel lateral `wizardAside`) | `shared/components/wizard-step-frame` |
+| Rutas del manual de uso y de "Acerca de" | `GUIDE_ROUTE`, `ABOUT_ROUTE` (`@shared/constants/navigation.constant`) |
 | Pasos del asistente sueltos | `shared/components/wizard-stepper`, `wizard-navigation`, `shared/utils/wizard.util.ts`, `shared/constants/wizard.constant.ts` |
 | Guard que impide saltarse pasos | `wizardStepGuard` (`@shared/guards/wizard-step.guard`) |
 | Mostrar dinero en el template | `MoneyPipe` (`shared/pipes/money.pipe.ts`) |
