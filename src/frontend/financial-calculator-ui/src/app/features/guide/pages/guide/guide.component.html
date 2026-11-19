@@ -1,0 +1,134 @@
+<article *transloco="let t; read: 'guide'" class="flex flex-col gap-10">
+  <header class="flex flex-col gap-3">
+    <p class="text-xs font-bold uppercase tracking-widest text-primary-700 dark:text-primary-300">{{ t('eyebrow') }}</p>
+    <h1 class="text-3xl font-extrabold tracking-tight text-surface-900 dark:text-surface-0 sm:text-4xl">{{ t('title') }}</h1>
+    <p class="max-w-3xl text-lg text-surface-600 dark:text-surface-300">{{ t('description') }}</p>
+  </header>
+
+  <section class="flex flex-col gap-4" aria-labelledby="guide-prepare">
+    <div class="flex flex-col gap-1">
+      <h2 id="guide-prepare" class="text-xl font-bold text-surface-900 dark:text-surface-0">{{ t('prepare.title') }}</h2>
+      <p class="text-surface-600 dark:text-surface-300">{{ t('prepare.description') }}</p>
+    </div>
+    <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      @for (item of preparation; track item.key) {
+      <li
+        class="flex gap-3 rounded-2xl border border-surface-200 bg-surface-0 p-4 transition-colors duration-300 dark:border-surface-800 dark:bg-surface-900">
+        <span
+          class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary-50 text-primary-700 dark:bg-primary-950 dark:text-primary-300">
+          <i [class]="item.icon" aria-hidden="true"></i>
+        </span>
+        <div class="flex flex-col gap-0.5">
+          <h3 class="text-sm font-semibold text-surface-900 dark:text-surface-0">{{ t('prepare.items.' + item.key + '.title') }}</h3>
+          <p class="text-sm text-surface-600 dark:text-surface-300">{{ t('prepare.items.' + item.key + '.text') }}</p>
+        </div>
+      </li>
+      }
+    </ul>
+  </section>
+
+  <section class="flex flex-col gap-4" aria-labelledby="guide-steps">
+    <div class="flex flex-col gap-1">
+      <h2 id="guide-steps" class="text-xl font-bold text-surface-900 dark:text-surface-0">{{ t('steps.title') }}</h2>
+      <p class="text-surface-600 dark:text-surface-300">{{ t('steps.description') }}</p>
+    </div>
+    <ol class="flex flex-col gap-3">
+      @for (step of steps; track step.key; let index = $index) {
+      <li
+        class="flex gap-4 rounded-2xl border border-surface-200 bg-surface-0 p-4 transition-colors duration-300 dark:border-surface-800 dark:bg-surface-900 sm:p-5">
+        <span
+          class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-contrast">
+          {{ index + 1 }}
+        </span>
+        <div class="flex flex-col gap-1.5">
+          <h3 class="flex items-center gap-2 font-bold text-surface-900 dark:text-surface-0">
+            <i class="text-primary-600 dark:text-primary-300" [class]="step.icon" aria-hidden="true"></i>
+            {{ t('steps.items.' + step.key + '.title') }}
+          </h3>
+          <p class="text-sm leading-relaxed text-surface-600 dark:text-surface-300">{{ t('steps.items.' + step.key + '.text') }}</p>
+          <p class="flex items-start gap-1.5 text-xs text-surface-500 dark:text-surface-400">
+            <i class="pi pi-lightbulb mt-0.5" aria-hidden="true"></i>
+            <span>{{ t('steps.items.' + step.key + '.tip') }}</span>
+          </p>
+        </div>
+      </li>
+      }
+    </ol>
+    <p class="flex items-start gap-2 rounded-xl bg-surface-100 p-3 text-sm text-surface-700 dark:bg-surface-900 dark:text-surface-200">
+      <i class="pi pi-save mt-0.5 text-primary-600 dark:text-primary-300" aria-hidden="true"></i>
+      <span>{{ t('steps.autosave') }}</span>
+    </p>
+  </section>
+
+  <section class="flex flex-col gap-4" aria-labelledby="guide-examples">
+    <div class="flex flex-col gap-1">
+      <h2 id="guide-examples" class="text-xl font-bold text-surface-900 dark:text-surface-0">{{ t('examples.title') }}</h2>
+      <p class="text-surface-600 dark:text-surface-300">{{ t('examples.description') }}</p>
+    </div>
+    <div class="flex flex-col gap-4">
+      @for (example of examples; track example.key) {
+      @let base = 'examples.items.' + example.key;
+      <article
+        class="flex flex-col gap-4 rounded-2xl border border-surface-200 bg-surface-0 p-4 transition-colors duration-300 dark:border-surface-800 dark:bg-surface-900 sm:p-6">
+        <header class="flex items-start gap-3">
+          <span
+            class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary-50 text-primary-700 dark:bg-primary-950 dark:text-primary-300">
+            <i [class]="example.icon" aria-hidden="true"></i>
+          </span>
+          <div class="flex flex-col gap-1">
+            <h3 class="text-lg font-bold text-surface-900 dark:text-surface-0">{{ t(base + '.title') }}</h3>
+            <p class="text-sm text-surface-600 dark:text-surface-300">{{ t(base + '.story') }}</p>
+          </div>
+        </header>
+
+        <div class="flex flex-col gap-2">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-surface-500 dark:text-surface-400">{{ t('examples.facts_label') }}</h4>
+          <ul class="flex flex-col gap-1.5 text-sm text-surface-700 dark:text-surface-200">
+            @for (fact of example.facts; track fact) {
+            <li class="flex items-start gap-2">
+              <i class="pi pi-angle-right mt-0.5 text-primary-600 dark:text-primary-300" aria-hidden="true"></i>
+              <span>{{ t(base + '.facts.' + fact) }}</span>
+            </li>
+            }
+          </ul>
+        </div>
+
+        <div [class]="example.outcomeClass">
+          <i [class]="example.outcomeIcon" aria-hidden="true"></i>
+          <div class="flex flex-col gap-1">
+            <h4 class="font-bold text-surface-900 dark:text-surface-0">{{ t('examples.outcome_label') }}</h4>
+            <p class="text-sm leading-relaxed text-surface-700 dark:text-surface-200">{{ t(base + '.outcome') }}</p>
+          </div>
+        </div>
+      </article>
+      }
+    </div>
+    <p class="text-xs text-surface-500 dark:text-surface-400">{{ t('examples.note') }}</p>
+  </section>
+
+  <section class="flex flex-col gap-4" aria-labelledby="guide-faq">
+    <h2 id="guide-faq" class="text-xl font-bold text-surface-900 dark:text-surface-0">{{ t('faq.title') }}</h2>
+    <div class="flex flex-col gap-2">
+      @for (question of faq; track question) {
+      <details
+        class="group rounded-2xl border border-surface-200 bg-surface-0 px-4 py-3 transition-colors duration-300 dark:border-surface-800 dark:bg-surface-900">
+        <summary
+          class="flex cursor-pointer list-none items-center justify-between gap-3 rounded font-semibold text-surface-900 outline-none focus-visible:ring-2 focus-visible:ring-primary dark:text-surface-0">
+          {{ t('faq.items.' + question + '.question') }}
+          <i class="pi pi-chevron-down text-xs transition-transform group-open:rotate-180" aria-hidden="true"></i>
+        </summary>
+        <p class="mt-2 text-sm leading-relaxed text-surface-600 dark:text-surface-300">{{ t('faq.items.' + question + '.answer') }}</p>
+      </details>
+      }
+    </div>
+  </section>
+
+  <section
+    class="flex flex-col items-start gap-3 rounded-2xl bg-primary-50 p-6 dark:bg-primary-950 sm:flex-row sm:items-center sm:justify-between">
+    <div class="flex flex-col gap-1">
+      <h2 class="text-lg font-bold text-surface-900 dark:text-surface-0">{{ t('cta.title') }}</h2>
+      <p class="text-sm text-surface-700 dark:text-surface-200">{{ t('cta.text') }}</p>
+    </div>
+    <p-button [routerLink]="startRoute" [label]="t('cta.button')" icon="pi pi-arrow-right" iconPos="right" />
+  </section>
+</article>
