@@ -30,6 +30,14 @@ export const routes: Routes = [
           import('./features/loan-analysis/pages/result-step/result-step.component').then(m => m.ResultStepComponent)
       },
       {
+        path: 'guide',
+        loadComponent: () => import('./features/guide/pages/guide/guide.component').then(m => m.GuideComponent)
+      },
+      {
+        path: 'about',
+        loadComponent: () => import('./features/about/pages/about/about.component').then(m => m.AboutComponent)
+      },
+      {
         path: '**',
         loadComponent: () => import('./shared/pages/not-found/not-found.component').then(m => m.NotFoundComponent)
       }
