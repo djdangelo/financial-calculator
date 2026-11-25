@@ -16,6 +16,7 @@
         "financial-profile",
         "loan-offers",
         "loan-analysis",
+        "offer-verification",
         "tests"
     ]
 }
