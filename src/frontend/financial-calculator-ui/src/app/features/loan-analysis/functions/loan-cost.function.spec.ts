@@ -54,4 +54,20 @@ describe('summarizeLoanCost', () => {
     expect(financed.levelPayment).toBeGreaterThan(deducted.levelPayment);
     expect(financed.totalInterest).toBeGreaterThan(deducted.totalInterest);
   });
+
+  it('reports the payment due after the grace months', () => {
+    const summary = summarizeLoanCost(offer, { graceMonths: 2 });
+
+    expect(summary.schedule[0].payment).toBe(2000);
+    expect(summary.levelPayment).toBe(summary.schedule[2].payment);
+    expect(summary.monthlyPayment).toBe(summary.schedule[2].totalPayment);
+  });
+
+  it('uses the insurance of the first regular payment when it depends on the balance', () => {
+    const summary = summarizeLoanCost({ ...offer, monthlyInsurance: 0 }, { balanceInsuranceRatePercent: 0.1 });
+
+    expect(summary.monthlyInsurance).toBe(100);
+    expect(summary.monthlyPayment).toBe(9555.96);
+    expect(summary.totalInsurance).toBeLessThan(1200);
+  });
 });

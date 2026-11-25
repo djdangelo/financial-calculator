@@ -1,15 +1,25 @@
 import { ColorScheme } from '@core/@types/color-scheme.type';
+import { PdfTone } from '@core/@types/pdf-tone.type';
 import { OfferTabState } from '@features/loan-offers/@types/offer-tab-state.type';
 import { BurdenStatus } from '../@types/burden-status.type';
 import { DebtOptionState } from '../@types/debt-option-state.type';
 import { IncomeSliceKey } from '../@types/income-slice-key.type';
 import { Verdict } from '../@types/verdict.type';
+import { AmortizationOptions } from '../interfaces/amortization-options.interface';
 import { ChartTheme } from '../interfaces/chart-theme.interface';
 import { HelpTerm } from '../interfaces/help-term.interface';
 
 export const INTERNAL_RATE_MAX_MONTHLY = 1;
 export const INTERNAL_RATE_TOLERANCE = 1e-10;
 export const INTERNAL_RATE_MAX_ITERATIONS = 200;
+
+export const DEFAULT_AMORTIZATION_OPTIONS: AmortizationOptions = {
+  monthlyInsurance: 0,
+  balanceInsuranceRatePercent: 0,
+  graceMonths: 0,
+  rateChange: null,
+  extraMonthlyPayment: 0
+};
 
 export const AMORTIZATION_ROWS_PER_PAGE = 12;
 export const AMORTIZATION_ROWS_PER_PAGE_OPTIONS = [12, 24, 60];
@@ -107,6 +117,15 @@ export const CHART_BAR_MAX_THICKNESS = 24;
 export const CHART_BAR_RADIUS = 4;
 export const CHART_SEGMENT_GAP = 2;
 export const CHART_FONT_SIZE = 12;
+export const PRINT_COLOR_SCHEME: ColorScheme = 'light';
+
+export const VERDICT_PDF_TONE: Record<Verdict, PdfTone> = {
+  'can-take': 'positive',
+  caution: 'warning',
+  'not-recommended': 'negative'
+};
+
+export const RESULT_REPORT_FILE_NAME_KEY = 'loan_analysis.export.file_name';
 
 export const COMPARISON_COLUMN_CLASS: Record<OfferTabState, string> = {
   active: 'min-w-40 px-3 py-2 text-right align-top bg-primary-50 dark:bg-primary-950',
