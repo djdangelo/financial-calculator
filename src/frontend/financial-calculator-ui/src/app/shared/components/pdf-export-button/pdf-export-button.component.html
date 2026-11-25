@@ -1,0 +1,3 @@
+<p-button *transloco="let t; read: 'shared.pdf'" class="shrink-0 print:hidden" styleClass="whitespace-nowrap"
+  [label]="isExporting() ? t('exporting') : t('button')" icon="pi pi-file-pdf" [loading]="isExporting()"
+  [outlined]="true" size="small" (onClick)="requested.emit()" />
