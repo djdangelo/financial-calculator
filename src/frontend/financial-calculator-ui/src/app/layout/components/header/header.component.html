@@ -12,6 +12,8 @@
     </a>
 
     <div class="flex shrink-0 items-center gap-2 print:hidden">
+      <p-button class="hidden sm:inline-flex" [routerLink]="verifyRoute" icon="pi pi-verified" [rounded]="true" [text]="true"
+        severity="secondary" [ariaLabel]="t('verify')" />
       <p-button [routerLink]="guideRoute" icon="pi pi-question-circle" [rounded]="true" [text]="true"
         severity="secondary" [ariaLabel]="t('guide')" />
       <app-language-switcher />

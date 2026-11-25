@@ -23,7 +23,7 @@ export const GUIDE_EXAMPLES: readonly GuideExample[] = [
   { key: 'maria', icon: 'pi pi-arrows-h', facts: ['need', 'offer_a', 'offer_b', 'how'], outcome: 'positive' }
 ];
 
-export const GUIDE_FAQ: readonly string[] = ['privacy', 'delete', 'limits', 'effective_cost', 'currency', 'offline', 'advice'];
+export const GUIDE_FAQ: readonly string[] = ['privacy', 'delete', 'limits', 'effective_cost', 'verify', 'pdf', 'currency', 'offline', 'advice'];
 
 export const GUIDE_OUTCOME_CLASS: Record<GuideOutcome, string> = {
   positive: 'flex items-start gap-3 rounded-xl border p-4 border-primary-200 bg-primary-50 dark:border-primary-900 dark:bg-primary-950',
