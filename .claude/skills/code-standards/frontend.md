@@ -128,7 +128,13 @@ Revisa esta lista antes de crear algo parecido.
 | Tipo de cambio, moneda del resumen y límites 80/40 del usuario | `AppSettingsFacade` (`@core/facades/app-settings.facade`) |
 | Aviso de "cambios guardados" | `SaveFeedbackService` (`@core/services/save-feedback.service`) |
 | Borrar todos los datos del usuario | `UserDataService` (`@core/services/user-data.service`) |
-| Imprimir o saber si se está imprimiendo (fuerza el tema claro) | `PrintService` (`@core/services/print.service`); en el template, `print:hidden` y `hidden print:block` |
+| Saber si el navegador está imprimiendo (fuerza el tema claro) | `PrintService` (`@core/services/print.service`); en el template, `print:hidden` y `hidden print:block` |
+| Generar y descargar un PDF (en iPhone instalado abre el menú de compartir) | `PdfExportService` (`@core/services/pdf-export.service`) con un `PdfReport` (`@core/interfaces/pdf-report.interface`); botón `shared/components/pdf-export-button` |
+| Bloques de PDF del préstamo: oferta, costo, gráfico anual, tabla de amortización, aviso | `buildOfferBlocks`, `buildCostBlocks`, `buildYearlyChartBlocks`, `buildAmortizationBlocks`, `buildDisclaimerBlock` (`@features/loan-analysis/functions/loan-report.function`) |
+| Tabla de amortización con gracia, cambio de tasa, seguro sobre saldo o abonos | `buildAmortizationSchedule(terms, options)` y `calculateRegularPayment` (`@features/loan-analysis/functions/amortization.function`) |
+| Tarjeta "Lo que cuesta el préstamo" | `loan-analysis/components/loan-cost-summary` |
+| Sumar meses a una fecha ISO o validarla | `addMonthsToIsoDate`, `isIsoDate` (`@core/functions/date.function`) |
+| Ruta del verificador de ofertas | `VERIFY_ROUTE` (`@shared/constants/navigation.constant`) |
 | `localStorage` sin errores en modo privado | `readLocalStorage`, `writeLocalStorage` (`@core/functions/local-storage.function`) |
 
 Si agregas una pieza compartida nueva, súmala a esta tabla.
