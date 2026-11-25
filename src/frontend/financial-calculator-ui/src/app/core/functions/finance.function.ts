@@ -22,7 +22,7 @@ export function sumAmounts(amounts: readonly number[]): number {
   return amounts.reduce((total, amount) => total + amount, 0);
 }
 
-export function formatPercent(percent: number): string {
-  const digits = new Intl.NumberFormat(NUMBER_LOCALE, { maximumFractionDigits: PERCENT_DECIMALS }).format(percent);
+export function formatPercent(percent: number, maxDecimals = PERCENT_DECIMALS): string {
+  const digits = new Intl.NumberFormat(NUMBER_LOCALE, { maximumFractionDigits: maxDecimals }).format(percent);
   return `${digits}${PERCENT_SUFFIX}`;
 }

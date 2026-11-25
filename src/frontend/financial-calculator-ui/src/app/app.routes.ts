@@ -30,6 +30,11 @@ export const routes: Routes = [
           import('./features/loan-analysis/pages/result-step/result-step.component').then(m => m.ResultStepComponent)
       },
       {
+        path: 'verify',
+        loadComponent: () =>
+          import('./features/offer-verification/pages/verify/verify.component').then(m => m.VerifyComponent)
+      },
+      {
         path: 'guide',
         loadComponent: () => import('./features/guide/pages/guide/guide.component').then(m => m.GuideComponent)
       },

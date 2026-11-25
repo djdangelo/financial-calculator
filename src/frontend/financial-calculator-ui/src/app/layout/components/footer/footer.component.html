@@ -9,6 +9,10 @@
       <app-clear-data-button class="-ml-2 shrink-0 sm:ml-0 print:hidden" />
     </div>
     <nav class="flex flex-wrap gap-x-5 gap-y-2 print:hidden" [attr.aria-label]="t('nav_label')">
+      <a [routerLink]="verifyRoute"
+        class="flex items-center gap-1.5 rounded font-semibold text-primary-700 underline-offset-2 outline-none hover:underline focus-visible:ring-2 focus-visible:ring-primary dark:text-primary-300">
+        <i class="pi pi-verified" aria-hidden="true"></i>{{ t('verify') }}
+      </a>
       <a [routerLink]="guideRoute"
         class="flex items-center gap-1.5 rounded font-semibold text-primary-700 underline-offset-2 outline-none hover:underline focus-visible:ring-2 focus-visible:ring-primary dark:text-primary-300">
         <i class="pi pi-book" aria-hidden="true"></i>{{ t('guide') }}

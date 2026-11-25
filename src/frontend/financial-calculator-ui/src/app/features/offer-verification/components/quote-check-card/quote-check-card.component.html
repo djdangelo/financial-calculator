@@ -1,0 +1,38 @@
+<section *transloco="let t; read: 'offer_verification.quote'" [class]="cardClass()" aria-live="polite">
+  <i [class]="iconClass()" aria-hidden="true"></i>
+
+  <div class="flex min-w-0 flex-1 flex-col gap-3">
+    <div class="flex flex-col gap-1.5">
+      <p class="text-xs font-bold uppercase tracking-wider text-surface-600 dark:text-surface-300">{{ t('label') }}</p>
+      <h2 class="text-xl font-extrabold text-surface-900 dark:text-surface-0 sm:text-2xl">
+        {{ t(quote().status + '.title') }}
+      </h2>
+      <p class="text-surface-700 dark:text-surface-200">
+        {{ t(quote().status + '.message', {
+          quoted: (quote().quotedPayment | money: currency()),
+          calculated: (quote().calculatedPayment | money: currency()),
+          difference: (difference() | money: currency()),
+          total: (differenceOverTerm() | money: currency())
+        }) }}
+        @if (quote().impliedAnnualRatePercent; as rate) {
+        {{ t('implied_rate', { rate: (rate | percentValue) }) }}
+        }
+      </p>
+    </div>
+
+    <dl class="grid gap-3 text-sm sm:grid-cols-3">
+      <div class="flex flex-col gap-0.5">
+        <dt class="text-surface-600 dark:text-surface-300">{{ t('quoted') }}</dt>
+        <dd class="font-bold tabular-nums text-surface-900 dark:text-surface-0">{{ quote().quotedPayment | money: currency() }}</dd>
+      </div>
+      <div class="flex flex-col gap-0.5">
+        <dt class="text-surface-600 dark:text-surface-300">{{ t('calculated') }}</dt>
+        <dd class="font-bold tabular-nums text-surface-900 dark:text-surface-0">{{ quote().calculatedPayment | money: currency() }}</dd>
+      </div>
+      <div class="flex flex-col gap-0.5">
+        <dt class="text-surface-600 dark:text-surface-300">{{ t('difference') }}</dt>
+        <dd class="font-bold tabular-nums text-surface-900 dark:text-surface-0">{{ quote().difference | money: currency() }}</dd>
+      </div>
+    </dl>
+  </div>
+</section>

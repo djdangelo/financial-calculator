@@ -15,8 +15,4 @@ export class PrintService {
       window.removeEventListener(AFTER_PRINT_EVENT, onAfterPrint);
     });
   }
-
-  print(): void {
-    window.print();
-  }
 }

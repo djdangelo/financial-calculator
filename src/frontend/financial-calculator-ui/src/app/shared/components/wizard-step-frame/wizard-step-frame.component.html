@@ -2,7 +2,7 @@
   <app-wizard-stepper class="print:hidden" [current]="step()" [completed]="completed()" />
 
   <div [class]="layoutClass()">
-    <section class="flex min-w-0 flex-col gap-6">
+    <section class="flex min-w-0 flex-col gap-6 print:[break-inside:auto]">
       <header class="flex flex-col gap-2">
         <h1 class="text-2xl font-extrabold tracking-tight text-surface-900 dark:text-surface-0 sm:text-3xl">
           {{ title() }}
