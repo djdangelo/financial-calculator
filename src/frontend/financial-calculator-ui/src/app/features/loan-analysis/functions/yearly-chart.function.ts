@@ -1,10 +1,13 @@
-import { ChartData, ChartDataset, ChartOptions } from 'chart.js';
+import { ChartConfiguration, ChartData, ChartDataset, ChartOptions } from 'chart.js';
+import { Translate } from '@core/@types/translate.type';
 import { YearlySeriesKey } from '../@types/yearly-series-key.type';
 import {
   CHART_BAR_MAX_THICKNESS,
   CHART_BAR_RADIUS,
   CHART_FONT_SIZE,
-  CHART_SEGMENT_GAP
+  CHART_SEGMENT_GAP,
+  CHART_THEME,
+  PRINT_COLOR_SCHEME
 } from '../constants/loan-analysis.constant';
 import { ChartTheme } from '../interfaces/chart-theme.interface';
 import { YearlyChartLabels } from '../interfaces/yearly-chart-labels.interface';
@@ -53,5 +56,29 @@ export function buildYearlyChartOptions(theme: ChartTheme, formatAmount: (amount
         ticks: { color: theme.text, font, callback: value => formatAmount(Number(value)) }
       }
     }
+  };
+}
+
+export function buildYearlyChartLabels(years: readonly YearlyPaymentSummary[], translate: Translate): YearlyChartLabels {
+  return {
+    years: years.map(summary => translate('loan_analysis.yearly.year', { year: summary.year })),
+    series: {
+      principal: translate('loan_analysis.yearly.principal'),
+      interest: translate('loan_analysis.yearly.interest'),
+      insurance: translate('loan_analysis.yearly.insurance')
+    }
+  };
+}
+
+export function buildYearlyChartConfiguration(
+  years: readonly YearlyPaymentSummary[],
+  translate: Translate,
+  formatAmount: (amount: number) => string
+): ChartConfiguration<'bar'> {
+  const theme = CHART_THEME[PRINT_COLOR_SCHEME];
+  return {
+    type: 'bar',
+    data: buildYearlyChartData(years, buildYearlyChartLabels(years, translate), theme),
+    options: buildYearlyChartOptions(theme, formatAmount)
   };
 }

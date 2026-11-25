@@ -6,7 +6,7 @@ import { CurrencyCode } from '@core/@types/currency-code.type';
 import { formatMoney } from '@core/functions/currency.function';
 import { ThemeService } from '@core/services/theme.service';
 import { CHART_THEME, YEARLY_CHART_HEIGHT } from '../../constants/loan-analysis.constant';
-import { buildYearlyChartData, buildYearlyChartOptions } from '../../functions/yearly-chart.function';
+import { buildYearlyChartData, buildYearlyChartLabels, buildYearlyChartOptions } from '../../functions/yearly-chart.function';
 import { YearlyPaymentSummary } from '../../interfaces/yearly-payment-summary.interface';
 
 @Component({
@@ -28,16 +28,8 @@ export class YearlyPaymentsChartComponent {
 
   readonly data = computed(() => {
     this.language();
-    const translate = (key: string, params?: Record<string, number>) =>
-      this.transloco.translate(`loan_analysis.yearly.${key}`, params);
-    return buildYearlyChartData(
-      this.years(),
-      {
-        years: this.years().map(summary => translate('year', { year: summary.year })),
-        series: { principal: translate('principal'), interest: translate('interest'), insurance: translate('insurance') }
-      },
-      this.theme()
-    );
+    const labels = buildYearlyChartLabels(this.years(), (key, params) => this.transloco.translate(key, params));
+    return buildYearlyChartData(this.years(), labels, this.theme());
   });
   readonly options = computed(() => {
     const currency = this.currency();

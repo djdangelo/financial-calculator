@@ -22,7 +22,9 @@ import { AmortizationRow } from '../../interfaces/amortization-row.interface';
 export class AmortizationTableComponent {
   readonly rows = input.required<AmortizationRow[]>();
   readonly currency = input.required<CurrencyCode>();
+  readonly dueDates = input<readonly string[]>([]);
 
+  readonly hasDates = computed(() => this.dueDates().length > 0);
   readonly hasInsurance = computed(() => this.rows().some(row => row.insurance > 0));
   readonly rowsPerPage = AMORTIZATION_ROWS_PER_PAGE;
   readonly rowsPerPageOptions = AMORTIZATION_ROWS_PER_PAGE_OPTIONS;
