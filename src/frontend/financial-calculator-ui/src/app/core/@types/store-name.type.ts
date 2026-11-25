@@ -1,1 +1,1 @@
-export type StoreName = 'incomes' | 'expenses' | 'debts' | 'loan-offers' | 'settings';
+export type StoreName = 'incomes' | 'expenses' | 'debts' | 'loan-offers' | 'settings' | 'offer-verifications';
