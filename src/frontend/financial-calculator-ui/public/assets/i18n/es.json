@@ -2,7 +2,8 @@
   "app": {
     "name": "Calculadora Financiera",
     "title": "Calculadora Financiera · ¿Puedo tomar este préstamo?",
-    "guide": "Manual de uso"
+    "guide": "Manual de uso",
+    "verify": "Verificar oferta del banco"
   },
   "layout": {
     "language": {
@@ -21,7 +22,8 @@
       "disclaimer": "Los resultados son orientativos y no constituyen asesoría financiera. Las condiciones finales de un préstamo las define cada institución.",
       "nav_label": "Información",
       "guide": "Manual de uso",
-      "about": "Acerca de"
+      "about": "Acerca de",
+      "verify": "Verificar oferta"
     },
     "privacy_notice": {
       "title": "Tus datos se quedan en tu navegador",
@@ -73,7 +75,12 @@
         "description": "Tu cuota mensual, lo que realmente cuesta el préstamo y si puedes tomarlo sin sobreendeudarte."
       }
     },
-    "guide": "Cómo se usa"
+    "guide": "Cómo se usa",
+    "verify": {
+      "title": "¿Ya tienes una cotización del banco?",
+      "description": "Verifica la cuota, el costo real y la tabla de pagos con las condiciones exactas que te dieron, sin llenar tu perfil.",
+      "button": "Verificar oferta"
+    }
   },
   "financial_profile": {
     "steps": {
@@ -228,6 +235,12 @@
     "errors": {
       "save_failed_title": "No se pudo guardar",
       "save_failed": "No pudimos guardar tus cambios en este navegador. Revisa que el almacenamiento no esté bloqueado o lleno."
+    },
+    "pdf": {
+      "button": "Descargar PDF",
+      "exporting": "Generando PDF…",
+      "error_title": "No se pudo crear el PDF",
+      "error": "Inténtalo de nuevo. Si sigue fallando, recarga la página."
     }
   },
   "loan_offers": {
@@ -455,13 +468,9 @@
         "interest": "Interés",
         "principal": "Capital",
         "insurance": "Seguro",
-        "balance": "Saldo"
+        "balance": "Saldo",
+        "date": "Fecha"
       }
-    },
-    "print": {
-      "button": "Imprimir o guardar en PDF",
-      "hint": "Puedes imprimir este resultado o guardarlo como PDF desde la ventana de impresión.",
-      "generated_on": "Resultado generado el {{date}} con Calculadora Financiera. Es una guía, no una asesoría financiera."
     },
     "help": {
       "title": "¿Cómo leer tu resultado?",
@@ -491,6 +500,74 @@
           "text": "Si tienes montos en lempiras y dólares, los convertimos a la moneda del préstamo con el tipo de cambio que elegiste."
         }
       }
+    },
+    "export": {
+      "hint": "Descarga este resultado en PDF para guardarlo o compartirlo. En iPhone se abre el menú para compartir o guardar en Archivos.",
+      "generated_on": "Resultado generado el {{date}} con Calculadora Financiera. Es una guía, no una asesoría financiera.",
+      "file_name": "resultado-prestamo",
+      "offer_title": "La oferta analizada"
+    }
+  },
+  "offer_verification": {
+    "eyebrow": "Verificador de ofertas",
+    "title": "Verifica la oferta de tu banco",
+    "description": "Escribe las condiciones que te dio el banco y comprueba si la cuota, el costo real y la tabla de pagos cuadran. No necesitas llenar tu perfil.",
+    "incomplete": "Escribe el monto, la tasa anual y el plazo para ver el cálculo.",
+    "results_title": "Lo que da el cálculo",
+    "extras": {
+      "title": "Lo que te dijo el banco",
+      "description": "Con la cuota que te cotizaron comprobamos si los números cuadran.",
+      "first_payment_date": "Fecha de la primera cuota",
+      "first_payment_date_hint": "La usamos para poner fecha a cada pago de la tabla.",
+      "quoted_payment": "Cuota que te dio el banco",
+      "quoted_payment_hint": "Opcional. La cuota mensual total que aparece en tu cotización, con seguros.",
+      "advanced_title": "Condiciones especiales",
+      "advanced_description": "Llénalas solo si tu oferta las incluye.",
+      "balance_insurance": "Seguro sobre saldo (mensual)",
+      "balance_insurance_hint": "Porcentaje que cobran cada mes sobre lo que aún debes, por ejemplo 0.05 %.",
+      "grace_months": "Meses de gracia",
+      "grace_months_hint": "Meses al inicio en los que solo pagas intereses.",
+      "rate_change_month": "La tasa cambia desde el mes",
+      "rate_change_month_hint": "Déjalo vacío si la tasa es fija todo el plazo.",
+      "rate_change_rate": "Nueva tasa anual",
+      "rate_change_rate_hint": "La tasa que aplica desde ese mes.",
+      "extra_payment": "Abono extra a capital cada mes",
+      "extra_payment_hint": "Lo que piensas pagar de más para terminar antes.",
+      "errors": {
+        "date": "Escribe una fecha válida.",
+        "grace": "Los meses de gracia deben ser menos que el plazo.",
+        "rate_change": "Escribe un mes entre {{min}} y el plazo, y una nueva tasa mayor que cero.",
+        "balance_insurance": "Escribe un porcentaje entre 0 y {{max}} %."
+      }
+    },
+    "quote": {
+      "label": "Comparación con el banco",
+      "matches": {
+        "title": "La cuota del banco cuadra",
+        "message": "El banco te cotizó {{quoted}} y el cálculo da {{calculated}}. La diferencia es solo de redondeo."
+      },
+      "higher": {
+        "title": "El banco te cobra más de lo que da el cálculo",
+        "message": "El banco te cotizó {{quoted}}, pero con estas condiciones la cuota debería ser {{calculated}}: son {{difference}} más al mes y {{total}} en todo el plazo. Pregunta qué cargos incluye esa cuota."
+      },
+      "lower": {
+        "title": "La cuota del banco es menor que el cálculo",
+        "message": "El banco te cotizó {{quoted}} y el cálculo da {{calculated}}, {{difference}} menos al mes. Revisa que la tasa, el plazo y los seguros sean los de la oferta."
+      },
+      "implied_rate": "Esa cuota equivale a una tasa anual de {{rate}}.",
+      "quoted": "Cuota del banco",
+      "calculated": "Cuota calculada",
+      "difference": "Diferencia al mes"
+    },
+    "payoff": {
+      "early": "Con el abono extra terminas de pagar en {{months}} meses, el {{date}}."
+    },
+    "export": {
+      "hint": "Descarga este resultado en PDF para guardarlo o compartirlo. En iPhone se abre el menú para compartir o guardar en Archivos.",
+      "generated_on": "Verificación generada el {{date}} con Calculadora Financiera. Es una guía, no una asesoría financiera.",
+      "file_name": "verificacion-oferta",
+      "offer_title": "Condiciones de la oferta",
+      "conditions_title": "Fechas y condiciones especiales"
     }
   },
   "guide": {
@@ -624,6 +701,14 @@
         "advice": {
           "question": "¿El resultado significa que el banco me va a aprobar?",
           "answer": "No. Es una guía para que decidas con más información. Cada banco evalúa tu solicitud con sus propias políticas."
+        },
+        "verify": {
+          "question": "Solo quiero revisar la cotización del banco, ¿qué hago?",
+          "answer": "Usa «Verificar oferta», en la portada o al pie de la página. Escribe las condiciones de la cotización y la cuota que te dieron: la app te dice si cuadra, cuánto cuesta de verdad y te da la tabla de pagos con fechas, que puedes descargar en PDF."
+        },
+        "pdf": {
+          "question": "¿Cómo guardo el resultado en PDF?",
+          "answer": "Toca «Descargar PDF» en el resultado o en la verificación. En computadora se descarga el archivo; en iPhone con la app instalada se abre el menú para compartir, donde puedes elegir «Guardar en Archivos»."
         }
       }
     },

@@ -2,7 +2,8 @@
   "app": {
     "name": "Financial Calculator",
     "title": "Financial Calculator · Can I take this loan?",
-    "guide": "User guide"
+    "guide": "User guide",
+    "verify": "Check a bank offer"
   },
   "layout": {
     "language": {
@@ -21,7 +22,8 @@
       "disclaimer": "Results are for guidance only and are not financial advice. The final terms of a loan are set by each institution.",
       "nav_label": "Information",
       "guide": "User guide",
-      "about": "About"
+      "about": "About",
+      "verify": "Check an offer"
     },
     "privacy_notice": {
       "title": "Your data stays in your browser",
@@ -73,7 +75,12 @@
         "description": "Your monthly payment, what the loan really costs and whether you can take it without overextending yourself."
       }
     },
-    "guide": "How it works"
+    "guide": "How it works",
+    "verify": {
+      "title": "Already have a quote from your bank?",
+      "description": "Check the payment, the real cost and the payment schedule with the exact terms you were given, without filling in your profile.",
+      "button": "Check an offer"
+    }
   },
   "financial_profile": {
     "steps": {
@@ -228,6 +235,12 @@
     "errors": {
       "save_failed_title": "Could not save",
       "save_failed": "We could not save your changes in this browser. Check that storage is not blocked or full."
+    },
+    "pdf": {
+      "button": "Download PDF",
+      "exporting": "Creating PDF…",
+      "error_title": "The PDF could not be created",
+      "error": "Please try again. If it keeps failing, reload the page."
     }
   },
   "loan_offers": {
@@ -455,13 +468,9 @@
         "interest": "Interest",
         "principal": "Principal",
         "insurance": "Insurance",
-        "balance": "Balance"
+        "balance": "Balance",
+        "date": "Date"
       }
-    },
-    "print": {
-      "button": "Print or save as PDF",
-      "hint": "You can print this result or save it as a PDF from the print window.",
-      "generated_on": "Result generated on {{date}} with Financial Calculator. It is a guide, not financial advice."
     },
     "help": {
       "title": "How to read your result",
@@ -491,6 +500,74 @@
           "text": "If you have amounts in lempiras and dollars, we convert them to the loan currency with the exchange rate you chose."
         }
       }
+    },
+    "export": {
+      "hint": "Download this result as a PDF to keep or share it. On iPhone, the share menu opens so you can save it to Files.",
+      "generated_on": "Result generated on {{date}} with Financial Calculator. It is a guide, not financial advice.",
+      "file_name": "loan-result",
+      "offer_title": "The offer analyzed"
+    }
+  },
+  "offer_verification": {
+    "eyebrow": "Offer checker",
+    "title": "Check your bank offer",
+    "description": "Enter the terms your bank gave you and check whether the payment, the real cost and the payment schedule add up. You do not need to fill in your profile.",
+    "incomplete": "Enter the amount, the annual rate and the term to see the calculation.",
+    "results_title": "What the numbers say",
+    "extras": {
+      "title": "What the bank told you",
+      "description": "We use the payment you were quoted to check that the numbers add up.",
+      "first_payment_date": "First payment date",
+      "first_payment_date_hint": "We use it to date every payment in the schedule.",
+      "quoted_payment": "Payment the bank quoted",
+      "quoted_payment_hint": "Optional. The total monthly payment on your quote, including insurance.",
+      "advanced_title": "Special conditions",
+      "advanced_description": "Fill these in only if your offer includes them.",
+      "balance_insurance": "Insurance on the balance (monthly)",
+      "balance_insurance_hint": "Percentage charged each month on what you still owe, for example 0.05 %.",
+      "grace_months": "Grace months",
+      "grace_months_hint": "Months at the start when you only pay interest.",
+      "rate_change_month": "The rate changes from month",
+      "rate_change_month_hint": "Leave it empty if the rate is fixed for the whole term.",
+      "rate_change_rate": "New annual rate",
+      "rate_change_rate_hint": "The rate that applies from that month.",
+      "extra_payment": "Extra principal payment each month",
+      "extra_payment_hint": "What you plan to pay on top to finish sooner.",
+      "errors": {
+        "date": "Enter a valid date.",
+        "grace": "Grace months must be fewer than the term.",
+        "rate_change": "Enter a month between {{min}} and the term, and a new rate above zero.",
+        "balance_insurance": "Enter a percentage between 0 and {{max}} %."
+      }
+    },
+    "quote": {
+      "label": "Comparison with the bank",
+      "matches": {
+        "title": "The bank payment adds up",
+        "message": "The bank quoted {{quoted}} and the calculation gives {{calculated}}. The difference is just rounding."
+      },
+      "higher": {
+        "title": "The bank charges more than the calculation",
+        "message": "The bank quoted {{quoted}}, but with these terms the payment should be {{calculated}}: that is {{difference}} more each month and {{total}} over the whole term. Ask what charges that payment includes."
+      },
+      "lower": {
+        "title": "The bank payment is lower than the calculation",
+        "message": "The bank quoted {{quoted}} and the calculation gives {{calculated}}, {{difference}} less each month. Check that the rate, the term and the insurance match the offer."
+      },
+      "implied_rate": "That payment equals an annual rate of {{rate}}.",
+      "quoted": "Bank payment",
+      "calculated": "Calculated payment",
+      "difference": "Monthly difference"
+    },
+    "payoff": {
+      "early": "With the extra payment you finish paying in {{months}} months, on {{date}}."
+    },
+    "export": {
+      "hint": "Download this result as a PDF to keep or share it. On iPhone, the share menu opens so you can save it to Files.",
+      "generated_on": "Check generated on {{date}} with Financial Calculator. It is a guide, not financial advice.",
+      "file_name": "offer-check",
+      "offer_title": "Offer terms",
+      "conditions_title": "Dates and special conditions"
     }
   },
   "guide": {
@@ -624,6 +701,14 @@
         "advice": {
           "question": "Does the result mean the bank will approve me?",
           "answer": "No. It is a guide to help you decide with more information. Each bank evaluates your application with its own policies."
+        },
+        "verify": {
+          "question": "I just want to check my bank quote. What should I do?",
+          "answer": "Use “Check an offer”, on the home page or at the bottom of any page. Enter the terms of the quote and the payment you were given: the app tells you whether it adds up, what it really costs, and gives you the dated payment schedule, which you can download as a PDF."
+        },
+        "pdf": {
+          "question": "How do I save the result as a PDF?",
+          "answer": "Tap “Download PDF” on the result or on the offer check. On a computer the file downloads; on an iPhone with the app installed, the share menu opens and you can choose “Save to Files”."
         }
       }
     },
