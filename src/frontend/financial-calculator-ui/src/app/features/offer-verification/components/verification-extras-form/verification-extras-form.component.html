@@ -1,0 +1,80 @@
+<div *transloco="let t; read: 'offer_verification.extras'" class="flex flex-col gap-4">
+  @let currency = verification().currency;
+
+  <article
+    class="flex flex-col gap-5 rounded-2xl border border-surface-200 bg-surface-0 p-4 transition-colors duration-300 dark:border-surface-800 dark:bg-surface-900 sm:p-5">
+    <header class="flex items-center gap-3">
+      <span
+        class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary-50 text-primary-700 dark:bg-primary-950 dark:text-primary-300">
+        <i class="pi pi-file-check" aria-hidden="true"></i>
+      </span>
+      <div class="flex flex-col">
+        <h2 class="text-base font-bold text-surface-900 dark:text-surface-0">{{ t('title') }}</h2>
+        <p class="text-sm text-surface-500 dark:text-surface-400">{{ t('description') }}</p>
+      </div>
+    </header>
+
+    <div class="grid gap-4 sm:grid-cols-2">
+      <app-form-field [label]="t('first_payment_date')" inputId="verification-first-date"
+        [hint]="t('first_payment_date_hint')" [error]="dateError() ? t('errors.date') : ''">
+        <input pInputText type="date" id="verification-first-date" [formControl]="form.controls.firstPaymentDate"
+          [fluid]="true" [class.ng-invalid]="dateError()" [class.ng-dirty]="dateError()" />
+      </app-form-field>
+
+      <app-money-input [control]="form.controls.quotedPayment" [currency]="currency" inputId="verification-quoted"
+        [label]="t('quoted_payment')" [hint]="t('quoted_payment_hint')" />
+    </div>
+  </article>
+
+  <details [open]="startsOpen()"
+    class="group rounded-2xl border border-surface-200 bg-surface-0 transition-colors duration-300 dark:border-surface-800 dark:bg-surface-900">
+    <summary
+      class="flex cursor-pointer list-none items-center gap-3 rounded-2xl p-4 outline-none focus-visible:ring-2 focus-visible:ring-primary sm:p-5 [&::-webkit-details-marker]:hidden">
+      <span
+        class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary-50 text-primary-700 dark:bg-primary-950 dark:text-primary-300">
+        <i class="pi pi-sliders-h" aria-hidden="true"></i>
+      </span>
+      <span class="flex flex-1 flex-col">
+        <span class="text-base font-bold text-surface-900 dark:text-surface-0">{{ t('advanced_title') }}</span>
+        <span class="text-sm text-surface-500 dark:text-surface-400">{{ t('advanced_description') }}</span>
+      </span>
+      <i class="pi pi-chevron-down text-surface-500 transition-transform group-open:rotate-180 dark:text-surface-400"
+        aria-hidden="true"></i>
+    </summary>
+
+    <div class="grid gap-4 px-4 pb-4 sm:grid-cols-2 sm:px-5 sm:pb-5">
+      <app-form-field [label]="t('balance_insurance')" inputId="verification-balance-insurance"
+        [hint]="t('balance_insurance_hint')"
+        [error]="balanceInsuranceError() ? t('errors.balance_insurance', { max: maxInsurance }) : ''">
+        <p-inputNumber [formControl]="form.controls.balanceInsuranceRatePercent" inputId="verification-balance-insurance"
+          mode="decimal" [suffix]="percentSuffix" [locale]="locale" [min]="0" [max]="maxInsurance"
+          [maxFractionDigits]="insuranceDecimals" [fluid]="true" />
+      </app-form-field>
+
+      <app-form-field [label]="t('grace_months')" inputId="verification-grace" [hint]="t('grace_months_hint')"
+        [error]="graceError() ? t('errors.grace') : ''">
+        <p-inputNumber [formControl]="form.controls.graceMonths" inputId="verification-grace" [locale]="locale"
+          [min]="minGrace" [max]="maxTerm" [useGrouping]="false" [fluid]="true" [class.ng-invalid]="graceError()"
+          [class.ng-dirty]="graceError()" />
+      </app-form-field>
+
+      <app-form-field [label]="t('rate_change_month')" inputId="verification-rate-month"
+        [hint]="t('rate_change_month_hint')"
+        [error]="rateChangeError() ? t('errors.rate_change', { min: minRateChangeMonth }) : ''">
+        <p-inputNumber [formControl]="form.controls.rateChangeMonth" inputId="verification-rate-month" [locale]="locale"
+          [min]="0" [max]="maxTerm" [useGrouping]="false" [fluid]="true" [class.ng-invalid]="rateChangeError()"
+          [class.ng-dirty]="rateChangeError()" />
+      </app-form-field>
+
+      <app-form-field [label]="t('rate_change_rate')" inputId="verification-rate-new" [hint]="t('rate_change_rate_hint')">
+        <p-inputNumber [formControl]="form.controls.rateChangeAnnualRatePercent" inputId="verification-rate-new"
+          mode="decimal" [suffix]="percentSuffix" [locale]="locale" [min]="0" [max]="maxRate"
+          [maxFractionDigits]="rateDecimals" [fluid]="true" [class.ng-invalid]="rateChangeError()"
+          [class.ng-dirty]="rateChangeError()" />
+      </app-form-field>
+
+      <app-money-input [control]="form.controls.extraMonthlyPayment" [currency]="currency" inputId="verification-extra"
+        [label]="t('extra_payment')" [hint]="t('extra_payment_hint')" />
+    </div>
+  </details>
+</div>
